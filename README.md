@@ -1,0 +1,2 @@
+# MySeries
+Manage followed series
