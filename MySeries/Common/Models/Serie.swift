@@ -9,7 +9,7 @@
 import UIKit
 
 struct Serie: Codable {
-    let id: String
+    let id: Int
     let url: String
     let name: String
     let type: String
