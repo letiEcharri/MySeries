@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DEFC22318A2C006ACFCC /* AppDelegate.swift */; };
 		26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C6DF0322318A2E006ACFCC /* Assets.xcassets */; };
 		26C6DF0722318A2E006ACFCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26C6DEF922318A2C006ACFCC /* MySeries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySeries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C6DEFC22318A2C006ACFCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C6DF0322318A2E006ACFCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				26C6DF1222318AF6006ACFCC /* Home */,
 				26C6DF1322318AFF006ACFCC /* Series */,
 				26C6DEFC22318A2C006ACFCC /* AppDelegate.swift */,
+				26BD01692232619900DD2344 /* myseries.xcdatamodeld */,
 				26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */,
 			);
 			path = MySeries;
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
 				26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,
@@ -384,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		26BD01692232619900DD2344 /* myseries.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				26BD016A2232619900DD2344 /* myseries.xcdatamodel */,
+			);
+			currentVersion = 26BD016A2232619900DD2344 /* myseries.xcdatamodel */;
+			path = myseries.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 26C6DEF122318A2C006ACFCC /* Project object */;
 }
