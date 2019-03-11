@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DD22236B8AD00EACA1B /* DataSource.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26036DD22236B8AD00EACA1B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				26BD0170223265A800DD2344 /* Models */,
 				26BD016D2232632C00DD2344 /* Managers */,
+				26036DD22236B8AD00EACA1B /* DataSource.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
 				26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */,
+				26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,
 				26C6DF1022318AC8006ACFCC /* HomeViewController.swift in Sources */,
 				26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */,

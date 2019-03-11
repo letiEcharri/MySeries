@@ -14,6 +14,11 @@ class SeriesViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        SerieRequest().executeRequest(url: "", success: { (response) in
+            print(response)
+        }) { (error) in
+            print(error)
+        }
     }
 
 
