@@ -13,11 +13,18 @@ import UIKit
 protocol CoreDataProtocol {
     func save(serie: Serie)
     func fetchSeries() -> [CDSerie]
+    func deleteAllRecords(entity: String)
+    func fetchSerie(id: Int) -> CDSerie
 }
 
 class CoreDataManager: CoreDataProtocol {
     
     let serieEntity: String = "CDSerie"
+    
+    private func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
     
     func save(serie: Serie) {
         let context = getContext()
@@ -57,8 +64,42 @@ class CoreDataManager: CoreDataProtocol {
         return series
     }
     
-    private func getContext () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.persistentContainer.viewContext
+    func deleteAllRecords(entity: String) {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let context = delegate.persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+            print("All recods removed!")
+        } catch {
+            print ("There was an error")
+        }
+    }
+    
+    func fetchSerie(id: Int) -> CDSerie {
+        var serie = CDSerie(context: getContext())
+        
+        let fetchRequest = NSFetchRequest<CDSerie>(entityName: serieEntity)
+        
+        do {
+            let fetchedResults = try getContext().fetch(fetchRequest)
+            if fetchedResults.count > 0 {
+                for item in fetchedResults {
+                    if item.id == id{
+                        serie = item
+                    }
+                }
+                
+            }
+        } catch let error as NSError {
+            // something went wrong, print the error.
+            print(error.description)
+        }
+        
+        return serie
     }
 }
