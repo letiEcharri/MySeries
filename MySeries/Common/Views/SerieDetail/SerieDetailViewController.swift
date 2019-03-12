@@ -13,6 +13,8 @@ protocol SerieDetailViewControllerProtocol {
 
 class SerieDetailViewController: ParentViewController {
     
+    var serie: Serie?
+    
     init() {
         super.init(nibName: "SerieDetailViewController", bundle: nil, presenterParent: nil)
     }

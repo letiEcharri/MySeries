@@ -60,6 +60,6 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.navigateToDetail(viewController: self)
+        presenter.navigateToDetail(viewController: self, serie: series[indexPath.row])
     }
 }
