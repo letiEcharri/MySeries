@@ -36,8 +36,6 @@ extension SeriesViewController: SeriesViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.topItem?.title = "Mis Series"
-        
         tableView.register(UINib(nibName: "SerieListTableViewCell", bundle: nil), forCellReuseIdentifier: celID)
         tableView.tableFooterView = UIView() //Clear extra lines
         

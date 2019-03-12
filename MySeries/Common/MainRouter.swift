@@ -43,16 +43,15 @@ extension MainRouter {
         let seriesView = SeriesRouter.create(withMainRouter: self)
         
         homeView.tabBarItem = UITabBarItem.init(title: "HOME", image: nil, tag: 0)
+        homeView.tabBarItem.image = UIImage(named: "home")
         seriesView.tabBarItem = UITabBarItem.init(title: "SERIES", image: nil, tag: 1)
+        seriesView.tabBarItem.image = UIImage(named: "seriesIcon")
         
         tabBar.viewControllers = [homeView, seriesView]
+        tabBar.navigationItem.title = "MySERIES"
         
         let rootViewController = UINavigationController(rootViewController: tabBar)
         window.rootViewController = rootViewController
-    }
-    
-    func presentSerieDetailViewController() {
-        
     }
 }
 
