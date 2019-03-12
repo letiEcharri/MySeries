@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SeriesViewControllerProtocol {
+    func getViewController() -> SeriesViewController
 }
 
 class SeriesViewController: ParentViewController {
@@ -42,6 +43,10 @@ extension SeriesViewController: SeriesViewControllerProtocol {
         
         series = CoreDataManager().fetchSeries()
     }
+    
+    func getViewController() -> SeriesViewController {
+        return self
+    }
 }
 
 extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -60,6 +65,6 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.navigateToDetail(viewController: self, serie: series[indexPath.row])
+        presenter.navigateToDetail(serie: series[indexPath.row])
     }
 }

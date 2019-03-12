@@ -20,6 +20,8 @@
 		26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */; };
 		26616B312237E7B5008CB7AB /* SerieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B302237E7B5008CB7AB /* SerieInteractor.swift */; };
 		26616B332237EADD008CB7AB /* SerieDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B322237EADD008CB7AB /* SerieDataSource.swift */; };
+		26616B3622380A46008CB7AB /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B3522380A46008CB7AB /* UIImageView+URL.swift */; };
+		26616B38223813A1008CB7AB /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B37223813A1008CB7AB /* String+Format.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -48,6 +50,8 @@
 		26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieDetailViewController.xib; sourceTree = "<group>"; };
 		26616B302237E7B5008CB7AB /* SerieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieInteractor.swift; sourceTree = "<group>"; };
 		26616B322237EADD008CB7AB /* SerieDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDataSource.swift; sourceTree = "<group>"; };
+		26616B3522380A46008CB7AB /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
+		26616B37223813A1008CB7AB /* String+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Format.swift"; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -111,6 +115,15 @@
 			path = SerieDetail;
 			sourceTree = "<group>";
 		};
+		26616B3422380A23008CB7AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26616B3522380A46008CB7AB /* UIImageView+URL.swift */,
+				26616B37223813A1008CB7AB /* String+Format.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +136,7 @@
 		26BD016C2232631F00DD2344 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26616B3422380A23008CB7AB /* Extensions */,
 				26616B2A2237E187008CB7AB /* Views */,
 				26036DDD2237CE0300EACA1B /* Parents */,
 				26BD0170223265A800DD2344 /* Models */,
@@ -294,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26616B38223813A1008CB7AB /* String+Format.swift in Sources */,
 				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
 				26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */,
@@ -304,6 +319,7 @@
 				26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */,
 				26C6DF1022318AC8006ACFCC /* HomeViewController.swift in Sources */,
 				26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */,
+				26616B3622380A46008CB7AB /* UIImageView+URL.swift in Sources */,
 				26BD0172223265C600DD2344 /* Serie.swift in Sources */,
 				26036DE12237D00300EACA1B /* ParentPresenter.swift in Sources */,
 				26036DD72237C3DC00EACA1B /* SerieListTableViewCell.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SeriesPresenterProtocol: ParentPresenterProtocol {
-    func navigateToDetail(viewController: UIViewController, serie: CDSerie)
+    func navigateToDetail(serie: CDSerie)
 }
 
 class SeriesPresenter: ParentPresenter {
@@ -25,14 +25,14 @@ class SeriesPresenter: ParentPresenter {
 }
 
 extension SeriesPresenter: SeriesPresenterProtocol {
-    func navigateToDetail(viewController: UIViewController, serie: CDSerie) {
+    func navigateToDetail(serie: CDSerie) {
         interactor?.searchSerie(id: Int(serie.id))
     }
 }
 
 extension SeriesPresenter: SerieInteractorOutput {
     func onSuccess(data: Serie) {
-        print(data)
+        router.pushDetail(view: (view?.getViewController())!, serie: data)
     }
     
     func onFailure(error: String) {
