@@ -6,4 +6,36 @@
 //  Copyright © 2019 Leticia. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol SeriesPresenterProtocol: ParentPresenterProtocol {
+    func navigateToDetail(serie: CDSerie)
+}
+
+class SeriesPresenter: ParentPresenter {
+    var view: SeriesViewControllerProtocol?
+    let router: SeriesRouterProtocol
+    var interactor: SerieInteractorProtocol?
+    
+    init(router: SeriesRouterProtocol, interactor: SerieInteractorProtocol) {
+        self.router = router
+        self.interactor = interactor
+        super.init(parentRouter: router)
+    }
+}
+
+extension SeriesPresenter: SeriesPresenterProtocol {
+    func navigateToDetail(serie: CDSerie) {
+        interactor?.searchSerie(id: Int(serie.id))
+    }
+}
+
+extension SeriesPresenter: SerieInteractorOutput {
+    func onSuccess(data: Serie) {
+        router.pushDetail(view: (view?.getViewController())!, serie: data)
+    }
+    
+    func onFailure(error: String) {
+        print(error)
+    }
+}
