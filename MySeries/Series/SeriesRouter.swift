@@ -9,9 +9,10 @@
 import UIKit
 
 protocol SeriesRouterProtocol: ParentRouterProtocol {
+    func pushDetail(view: UIViewController)
 }
 
-class SeriesRouter: ParentRouter, SeriesRouterProtocol {
+class SeriesRouter: ParentRouter {
 }
 
 extension SeriesRouter: RouterFactory {
@@ -23,5 +24,13 @@ extension SeriesRouter: RouterFactory {
         presenter.view = view
         
         return view
+    }
+}
+
+extension SeriesRouter: SeriesRouterProtocol {
+    
+    func pushDetail(view: UIViewController) {
+        let detailVC = SerieDetailViewController()
+        mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
     }
 }

@@ -50,6 +50,10 @@ extension MainRouter {
         let rootViewController = UINavigationController(rootViewController: tabBar)
         window.rootViewController = rootViewController
     }
+    
+    func presentSerieDetailViewController() {
+        
+    }
 }
 
 extension MainRouter: MainRouterProtocol {

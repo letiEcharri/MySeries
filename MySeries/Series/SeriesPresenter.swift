@@ -6,9 +6,10 @@
 //  Copyright © 2019 Leticia. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol SeriesPresenterProtocol: ParentPresenterProtocol {
+    func navigateToDetail(viewController: UIViewController)
 }
 
 class SeriesPresenter: ParentPresenter {
@@ -22,4 +23,7 @@ class SeriesPresenter: ParentPresenter {
 }
 
 extension SeriesPresenter: SeriesPresenterProtocol {
+    func navigateToDetail(viewController: UIViewController) {
+        router.pushDetail(view: viewController)
+    }
 }

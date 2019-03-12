@@ -16,6 +16,8 @@
 		26036DE12237D00300EACA1B /* ParentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DE02237D00300EACA1B /* ParentPresenter.swift */; };
 		26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DE22237D41700EACA1B /* ParentViewController.swift */; };
 		26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B282237D8DA008CB7AB /* HomeRouter.swift */; };
+		26616B2D2237E1A3008CB7AB /* SerieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */; };
+		26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -40,6 +42,8 @@
 		26036DE02237D00300EACA1B /* ParentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPresenter.swift; sourceTree = "<group>"; };
 		26036DE22237D41700EACA1B /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		26616B282237D8DA008CB7AB /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailViewController.swift; sourceTree = "<group>"; };
+		26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieDetailViewController.xib; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -86,6 +90,23 @@
 			path = Parents;
 			sourceTree = "<group>";
 		};
+		26616B2A2237E187008CB7AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				26616B2F2237E363008CB7AB /* SerieDetail */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		26616B2F2237E363008CB7AB /* SerieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */,
+				26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */,
+			);
+			path = SerieDetail;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +119,7 @@
 		26BD016C2232631F00DD2344 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26616B2A2237E187008CB7AB /* Views */,
 				26036DDD2237CE0300EACA1B /* Parents */,
 				26BD0170223265A800DD2344 /* Models */,
 				26BD016D2232632C00DD2344 /* Managers */,
@@ -254,6 +276,7 @@
 				26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */,
 				26C6DF1122318AC8006ACFCC /* HomeViewController.xib in Resources */,
 				26036DD82237C3DC00EACA1B /* SerieListTableViewCell.xib in Resources */,
+				26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */,
 				26C6DF1D22318B73006ACFCC /* SeriesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +299,7 @@
 				26BD0172223265C600DD2344 /* Serie.swift in Sources */,
 				26036DE12237D00300EACA1B /* ParentPresenter.swift in Sources */,
 				26036DD72237C3DC00EACA1B /* SerieListTableViewCell.swift in Sources */,
+				26616B2D2237E1A3008CB7AB /* SerieDetailViewController.swift in Sources */,
 				26036DDC2237CDDB00EACA1B /* SeriesRouter.swift in Sources */,
 				26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */,
 				26036DDA2237CBC900EACA1B /* MainRouter.swift in Sources */,
