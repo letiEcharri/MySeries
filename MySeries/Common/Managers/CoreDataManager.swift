@@ -15,6 +15,7 @@ protocol CoreDataProtocol {
     func fetchSeries() -> [CDSerie]
     func deleteAllRecords(entity: String)
     func fetchSerie(id: Int) -> CDSerie
+    func deleteSerie(id: Int)
 }
 
 class CoreDataManager: CoreDataProtocol {
@@ -74,7 +75,7 @@ class CoreDataManager: CoreDataProtocol {
         do {
             try context.execute(deleteRequest)
             try context.save()
-            print("All recods removed!")
+            print("All records removed!")
         } catch {
             print ("There was an error")
         }
@@ -101,5 +102,31 @@ class CoreDataManager: CoreDataProtocol {
         }
         
         return serie
+    }
+    
+    func deleteSerie(id: Int) {
+        let fetchRequest = NSFetchRequest<CDSerie>(entityName: serieEntity)
+        
+        do {
+            let fetchedResults = try getContext().fetch(fetchRequest)
+            if fetchedResults.count > 0 {
+                for item in fetchedResults {
+                    if item.id == id{
+                        getContext().delete(item)
+                    }
+                }
+                
+            }
+            
+            do {
+                try getContext().save()
+                print("Record removed!")
+            } catch {
+                print ("There was an error")
+            }
+        } catch let error as NSError {
+            // something went wrong, print the error.
+            print(error.description)
+        }
     }
 }
