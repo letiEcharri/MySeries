@@ -8,13 +8,30 @@
 
 import UIKit
 
-class SeriesViewController: UIViewController {
+protocol SeriesViewControllerProtocol {
+}
+
+class SeriesViewController: ParentViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     let celID = "seriesCell"
     var series = [CDSerie]()
     
+    let presenter: SeriesPresenterProtocol
+    
+    init(presenter: SeriesPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: "SeriesViewController", bundle: nil, presenterParent: presenter)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+extension SeriesViewController: SeriesViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +42,6 @@ class SeriesViewController: UIViewController {
         
         series = CoreDataManager().fetchSeries()
     }
-
 }
 
 extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {

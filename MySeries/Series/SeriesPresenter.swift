@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+protocol SeriesPresenterProtocol: ParentPresenterProtocol {
+}
+
+class SeriesPresenter: ParentPresenter {
+    var view: SeriesViewControllerProtocol?
+    let router: SeriesRouterProtocol
+    
+    init(router: SeriesRouterProtocol) {
+        self.router = router
+        super.init(parentRouter: router)
+    }
+}
+
+extension SeriesPresenter: SeriesPresenterProtocol {
+}

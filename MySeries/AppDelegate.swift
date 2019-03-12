@@ -13,25 +13,16 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navigationController: UINavigationController?
+    var mainRouter: MainRouter?
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
-        
-        let tabBar = UITabBarController.init()
-        let homeView = HomeViewController(nibName: "HomeViewController", bundle: nil)
-        let seriesView = SeriesViewController(nibName: "SeriesViewController", bundle: nil)
-        
-        homeView.tabBarItem = UITabBarItem.init(title: "TabHome", image: nil, tag: 0)
-        seriesView.tabBarItem = UITabBarItem.init(title: "TabSeries", image: nil, tag: 1)
-        
-        tabBar.viewControllers = [homeView, seriesView]
-        
-        navigationController = UINavigationController.init(rootViewController: tabBar)
-        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        mainRouter = MainRouter(window: window!)
+        mainRouter!.presentRootViewController()
         
         return true
     }
