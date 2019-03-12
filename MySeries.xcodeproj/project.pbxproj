@@ -22,6 +22,11 @@
 		26616B332237EADD008CB7AB /* SerieDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B322237EADD008CB7AB /* SerieDataSource.swift */; };
 		26616B3622380A46008CB7AB /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B3522380A46008CB7AB /* UIImageView+URL.swift */; };
 		26616B38223813A1008CB7AB /* String+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B37223813A1008CB7AB /* String+Format.swift */; };
+		26616B3C22383176008CB7AB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B3A22383176008CB7AB /* TableViewCell.swift */; };
+		26616B3D22383176008CB7AB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26616B3B22383176008CB7AB /* TableViewCell.xib */; };
+		26616B3F22383522008CB7AB /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B3E22383522008CB7AB /* Episode.swift */; };
+		26616B41223837E4008CB7AB /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B40223837E4008CB7AB /* HomeDataSource.swift */; };
+		26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B422238399F008CB7AB /* HomeInteractor.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -52,6 +57,11 @@
 		26616B322237EADD008CB7AB /* SerieDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDataSource.swift; sourceTree = "<group>"; };
 		26616B3522380A46008CB7AB /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		26616B37223813A1008CB7AB /* String+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Format.swift"; sourceTree = "<group>"; };
+		26616B3A22383176008CB7AB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		26616B3B22383176008CB7AB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		26616B3E22383522008CB7AB /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		26616B40223837E4008CB7AB /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
+		26616B422238399F008CB7AB /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -124,6 +134,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		26616B3922383164008CB7AB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				26616B3A22383176008CB7AB /* TableViewCell.swift */,
+				26616B3B22383176008CB7AB /* TableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +179,7 @@
 			children = (
 				26BD01692232619900DD2344 /* myseries.xcdatamodeld */,
 				26BD0171223265C600DD2344 /* Serie.swift */,
+				26616B3E22383522008CB7AB /* Episode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,6 +218,8 @@
 			children = (
 				26616B282237D8DA008CB7AB /* HomeRouter.swift */,
 				26C6DF1422318B38006ACFCC /* HomePresenter.swift */,
+				26616B422238399F008CB7AB /* HomeInteractor.swift */,
+				26616B40223837E4008CB7AB /* HomeDataSource.swift */,
 				26C6DF1622318B3C006ACFCC /* View */,
 			);
 			path = Home;
@@ -218,6 +240,7 @@
 		26C6DF1622318B3C006ACFCC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				26616B3922383164008CB7AB /* cell */,
 				26C6DF0E22318AC8006ACFCC /* HomeViewController.swift */,
 				26C6DF0F22318AC8006ACFCC /* HomeViewController.xib */,
 			);
@@ -294,6 +317,7 @@
 			files = (
 				26C6DF0722318A2E006ACFCC /* LaunchScreen.storyboard in Resources */,
 				26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */,
+				26616B3D22383176008CB7AB /* TableViewCell.xib in Resources */,
 				26C6DF1122318AC8006ACFCC /* HomeViewController.xib in Resources */,
 				26036DD82237C3DC00EACA1B /* SerieListTableViewCell.xib in Resources */,
 				26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */,
@@ -316,15 +340,19 @@
 				26616B312237E7B5008CB7AB /* SerieInteractor.swift in Sources */,
 				26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,
+				26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */,
 				26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */,
 				26C6DF1022318AC8006ACFCC /* HomeViewController.swift in Sources */,
 				26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */,
 				26616B3622380A46008CB7AB /* UIImageView+URL.swift in Sources */,
 				26BD0172223265C600DD2344 /* Serie.swift in Sources */,
 				26036DE12237D00300EACA1B /* ParentPresenter.swift in Sources */,
+				26616B3F22383522008CB7AB /* Episode.swift in Sources */,
 				26036DD72237C3DC00EACA1B /* SerieListTableViewCell.swift in Sources */,
 				26616B2D2237E1A3008CB7AB /* SerieDetailViewController.swift in Sources */,
 				26036DDC2237CDDB00EACA1B /* SeriesRouter.swift in Sources */,
+				26616B3C22383176008CB7AB /* TableViewCell.swift in Sources */,
+				26616B41223837E4008CB7AB /* HomeDataSource.swift in Sources */,
 				26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */,
 				26036DDA2237CBC900EACA1B /* MainRouter.swift in Sources */,
 				26C6DF1522318B38006ACFCC /* HomePresenter.swift in Sources */,
