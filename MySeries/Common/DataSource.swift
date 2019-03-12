@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias SuccessCompletionBlock = (_ object: [Codable]) -> Void
+typealias SuccessCompletionBlock = (_ object: Codable) -> Void
 typealias FailureCompletionBlock = (_ error: Error) -> Void
 
 protocol DataSource {
@@ -38,7 +38,7 @@ class SerieRequest: DataSource {
                     let decoder = JSONDecoder()
 
                     do {
-                        let serie = try decoder.decode([Serie].self, from: jsonData)
+                        let serie = try decoder.decode(Serie.self, from: jsonData)
                         success(serie)
 
                     } catch {

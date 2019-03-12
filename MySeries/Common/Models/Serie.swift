@@ -15,9 +15,9 @@ struct Serie: Codable {
     let type: String
     let language: String
     let genres: [String]
-    let status: String
-    let runtime: String
-    let premiere: String
+    let statusSerie: String
+    let runtime: Int
+    let premiered: String
     let officialSite: String
     let schedule: SerieSchedule
     let rating: SerieRating
@@ -27,6 +27,27 @@ struct Serie: Codable {
     let summary: String
     let updated: Int
     let links: SerieLinks
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case url
+        case name
+        case type
+        case language
+        case genres
+        case statusSerie = "status"
+        case runtime
+        case premiered
+        case officialSite
+        case schedule
+        case rating
+        case weight
+        case network
+        case image
+        case summary
+        case updated
+        case links = "_links"
+    }
 }
 
 struct SerieSchedule: Codable {
@@ -35,7 +56,7 @@ struct SerieSchedule: Codable {
 }
 
 struct SerieRating: Codable {
-    let average: Int
+    let average: Double
 }
 
 struct SerieNetwork: Codable {
@@ -59,6 +80,12 @@ struct SerieLinks: Codable {
     let selff: SerieLinksRef
     let previousepisode: SerieLinksRef
     let nextepisode: SerieLinksRef
+    
+    enum CodingKeys: String, CodingKey {
+        case selff = "self"
+        case previousepisode
+        case nextepisode
+    }
 }
 
 struct SerieLinksRef: Codable {
