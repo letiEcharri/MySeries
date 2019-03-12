@@ -48,7 +48,7 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
         lblLanguage.text = serie?.language ?? ""
         lblStatus.text = serie?.statusSerie ?? ""
         lblRuntime.text = "\(serie?.runtime ?? 0) min"
-        lblSumary.text = clean(text: serie?.summary ?? "")
+        lblSumary.text = (serie?.summary ?? "").htmlToString
         let date = serie?.premiered ?? ""
         lblPremiere.text = "Premiere: \(date.formatDate())"
         
@@ -58,9 +58,17 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
         }
         lblGenres.text = genres
     }
-    
-    private func clean(text: String) -> String {
-        let result = text.replacingOccurrences(of: "<p>", with: "")
-        return result.replacingOccurrences(of: "</p>", with: "")
+}
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
     }
 }
