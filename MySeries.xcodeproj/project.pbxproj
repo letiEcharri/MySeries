@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DD22236B8AD00EACA1B /* DataSource.swift */; };
+		26036DD72237C3DC00EACA1B /* SerieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DD52237C3DC00EACA1B /* SerieListTableViewCell.swift */; };
+		26036DD82237C3DC00EACA1B /* SerieListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26036DD62237C3DC00EACA1B /* SerieListTableViewCell.xib */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		26036DD22236B8AD00EACA1B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		26036DD52237C3DC00EACA1B /* SerieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieListTableViewCell.swift; sourceTree = "<group>"; };
+		26036DD62237C3DC00EACA1B /* SerieListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieListTableViewCell.xib; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -51,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26036DD42237C3B800EACA1B /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				26036DD52237C3DC00EACA1B /* SerieListTableViewCell.swift */,
+				26036DD62237C3DC00EACA1B /* SerieListTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 		26C6DF1922318B5F006ACFCC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				26036DD42237C3B800EACA1B /* cell */,
 				26C6DF1A22318B73006ACFCC /* SeriesViewController.swift */,
 				26C6DF1B22318B73006ACFCC /* SeriesViewController.xib */,
 			);
@@ -213,6 +227,7 @@
 				26C6DF0722318A2E006ACFCC /* LaunchScreen.storyboard in Resources */,
 				26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */,
 				26C6DF1122318AC8006ACFCC /* HomeViewController.xib in Resources */,
+				26036DD82237C3DC00EACA1B /* SerieListTableViewCell.xib in Resources */,
 				26C6DF1D22318B73006ACFCC /* SeriesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +247,7 @@
 				26C6DF1022318AC8006ACFCC /* HomeViewController.swift in Sources */,
 				26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */,
 				26BD0172223265C600DD2344 /* Serie.swift in Sources */,
+				26036DD72237C3DC00EACA1B /* SerieListTableViewCell.swift in Sources */,
 				26C6DF1522318B38006ACFCC /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

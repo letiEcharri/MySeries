@@ -9,27 +9,37 @@
 import UIKit
 
 class SeriesViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    let celID = "seriesCell"
+    var series = [CDSerie]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        SerieRequest().executeRequest(url: "", success: { (response) in
-            print(response)
-        }) { (error) in
-            print(error)
-        }
+        
+        self.navigationController?.navigationBar.topItem?.title = "Mis Series"
+        
+        tableView.register(UINib(nibName: "SerieListTableViewCell", bundle: nil), forCellReuseIdentifier: celID)
+        tableView.tableFooterView = UIView() //Clear extra lines
+        
+        series = CoreDataManager().fetchSeries()
     }
 
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return series.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! SerieListTableViewCell
+        
+        let serie = series[indexPath.row]
+        cell.lblName.text = serie.name
+        cell.idSerie = Int(serie.id)
+        
+        return cell
+    }
 }

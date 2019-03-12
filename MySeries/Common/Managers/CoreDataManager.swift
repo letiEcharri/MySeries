@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 protocol CoreDataProtocol {
-    func save(serie: Serie)
+    func save(serie: String, id: Int)
     func fetchSeries() -> [CDSerie]
     func deleteAllRecords(entity: String)
     func fetchSerie(id: Int) -> CDSerie
@@ -26,7 +26,7 @@ class CoreDataManager: CoreDataProtocol {
         return appDelegate.persistentContainer.viewContext
     }
     
-    func save(serie: Serie) {
+    func save(serie: String, id: Int) {
         let context = getContext()
 
         //retrieve the entity
@@ -34,8 +34,8 @@ class CoreDataManager: CoreDataProtocol {
         let transc = NSManagedObject(entity: entity!, insertInto: context)
 
         //set the entity values
-        transc.setValue(serie.id, forKey: "id")
-        transc.setValue(serie.name, forKey: "name")
+        transc.setValue(id, forKey: "id")
+        transc.setValue(serie, forKey: "name")
         
         //save the object
         do {
