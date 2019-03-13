@@ -17,9 +17,12 @@ class HomeRouter: ParentRouter, HomeRouterProtocol {
 extension HomeRouter: RouterFactory {
     static func create(withMainRouter mainRouter: MainRouterProtocol) -> UIViewController {
         let router = HomeRouter(mainRouter: mainRouter)
-        let presenter = HomePresenter(router: router)
+        let datasource = HomeDataSource()
+        let interactor = HomeInteractor(datasource: datasource)
+        let presenter = HomePresenter(router: router, interactor: interactor)
         let view = HomeViewController(presenter: presenter)
         
+        interactor.interactorOutput = presenter
         presenter.view = view
         
         return view

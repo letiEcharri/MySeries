@@ -27,6 +27,7 @@
 		26616B3F22383522008CB7AB /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B3E22383522008CB7AB /* Episode.swift */; };
 		26616B41223837E4008CB7AB /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B40223837E4008CB7AB /* HomeDataSource.swift */; };
 		26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B422238399F008CB7AB /* HomeInteractor.swift */; };
+		26616B462238FB8E008CB7AB /* SerieEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B452238FB8E008CB7AB /* SerieEpisodes.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -62,6 +63,7 @@
 		26616B3E22383522008CB7AB /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		26616B40223837E4008CB7AB /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		26616B422238399F008CB7AB /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		26616B452238FB8E008CB7AB /* SerieEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieEpisodes.swift; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				26BD01692232619900DD2344 /* myseries.xcdatamodeld */,
 				26BD0171223265C600DD2344 /* Serie.swift */,
 				26616B3E22383522008CB7AB /* Episode.swift */,
+				26616B452238FB8E008CB7AB /* SerieEpisodes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */,
 				26036DDA2237CBC900EACA1B /* MainRouter.swift in Sources */,
 				26C6DF1522318B38006ACFCC /* HomePresenter.swift in Sources */,
+				26616B462238FB8E008CB7AB /* SerieEpisodes.swift in Sources */,
 				26036DDF2237CE2100EACA1B /* ParentRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

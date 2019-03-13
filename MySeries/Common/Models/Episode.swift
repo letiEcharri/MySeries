@@ -10,17 +10,17 @@ import UIKit
 
 struct Episode: Codable {
     let id: Int
-    let url: String
-    let name: String
-    let season: Int
-    let number: Int
-    let airdate: String
-    let airtime: String
-    let airstamp: String
-    let runtime: Int
-    let image: String
-    let summary: String
-    let links: EpisodeLinks
+    let url: String?
+    let name: String?
+    let season: Int?
+    let number: Int?
+    let airdate: String?
+    let airtime: String?
+    let airstamp: String?
+    let runtime: Int?
+    let image: SerieImage?
+    let summary: String?
+    let links: EpisodeLinks?
     
     enum CodingKeys: String, CodingKey {
         case id

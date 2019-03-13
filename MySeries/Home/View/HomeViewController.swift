@@ -9,11 +9,12 @@
 import UIKit
 
 protocol HomeViewControllerProtocol: ParentViewControllerProtocol {
+    func updatePending(episodes: [SerieEpisodes])
 }
 
 class HomeViewController: ParentViewController {
     
-    let presenter: HomePresenterProtocol?
+    let presenter: HomePresenterProtocol
     
     init(presenter: HomePresenterProtocol) {
         self.presenter = presenter
@@ -31,6 +32,10 @@ extension HomeViewController: HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.topItem?.title = "Home"
+        presenter.checkNewEpisodes()
+    }
+    
+    func updatePending(episodes: [SerieEpisodes]) {
+        print()
     }
 }

@@ -12,15 +12,19 @@ import UIKit
 
 protocol CoreDataProtocol {
     func save(serie: String, id: Int)
+    func save(episode: String, id: Int)
     func fetchSeries() -> [CDSerie]
     func deleteAllRecords(entity: String)
     func fetchSerie(id: Int) -> CDSerie
     func deleteSerie(id: Int)
+    func watchEpisode(id: Int, value: Bool)
+    func fetchEpisode(id: Int) -> CDEpisode
 }
 
 class CoreDataManager: CoreDataProtocol {
     
     let serieEntity: String = "CDSerie"
+    let episodeEntity: String = "CDEpisode"
     
     private func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -41,7 +45,7 @@ class CoreDataManager: CoreDataProtocol {
         //save the object
         do {
             try context.save()
-            print("saved!")
+            print("Serie saved!")
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         } catch {
@@ -128,5 +132,70 @@ class CoreDataManager: CoreDataProtocol {
             // something went wrong, print the error.
             print(error.description)
         }
+    }
+    
+    func save(episode: String, id: Int) {
+        let context = getContext()
+        
+        //retrieve the entity
+        let entity =  NSEntityDescription.entity(forEntityName: episodeEntity, in: context)
+        let transc = NSManagedObject(entity: entity!, insertInto: context)
+        
+        //set the entity values
+        transc.setValue(id, forKey: "id")
+        transc.setValue(episode, forKey: "name")
+        transc.setValue(false, forKey: "watched")
+        
+        //save the object
+        do {
+            try context.save()
+            print("Episode saved!")
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        } catch {
+            
+        }
+    }
+    
+    func watchEpisode(id: Int, value: Bool) {
+        let fetchRequest = NSFetchRequest<CDEpisode>(entityName: episodeEntity)
+        
+        do {
+            let fetchedResults = try getContext().fetch(fetchRequest)
+            if fetchedResults.count > 0 {
+                for item in fetchedResults{
+                    if item.id == id {
+                        item.setValue(value, forKey: "watched")
+                    }
+                }
+                
+            }
+        } catch let error as NSError {
+            // something went wrong, print the error.
+            print(error.description)
+        }
+    }
+    
+    func fetchEpisode(id: Int) -> CDEpisode {
+        var episode = CDEpisode(context: getContext())
+        
+        let fetchRequest = NSFetchRequest<CDEpisode>(entityName: episodeEntity)
+        
+        do {
+            let fetchedResults = try getContext().fetch(fetchRequest)
+            if fetchedResults.count > 0 {
+                for item in fetchedResults {
+                    if item.id == id{
+                        episode = item
+                    }
+                }
+                
+            }
+        } catch let error as NSError {
+            // something went wrong, print the error.
+            print(error.description)
+        }
+        
+        return episode
     }
 }
