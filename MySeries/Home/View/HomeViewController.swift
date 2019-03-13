@@ -68,6 +68,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imgPicture.imageFromUrl(urlString: serie.serie.image.medium)
         cell.set(episodes: serie.episodes)
         
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        
         return cell
     }
 }

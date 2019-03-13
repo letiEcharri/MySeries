@@ -39,7 +39,44 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJz-ec-Wah">
                                 <rect key="frame" x="72" y="27" width="238" height="82.5"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 x 00 Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25I-8f-7wk">
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="27.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 x 00 Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-9I-AdK">
+                                        <rect key="frame" x="0.0" y="27.5" width="238" height="27.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 x 00 Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fx-35-eIA">
+                                        <rect key="frame" x="0.0" y="55" width="238" height="27.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="25I-8f-7wk" firstAttribute="leading" secondItem="uJz-ec-Wah" secondAttribute="leading" id="4tK-OL-6XI"/>
+                                    <constraint firstAttribute="bottom" secondItem="3fx-35-eIA" secondAttribute="bottom" id="BDO-EQ-lv9"/>
+                                    <constraint firstItem="25I-8f-7wk" firstAttribute="height" secondItem="Ch9-9I-AdK" secondAttribute="height" id="K29-qH-ybs"/>
+                                    <constraint firstItem="Ch9-9I-AdK" firstAttribute="height" secondItem="3fx-35-eIA" secondAttribute="height" id="KTz-mc-9RQ"/>
+                                    <constraint firstItem="3fx-35-eIA" firstAttribute="leading" secondItem="uJz-ec-Wah" secondAttribute="leading" id="Qsz-Tk-m8I"/>
+                                    <constraint firstItem="Ch9-9I-AdK" firstAttribute="leading" secondItem="uJz-ec-Wah" secondAttribute="leading" id="TyP-WL-URP"/>
+                                    <constraint firstAttribute="trailing" secondItem="25I-8f-7wk" secondAttribute="trailing" id="VsA-AX-Rub"/>
+                                    <constraint firstAttribute="trailing" secondItem="3fx-35-eIA" secondAttribute="trailing" id="Yqn-Q5-0m8"/>
+                                    <constraint firstItem="25I-8f-7wk" firstAttribute="top" secondItem="uJz-ec-Wah" secondAttribute="top" id="aO9-OX-dK2"/>
+                                    <constraint firstItem="Ch9-9I-AdK" firstAttribute="top" secondItem="25I-8f-7wk" secondAttribute="bottom" id="ciD-jn-IuL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ch9-9I-AdK" secondAttribute="trailing" id="jab-LY-cQf"/>
+                                    <constraint firstItem="3fx-35-eIA" firstAttribute="top" secondItem="Ch9-9I-AdK" secondAttribute="bottom" id="mm8-Ld-A2U"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,6 +106,9 @@
                 <outlet property="containerView" destination="ovU-IF-BpN" id="ocd-l5-xcD"/>
                 <outlet property="episodesView" destination="uJz-ec-Wah" id="89U-pT-mAl"/>
                 <outlet property="imgPicture" destination="3A0-Bj-X1r" id="Tku-UB-HEC"/>
+                <outlet property="lblEpisodeBottom" destination="3fx-35-eIA" id="N0O-yn-bI3"/>
+                <outlet property="lblEpisodeCenter" destination="Ch9-9I-AdK" id="nhm-8q-e4n"/>
+                <outlet property="lblEpisodeTop" destination="25I-8f-7wk" id="Bkf-re-gdp"/>
                 <outlet property="lblTitle" destination="Las-wc-gFD" id="m9j-TN-vYH"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="154.72263868065968"/>
