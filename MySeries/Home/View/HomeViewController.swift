@@ -37,7 +37,7 @@ extension HomeViewController: HomeViewControllerProtocol {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: celID)
-        tableView.rowHeight = 100
+        tableView.rowHeight = 120
         tableView.tableFooterView = UIView() //Clear extra lines
         
         presenter.checkNewEpisodes()
