@@ -9,11 +9,15 @@
 import UIKit
 
 protocol ParentViewControllerProtocol {
+    func showSpinner()
 }
 
 class ParentViewController: UIViewController {
     
     let presenterParent: ParentPresenterProtocol?
+    
+    var spinnerView : UIView?
+    private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -28,4 +32,20 @@ class ParentViewController: UIViewController {
 }
 
 extension ParentViewController: ParentViewControllerProtocol {
+    func showSpinner() {
+        spinnerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        spinnerView!.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        spinnerView!.addSubview(spinner)
+        
+        spinner.centerXAnchor.constraint(equalTo: (spinnerView?.centerXAnchor)!).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: (spinnerView?.centerYAnchor)!).isActive = true
+        
+        self.view.addSubview(spinnerView!)
+    }
+    
+    func removeSpinner() {
+        spinnerView?.removeFromSuperview()
+    }
 }

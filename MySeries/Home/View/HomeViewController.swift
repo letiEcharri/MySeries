@@ -33,6 +33,11 @@ class HomeViewController: ParentViewController {
 
 extension HomeViewController: HomeViewControllerProtocol {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        presenter.checkNewEpisodes()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +45,11 @@ extension HomeViewController: HomeViewControllerProtocol {
         tableView.rowHeight = 120
         tableView.tableFooterView = UIView() //Clear extra lines
         
-        presenter.checkNewEpisodes()
+        showSpinner()
     }
     
     func updatePending() {
+        removeSpinner()
         tableView.reloadData()
     }
 }
