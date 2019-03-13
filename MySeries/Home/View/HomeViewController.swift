@@ -9,10 +9,14 @@
 import UIKit
 
 protocol HomeViewControllerProtocol: ParentViewControllerProtocol {
-    func updatePending(episodes: [SerieEpisodes])
+    func updatePending()
 }
 
 class HomeViewController: ParentViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    let celID = "homeCell"
     
     let presenter: HomePresenterProtocol
     
@@ -32,10 +36,32 @@ extension HomeViewController: HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: celID)
+        tableView.rowHeight = 100
+        tableView.tableFooterView = UIView() //Clear extra lines
+        
         presenter.checkNewEpisodes()
     }
     
-    func updatePending(episodes: [SerieEpisodes]) {
-        print()
+    func updatePending() {
+        tableView.reloadData()
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.getPendingEpisodes().count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! TableViewCell
+        
+        let serie = presenter.getPendingEpisodes()[indexPath.row]
+        
+        cell.lblTitle.text = serie.serie.name
+        cell.imgPicture.imageFromUrl(urlString: serie.serie.image.medium)
+        cell.set(episodes: serie.episodes)
+        
+        return cell
     }
 }

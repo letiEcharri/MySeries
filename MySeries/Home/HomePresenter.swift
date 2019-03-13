@@ -10,6 +10,7 @@ import Foundation
 
 protocol HomePresenterProtocol: ParentPresenterProtocol {
     func checkNewEpisodes()
+    func getPendingEpisodes() -> [SerieEpisodes]
 }
 
 class HomePresenter: ParentPresenter {
@@ -52,11 +53,15 @@ extension HomePresenter: HomePresenterProtocol {
                     self.pendingSeries.append(newSerie)
                     
                     if (cont == self.savedSeries.count && epCont == rEpisodes.count) {
-                        self.view?.updatePending(episodes: self.pendingSeries)
+                        self.view?.updatePending()
                     }
                 })
             }
         }
+    }
+    
+    func getPendingEpisodes() -> [SerieEpisodes] {
+        return self.pendingSeries
     }
     
     private func isPending(episode: Episode) -> Bool {
