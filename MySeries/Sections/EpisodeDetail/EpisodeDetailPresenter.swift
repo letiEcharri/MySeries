@@ -9,6 +9,7 @@
 import Foundation
 
 protocol EpisodeDetailPresenterProtocol: ParentPresenterProtocol {
+    func watch(episode: Int, value: Bool)
 }
 
 class EpisodeDetailPresenter: ParentPresenter {
@@ -23,4 +24,7 @@ class EpisodeDetailPresenter: ParentPresenter {
 }
 
 extension EpisodeDetailPresenter: EpisodeDetailPresenterProtocol {
+    func watch(episode: Int, value: Bool) {
+        CoreDataManager().watchEpisode(id: episode, value: value)
+    }
 }
