@@ -10,6 +10,7 @@ import UIKit
 
 protocol SeriesPresenterProtocol: ParentPresenterProtocol {
     func navigateToDetail(serie: CDSerie)
+    func navigateToSeasons(episodes: [Episode])
 }
 
 class SeriesPresenter: ParentPresenter {
@@ -27,6 +28,10 @@ class SeriesPresenter: ParentPresenter {
 extension SeriesPresenter: SeriesPresenterProtocol {
     func navigateToDetail(serie: CDSerie) {
         interactor?.searchSerie(id: Int(serie.id))
+    }
+    
+    func navigateToSeasons(episodes: [Episode]) {
+        router.pushSeasons(view: (view?.getViewController())!, episodes: episodes)
     }
 }
 
