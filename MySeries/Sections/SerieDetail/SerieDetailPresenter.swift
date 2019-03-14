@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SerieDetailPresenterProtocol: ParentPresenterProtocol {
+    func navigateToSeasons(serie: Int)
 }
 
 class SerieDetailPresenter: ParentPresenter {
@@ -23,4 +24,7 @@ class SerieDetailPresenter: ParentPresenter {
 }
 
 extension SerieDetailPresenter: SerieDetailPresenterProtocol {
+    func navigateToSeasons(serie: Int) {
+        router.pushSeasons(view: (view?.getViewController())!, episodes: [Episode]())
+    }
 }

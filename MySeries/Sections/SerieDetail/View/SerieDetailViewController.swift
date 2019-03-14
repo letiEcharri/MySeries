@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SerieDetailViewControllerProtocol {
+    func getViewController() -> SerieDetailViewController
 }
 
 class SerieDetailViewController: ParentViewController {
@@ -37,6 +38,9 @@ class SerieDetailViewController: ParentViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @IBAction func episodesAction(_ sender: UIButton) {
+        presenter.navigateToSeasons(serie: serie?.id ?? 0)
+    }
 }
 
 extension SerieDetailViewController: SerieDetailViewControllerProtocol {
@@ -60,6 +64,10 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
             genres += "\(item) "
         }
         lblGenres.text = genres
+    }
+    
+    func getViewController() -> SerieDetailViewController {
+        return self
     }
 }
 extension String {
