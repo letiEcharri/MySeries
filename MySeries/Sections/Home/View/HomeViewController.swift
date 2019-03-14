@@ -67,10 +67,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblTitle.text = serie.serie.name
         cell.imgPicture.imageFromUrl(urlString: serie.serie.image.medium)
         cell.set(episodes: serie.episodes)
+        cell.delegate = self
         
         cell.setNeedsUpdateConstraints()
         cell.updateConstraintsIfNeeded()
         
         return cell
+    }
+}
+
+extension HomeViewController: TableViewCellDelegate {
+    func click(episode: Int) {
     }
 }

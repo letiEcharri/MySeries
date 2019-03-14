@@ -28,6 +28,8 @@
 		26616B41223837E4008CB7AB /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B40223837E4008CB7AB /* HomeDataSource.swift */; };
 		26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B422238399F008CB7AB /* HomeInteractor.swift */; };
 		26616B462238FB8E008CB7AB /* SerieEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B452238FB8E008CB7AB /* SerieEpisodes.swift */; };
+		26616B4B223A60EE008CB7AB /* SerieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B4A223A60EE008CB7AB /* SerieDetailRouter.swift */; };
+		26616B4D223A6192008CB7AB /* SerieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B4C223A6192008CB7AB /* SerieDetailPresenter.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -64,6 +66,8 @@
 		26616B40223837E4008CB7AB /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		26616B422238399F008CB7AB /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		26616B452238FB8E008CB7AB /* SerieEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieEpisodes.swift; sourceTree = "<group>"; };
+		26616B4A223A60EE008CB7AB /* SerieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailRouter.swift; sourceTree = "<group>"; };
+		26616B4C223A6192008CB7AB /* SerieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailPresenter.swift; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -110,23 +114,6 @@
 			path = Parents;
 			sourceTree = "<group>";
 		};
-		26616B2A2237E187008CB7AB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				26616B2F2237E363008CB7AB /* SerieDetail */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		26616B2F2237E363008CB7AB /* SerieDetail */ = {
-			isa = PBXGroup;
-			children = (
-				26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */,
-				26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */,
-			);
-			path = SerieDetail;
-			sourceTree = "<group>";
-		};
 		26616B3422380A23008CB7AB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +132,35 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		26616B47223A602F008CB7AB /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				26C6DF1222318AF6006ACFCC /* Home */,
+				26C6DF1322318AFF006ACFCC /* Series */,
+				26616B48223A6059008CB7AB /* SerieDetail */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		26616B48223A6059008CB7AB /* SerieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				26616B4A223A60EE008CB7AB /* SerieDetailRouter.swift */,
+				26616B4C223A6192008CB7AB /* SerieDetailPresenter.swift */,
+				26616B49223A6078008CB7AB /* View */,
+			);
+			path = SerieDetail;
+			sourceTree = "<group>";
+		};
+		26616B49223A6078008CB7AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */,
+				26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				26616B3422380A23008CB7AB /* Extensions */,
-				26616B2A2237E187008CB7AB /* Views */,
 				26036DDD2237CE0300EACA1B /* Parents */,
 				26BD0170223265A800DD2344 /* Models */,
 				26BD016D2232632C00DD2344 /* Managers */,
@@ -209,8 +224,7 @@
 				26C6DEFC22318A2C006ACFCC /* AppDelegate.swift */,
 				26BD014722318FC500DD2344 /* Resources */,
 				26BD016C2232631F00DD2344 /* Common */,
-				26C6DF1222318AF6006ACFCC /* Home */,
-				26C6DF1322318AFF006ACFCC /* Series */,
+				26616B47223A602F008CB7AB /* Sections */,
 				26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */,
 			);
 			path = MySeries;
@@ -335,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26616B4B223A60EE008CB7AB /* SerieDetailRouter.swift in Sources */,
 				26616B38223813A1008CB7AB /* String+Format.swift in Sources */,
 				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
@@ -342,6 +357,7 @@
 				26616B332237EADD008CB7AB /* SerieDataSource.swift in Sources */,
 				26616B312237E7B5008CB7AB /* SerieInteractor.swift in Sources */,
 				26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */,
+				26616B4D223A6192008CB7AB /* SerieDetailPresenter.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,
 				26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */,
 				26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */,

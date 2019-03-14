@@ -16,7 +16,7 @@ class SeriesRouter: ParentRouter {
 }
 
 extension SeriesRouter: RouterFactory {
-    static func create(withMainRouter mainRouter: MainRouterProtocol) -> UIViewController {
+    static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController {
         let router = SeriesRouter(mainRouter: mainRouter)
         let datasource = SerieDataSource()
         let interactor = SerieInteractor(datasource: datasource)
@@ -33,8 +33,7 @@ extension SeriesRouter: RouterFactory {
 extension SeriesRouter: SeriesRouterProtocol {
     
     func pushDetail(view: UIViewController, serie: Serie) {
-        let detailVC = SerieDetailViewController()
-        detailVC.serie = serie
+        let detailVC = SerieDetailRouter.create(withMainRouter: mainRouter, parameters: serie as AnyObject)
         mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
     }
 }

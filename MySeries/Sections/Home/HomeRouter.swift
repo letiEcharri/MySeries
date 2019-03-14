@@ -9,13 +9,15 @@
 import UIKit
 
 protocol HomeRouterProtocol: ParentRouterProtocol {
+    func pushDetail(view: UIViewController, serie: Serie)
 }
 
-class HomeRouter: ParentRouter, HomeRouterProtocol {
+class HomeRouter: ParentRouter {
 }
 
 extension HomeRouter: RouterFactory {
-    static func create(withMainRouter mainRouter: MainRouterProtocol) -> UIViewController {
+    
+    static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController {
         let router = HomeRouter(mainRouter: mainRouter)
         let datasource = HomeDataSource()
         let interactor = HomeInteractor(datasource: datasource)
@@ -26,5 +28,12 @@ extension HomeRouter: RouterFactory {
         presenter.view = view
         
         return view
+    }
+}
+
+extension HomeRouter: HomeRouterProtocol {
+    func pushDetail(view: UIViewController, serie: Serie) {
+        let detailVC = SerieDetailRouter.create(withMainRouter: mainRouter, parameters: serie as AnyObject)
+        mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
     }
 }

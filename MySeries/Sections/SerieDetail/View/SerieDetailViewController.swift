@@ -26,7 +26,10 @@ class SerieDetailViewController: ParentViewController {
     
     var serie: Serie?
     
-    init() {
+    let presenter: SerieDetailPresenterProtocol
+    
+    init(presenter: SerieDetailPresenterProtocol) {
+        self.presenter = presenter
         super.init(nibName: "SerieDetailViewController", bundle: nil, presenterParent: nil)
     }
     
