@@ -30,6 +30,10 @@
 		26616B462238FB8E008CB7AB /* SerieEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B452238FB8E008CB7AB /* SerieEpisodes.swift */; };
 		26616B4B223A60EE008CB7AB /* SerieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B4A223A60EE008CB7AB /* SerieDetailRouter.swift */; };
 		26616B4D223A6192008CB7AB /* SerieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B4C223A6192008CB7AB /* SerieDetailPresenter.swift */; };
+		26616B52223A704D008CB7AB /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B50223A704D008CB7AB /* EpisodeDetailViewController.swift */; };
+		26616B53223A704D008CB7AB /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26616B51223A704D008CB7AB /* EpisodeDetailViewController.xib */; };
+		26616B55223A7176008CB7AB /* EpisodeDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B54223A7176008CB7AB /* EpisodeDetailRouter.swift */; };
+		26616B57223A71D2008CB7AB /* EpisodeDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B56223A71D2008CB7AB /* EpisodeDetailPresenter.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -68,6 +72,10 @@
 		26616B452238FB8E008CB7AB /* SerieEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieEpisodes.swift; sourceTree = "<group>"; };
 		26616B4A223A60EE008CB7AB /* SerieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailRouter.swift; sourceTree = "<group>"; };
 		26616B4C223A6192008CB7AB /* SerieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailPresenter.swift; sourceTree = "<group>"; };
+		26616B50223A704D008CB7AB /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
+		26616B51223A704D008CB7AB /* EpisodeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailViewController.xib; sourceTree = "<group>"; };
+		26616B54223A7176008CB7AB /* EpisodeDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailRouter.swift; sourceTree = "<group>"; };
+		26616B56223A71D2008CB7AB /* EpisodeDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailPresenter.swift; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -138,6 +146,7 @@
 				26C6DF1222318AF6006ACFCC /* Home */,
 				26C6DF1322318AFF006ACFCC /* Series */,
 				26616B48223A6059008CB7AB /* SerieDetail */,
+				26616B4E223A7025008CB7AB /* EpisodeDetail */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -157,6 +166,25 @@
 			children = (
 				26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */,
 				26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26616B4E223A7025008CB7AB /* EpisodeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				26616B54223A7176008CB7AB /* EpisodeDetailRouter.swift */,
+				26616B56223A71D2008CB7AB /* EpisodeDetailPresenter.swift */,
+				26616B4F223A7036008CB7AB /* View */,
+			);
+			path = EpisodeDetail;
+			sourceTree = "<group>";
+		};
+		26616B4F223A7036008CB7AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26616B50223A704D008CB7AB /* EpisodeDetailViewController.swift */,
+				26616B51223A704D008CB7AB /* EpisodeDetailViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -335,6 +363,7 @@
 				26C6DF0722318A2E006ACFCC /* LaunchScreen.storyboard in Resources */,
 				26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */,
 				26616B3D22383176008CB7AB /* TableViewCell.xib in Resources */,
+				26616B53223A704D008CB7AB /* EpisodeDetailViewController.xib in Resources */,
 				26C6DF1122318AC8006ACFCC /* HomeViewController.xib in Resources */,
 				26036DD82237C3DC00EACA1B /* SerieListTableViewCell.xib in Resources */,
 				26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */,
@@ -351,10 +380,13 @@
 			files = (
 				26616B4B223A60EE008CB7AB /* SerieDetailRouter.swift in Sources */,
 				26616B38223813A1008CB7AB /* String+Format.swift in Sources */,
+				26616B52223A704D008CB7AB /* EpisodeDetailViewController.swift in Sources */,
 				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
+				26616B57223A71D2008CB7AB /* EpisodeDetailPresenter.swift in Sources */,
 				26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */,
 				26616B332237EADD008CB7AB /* SerieDataSource.swift in Sources */,
+				26616B55223A7176008CB7AB /* EpisodeDetailRouter.swift in Sources */,
 				26616B312237E7B5008CB7AB /* SerieInteractor.swift in Sources */,
 				26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */,
 				26616B4D223A6192008CB7AB /* SerieDetailPresenter.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeViewControllerProtocol: ParentViewControllerProtocol {
     func updatePending()
+    func getViewController() -> HomeViewController
 }
 
 class HomeViewController: ParentViewController {
@@ -52,6 +53,10 @@ extension HomeViewController: HomeViewControllerProtocol {
         removeSpinner()
         tableView.reloadData()
     }
+    
+    func getViewController() -> HomeViewController {
+        return self
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -77,6 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: TableViewCellDelegate {
-    func click(episode: Int) {
+    func click(episode: Episode) {
+        presenter.show(episode: episode)
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 protocol HomePresenterProtocol: ParentPresenterProtocol {
     func checkNewEpisodes()
     func getPendingEpisodes() -> [SerieEpisodes]
+    func show(episode: Episode)
 }
 
 class HomePresenter: ParentPresenter {
@@ -31,6 +32,7 @@ class HomePresenter: ParentPresenter {
 
 extension HomePresenter: HomePresenterProtocol {
     func checkNewEpisodes() {
+        self.pendingSeries.removeAll()
         
         var cont = 0
         for item in savedSeries {
@@ -63,6 +65,13 @@ extension HomePresenter: HomePresenterProtocol {
     func getPendingEpisodes() -> [SerieEpisodes] {
         return self.pendingSeries
     }
+    
+    func show(episode: Episode) {
+        router.pushDetail(episode: episode, view: (view?.getViewController())!)
+    }
+    
+    
+    // Private functions
     
     private func isPending(episode: Episode) -> Bool {
         let savedEpisode = CoreDataManager().fetchEpisode(id: episode.id)
