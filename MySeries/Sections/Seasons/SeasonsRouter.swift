@@ -17,13 +17,16 @@ extension SeasonsRouter: RouterFactory {
     
     static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController {
         let router = SeasonsRouter(mainRouter: mainRouter)
-        let presenter = SeasonPresenter(router: router)
+        let datasource = SeasonsDataSource()
+        let interactor = SeasonsInteractor(datasource: datasource)
+        let presenter = SeasonPresenter(router: router, interactor: interactor)
         let view = SeasonsViewController(presenter: presenter)
         
+        interactor.interactorOutput = presenter
         presenter.view = view
         
-        if let episodes = parameters as? [Episode] {
-            view.episodes = episodes
+        if let serieID = parameters as? Int {
+            view.serieID = serieID
         }
         
         return view

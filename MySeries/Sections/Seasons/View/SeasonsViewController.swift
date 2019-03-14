@@ -9,11 +9,12 @@
 import UIKit
 
 protocol SeasonsViewControllerProtocol {
+    func update(seasons: [Season])
 }
 
 class SeasonsViewController: ParentViewController {
     
-    var episodes = [Episode]()
+    var serieID: Int?
 
     let presenter: SeasonPresenterProtocol
     
@@ -32,6 +33,11 @@ extension SeasonsViewController: SeasonsViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        showSpinner()
+        presenter.getSeasons(serieID: serieID ?? 0)
+    }
+    
+    func update(seasons: [Season]) {
+        removeSpinner()
     }
 }

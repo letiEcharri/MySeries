@@ -38,7 +38,7 @@ extension HomePresenter: HomePresenterProtocol {
         for item in savedSeries {
             
             interactor.searchSerie(id: Int(item.id)) { rSerie in
-                let url = "http://api.tvmaze.com/shows/\(rSerie.id)/episodes"
+                let url = "http://\(Constants.URL.base)\(Constants.URL.Enpoints.show)/\(rSerie.id)\(Constants.URL.Enpoints.episodes)"
                 self.interactor.searchEpisodes(url: url, completion: { rEpisodes in
                     var pendingEpisodes = [Episode]()
                     var epCont = 0

@@ -16,8 +16,8 @@ class SerieDataSource {
     func getURL(id: Int) -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
-        urlComponents.host = "api.tvmaze.com"
-        urlComponents.path = "/shows/\(id)"
+        urlComponents.host = Constants.URL.base
+        urlComponents.path = "\(Constants.URL.Enpoints.show)/\(id)"
         guard let urlComplete = urlComponents.url else { fatalError("Could not create URL from components") }
         
         return urlComplete

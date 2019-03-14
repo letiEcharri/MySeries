@@ -25,6 +25,6 @@ class SerieDetailPresenter: ParentPresenter {
 
 extension SerieDetailPresenter: SerieDetailPresenterProtocol {
     func navigateToSeasons(serie: Int) {
-        router.pushSeasons(view: (view?.getViewController())!, episodes: [Episode]())
+        router.pushSeasons(view: (view?.getViewController())!, serieID: serie)
     }
 }

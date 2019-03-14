@@ -64,7 +64,6 @@ extension HomeInteractor: HomeInteractorProtocol {
             do {
                 if let dataSerie = response as? Data {
                     let episodes = try decoder.decode([Episode].self, from: dataSerie)
-                    //self.interactorOutput?.onSuccess(episode: episode)
                     completion(episodes)
                 } else {
                     self.interactorOutput?.onFailure(error: "Interactor error: No Data")
