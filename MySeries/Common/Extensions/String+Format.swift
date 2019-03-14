@@ -13,4 +13,12 @@ extension String {
         let date = self.components(separatedBy: "-")
         return "\(date[2])/\(date[1])/\(date[0])"
     }
+    
+    func toDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        let date = dateFormatter.date(from: self)
+        
+        return date ?? Date()
+    }
 }

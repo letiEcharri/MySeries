@@ -15,7 +15,7 @@ protocol MainRouterProtocol {
 }
 
 protocol RouterFactory {
-    static func create(withMainRouter mainRouter: MainRouterProtocol) -> UIViewController
+    static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController
 }
 
 class MainRouter {
@@ -39,8 +39,8 @@ extension MainRouter {
     
     func presentRootViewController() {
         let tabBar = UITabBarController.init()
-        let homeView = HomeRouter.create(withMainRouter: self)
-        let seriesView = SeriesRouter.create(withMainRouter: self)
+        let homeView = HomeRouter.create(withMainRouter: self, parameters: nil)
+        let seriesView = SeriesRouter.create(withMainRouter: self, parameters: nil)
         
         homeView.tabBarItem = UITabBarItem.init(title: "HOME", image: nil, tag: 0)
         homeView.tabBarItem.image = UIImage(named: "home")

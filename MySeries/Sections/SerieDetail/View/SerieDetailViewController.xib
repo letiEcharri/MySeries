@@ -31,23 +31,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYk-xO-Q81">
-                    <rect key="frame" x="0.0" y="30" width="375" height="30"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="HXC-Gm-5uy"/>
+                        <constraint firstAttribute="height" constant="35" id="HXC-Gm-5uy"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="ffY-yj-tFc">
-                    <rect key="frame" x="16" y="87" width="145" height="190"/>
+                    <rect key="frame" x="16" y="92" width="145" height="190"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="190" id="8zl-nb-5kO"/>
                         <constraint firstAttribute="width" constant="145" id="gKG-CG-cv1"/>
                     </constraints>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVx-LW-VQC">
-                    <rect key="frame" x="16" y="302" width="343" height="160"/>
+                    <rect key="frame" x="16" y="307" width="343" height="160"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="160" id="eb6-xB-ceE"/>
@@ -57,7 +57,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPi-yL-yvd">
-                    <rect key="frame" x="171" y="87" width="194" height="52"/>
+                    <rect key="frame" x="171" y="92" width="194" height="52"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="52" id="s1W-cb-d78"/>
                     </constraints>
@@ -66,7 +66,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQS-Hg-4tv">
-                    <rect key="frame" x="171" y="144" width="194" height="28"/>
+                    <rect key="frame" x="171" y="149" width="194" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="J9O-i1-tHy"/>
                     </constraints>
@@ -75,25 +75,25 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOj-UM-xy3">
-                    <rect key="frame" x="171" y="172" width="194" height="28"/>
+                    <rect key="frame" x="171" y="177" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcQ-1V-q0m">
-                    <rect key="frame" x="171" y="200" width="194" height="28"/>
+                    <rect key="frame" x="171" y="205" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-9g-EFF">
-                    <rect key="frame" x="171" y="228" width="194" height="28"/>
+                    <rect key="frame" x="171" y="233" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premiere: 00/00/0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-jV-hFR">
-                    <rect key="frame" x="16" y="472" width="343" height="21"/>
+                    <rect key="frame" x="16" y="477" width="343" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="3wX-ME-AvV"/>
                     </constraints>
@@ -102,13 +102,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Géneros:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ah-51-ib2">
-                    <rect key="frame" x="16" y="498" width="343" height="21"/>
+                    <rect key="frame" x="16" y="503" width="343" height="21"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTu-Qu-tP1">
-                    <rect key="frame" x="16" y="519" width="343" height="24"/>
+                    <rect key="frame" x="16" y="524" width="343" height="24"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
