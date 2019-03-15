@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeasonsViewController" customModule="MySeries" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="wFm-jR-Y3f" id="cux-cb-cup"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,12 +30,30 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wFm-jR-Y3f">
+                    <rect key="frame" x="0.0" y="55" width="375" height="612"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CLJ-xr-Ptw">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Qlu-ag-5dC"/>
+                        <outlet property="delegate" destination="-1" id="j4v-fA-TJV"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="wFm-jR-Y3f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AjV-DG-q6G"/>
+                <constraint firstItem="wFm-jR-Y3f" firstAttribute="top" secondItem="HCe-Uf-DDC" secondAttribute="bottom" id="EXc-Kt-DmB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wFm-jR-Y3f" secondAttribute="bottom" id="GNo-C0-57d"/>
                 <constraint firstItem="HCe-Uf-DDC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X96-Rl-S7d"/>
                 <constraint firstItem="HCe-Uf-DDC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cMX-UY-hb5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HCe-Uf-DDC" secondAttribute="trailing" id="iEn-4j-qnG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wFm-jR-Y3f" secondAttribute="trailing" id="thL-UW-r46"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
