@@ -20,7 +20,6 @@ class SeasonsViewController: ParentViewController {
     var seasons = [SeasonWithEpisodes]()
     let cellID = "seasonCell"
     var selectedIndexPath: IndexPath?
-    var openCells = [IndexPath]()
 
     let presenter: SeasonPresenterProtocol
     
@@ -91,7 +90,7 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         
-        openCells.append(indexPath)
+        seasons[indexPath.row].isOpen = !seasons[indexPath.row].isOpen
 
         collectionView.performBatchUpdates(nil, completion: nil)
     }
@@ -100,7 +99,7 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
 
         var size = CGSize(width: UIScreen.main.bounds.width, height: 60)
 
-        if selectedIndexPath == indexPath {
+        if selectedIndexPath == indexPath && seasons[indexPath.row].isOpen {
             size.height = CGFloat((seasons[indexPath.row].season.episodeOrder ?? 0) * 20)
         }
         return size
