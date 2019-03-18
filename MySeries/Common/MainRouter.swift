@@ -38,16 +38,18 @@ class MainRouter {
 extension MainRouter {
     
     func presentRootViewController() {
-        let tabBar = UITabBarController.init()
+        let tabBar = UITabBarController()
         let homeView = HomeRouter.create(withMainRouter: self, parameters: nil)
         let seriesView = SeriesRouter.create(withMainRouter: self, parameters: nil)
         
-        homeView.tabBarItem = UITabBarItem.init(title: "HOME", image: nil, tag: 0)
+        homeView.tabBarItem = UITabBarItem(title: "HOME", image: nil, tag: 0)
         homeView.tabBarItem.image = UIImage(named: "home")
-        seriesView.tabBarItem = UITabBarItem.init(title: "SERIES", image: nil, tag: 1)
+        seriesView.tabBarItem = UITabBarItem(title: "SERIES", image: nil, tag: 1)
         seriesView.tabBarItem.image = UIImage(named: "seriesIcon")
         
-        tabBar.viewControllers = [homeView, seriesView]
+        let controllers = [homeView, seriesView]
+        tabBar.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
+        //tabBar.viewControllers = controllers
         tabBar.navigationItem.title = "MySERIES"
         
         let rootViewController = UINavigationController(rootViewController: tabBar)

@@ -38,6 +38,7 @@ class SeriesViewController: ParentViewController {
 }
 
 extension SeriesViewController: SeriesViewControllerProtocol {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

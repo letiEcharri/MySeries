@@ -29,6 +29,12 @@ class ParentViewController: UIViewController {
         super.init(nibName: nibName, bundle: bundle)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
 }
 
 extension ParentViewController: ParentViewControllerProtocol {
