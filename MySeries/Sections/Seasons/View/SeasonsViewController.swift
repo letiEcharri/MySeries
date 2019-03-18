@@ -10,6 +10,7 @@ import UIKit
 
 protocol SeasonsViewControllerProtocol {
     func update(seasons: [SeasonWithEpisodes])
+    func getViewController() -> SeasonsViewController
 }
 
 class SeasonsViewController: ParentViewController {
@@ -54,6 +55,10 @@ extension SeasonsViewController: SeasonsViewControllerProtocol {
         collectionView.reloadData()
     }
     
+    func getViewController() -> SeasonsViewController {
+        return self
+    }
+    
     // Private functions
     
     private func setCellSize() {
@@ -80,6 +85,7 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
         if cell != nil {
             let currentSeason = seasons[indexPath.row]
             cell?.set(season: currentSeason)
+            cell?.delegate = self
             
             return cell!
         } else {
@@ -100,9 +106,15 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
         var size = CGSize(width: UIScreen.main.bounds.width, height: 50)
 
         if selectedIndexPath == indexPath && seasons[indexPath.row].isOpen {
-            size.height = CGFloat(((seasons[indexPath.row].season.episodeOrder ?? 0) * 20) + 60)
+            size.height = CGFloat(((seasons[indexPath.row].season.episodeOrder ?? 0) * 25) + 60)
         }
         return size
     }
     
+}
+
+extension SeasonsViewController: SeasonsCollectionViewCellDelegate {
+    func click(episode: Episode) {
+        presenter.goDetail(episode: episode)
+    }
 }

@@ -10,31 +10,27 @@ import Foundation
 
 protocol HomeDataSourceProtocol: DataSource {
     func searchSerie(id: Int, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock)
-    func searchEpisode(url: String, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock)
+    func searchEpisode(id: Int, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock)
 }
 
 class HomeDataSource {
-    func getSerieURL(id: Int) -> URL {
+    func getURL(id: Int, item: String) -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = Constants.URL.base
-        urlComponents.path = "\(Constants.URL.Enpoints.show)/\(id)"
+        urlComponents.path = "\(Constants.URL.Enpoints.show)/\(id)\(item)"
         guard let urlComplete = urlComponents.url else { fatalError("Could not create URL from components") }
         
         return urlComplete
-    }
-    
-    func getEpisode(url: String) -> URL {
-        return URL(string: url)!
     }
 }
 
 extension HomeDataSource: HomeDataSourceProtocol {
     func searchSerie(id: Int, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock) {
-        executeRequest(url: getSerieURL(id: id), success: success, failure: failure)
+        executeRequest(url: getURL(id: id, item: ""), success: success, failure: failure)
     }
     
-    func searchEpisode(url: String, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock) {
-        executeRequest(url: getEpisode(url: url), success: success, failure: failure)
+    func searchEpisode(id: Int, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock) {
+        executeRequest(url: getURL(id: id, item: Constants.URL.Enpoints.episodes), success: success, failure: failure)
     }
 }

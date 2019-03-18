@@ -10,8 +10,7 @@ import Foundation
 
 protocol HomeInteractorProtocol {
     func searchSerie(id: Int, completion: @escaping CompletionSerieHandler)
-    func searchEpisodes(url: String, completion: @escaping CompletionEpisodeHandler)
-    func searchEpisode(url: String)
+    func searchEpisodes(id: Int, completion: @escaping CompletionEpisodeHandler)
 }
 
 protocol HomeInteractorOutput: class {
@@ -38,7 +37,6 @@ extension HomeInteractor: HomeInteractorProtocol {
             do {
                 if let dataSerie = response as? Data {
                     let serie = try decoder.decode(Serie.self, from: dataSerie)
-                    //self.interactorOutput?.onSuccess(serie: serie)
                     completion(serie)
                 } else {
                     self.interactorOutput?.onFailure(error: "Interactor error: No Data")
@@ -53,8 +51,8 @@ extension HomeInteractor: HomeInteractorProtocol {
         }
     }
     
-    func searchEpisodes(url: String, completion: @escaping CompletionEpisodeHandler) {
-        datasource.searchEpisode(url: url, success: { response in
+    func searchEpisodes(id: Int, completion: @escaping CompletionEpisodeHandler) {
+        datasource.searchEpisode(id: id, success: { response in
             
             let decoder = JSONDecoder()
             
@@ -75,8 +73,8 @@ extension HomeInteractor: HomeInteractorProtocol {
         }
     }
     
-    func searchEpisode(url: String) {
-        datasource.searchEpisode(url: url, success: { response in
+    func searchEpisode(id: Int) {
+        datasource.searchEpisode(id: id, success: { response in
             
             let decoder = JSONDecoder()
             

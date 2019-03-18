@@ -10,8 +10,7 @@ import UIKit
 
 protocol SeasonPresenterProtocol: ParentPresenterProtocol {
     func getSeasons(serieID: Int)
-    func getEpisodesBy(season: Int, serieID: Int, completion: @escaping CompletionEpisodeHandler)
-    func getViewWith(episodes: [Episode], width: CGFloat) -> UIView
+    func goDetail(episode: Episode)
 }
 
 class SeasonPresenter: ParentPresenter {
@@ -33,24 +32,8 @@ extension SeasonPresenter: SeasonPresenterProtocol {
         interactor.getSeasons(serieID: serieID)
     }
     
-    func getEpisodesBy(season: Int, serieID: Int, completion: @escaping CompletionEpisodeHandler) {
-        //interactor.getEpisodesBy(season: season, serieID: serieID, completion: completion)
-    }
-    
-    func getViewWith(episodes: [Episode], width: CGFloat) -> UIView {
-        let epiView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: CGFloat(episodes.count * 20)))
-        
-        var cont = 0
-        for item in episodes {
-            let label = UILabel(frame: CGRect(x: 0, y: CGFloat(cont * 20), width: width, height: 20))
-            label.font = UIFont(name: "Noteworthy-Light", size: 15)
-            label.text = "\(item.number ?? 0) - \(item.name ?? "")"
-            epiView.addSubview(label)
-            
-            cont += 1
-        }
-        
-        return epiView
+    func goDetail(episode: Episode) {
+        router.pushDetail(episode: episode, view: (view?.getViewController())!)
     }
 }
 
