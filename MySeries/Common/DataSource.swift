@@ -10,6 +10,8 @@ import UIKit
 
 typealias SuccessCompletionBlock = (_ object: AnyObject) -> Void
 typealias FailureCompletionBlock = (_ error: Error) -> Void
+typealias CompletionSerieHandler = (_ serie:Serie) -> Void
+typealias CompletionEpisodeHandler = (_ episode:[Episode]) -> Void
 
 protocol DataSource {
     func executeRequest(url: URL, success: @escaping (SuccessCompletionBlock), failure: @escaping FailureCompletionBlock)

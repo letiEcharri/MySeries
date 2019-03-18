@@ -10,6 +10,7 @@ import UIKit
 
 protocol SeriesRouterProtocol: ParentRouterProtocol {
     func pushDetail(view: UIViewController, serie: Serie)
+    func pushSeasons(view: UIViewController, episodes: [Episode])
 }
 
 class SeriesRouter: ParentRouter {
@@ -35,5 +36,10 @@ extension SeriesRouter: SeriesRouterProtocol {
     func pushDetail(view: UIViewController, serie: Serie) {
         let detailVC = SerieDetailRouter.create(withMainRouter: mainRouter, parameters: serie as AnyObject)
         mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
+    }
+    
+    func pushSeasons(view: UIViewController, episodes: [Episode]) {
+        let seasonsVC = SeasonsRouter.create(withMainRouter: mainRouter, parameters: episodes as AnyObject)
+        mainRouter.push(navigationController: view.navigationController, viewController: seasonsVC, animated: true)
     }
 }
