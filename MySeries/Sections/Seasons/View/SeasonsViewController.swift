@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SeasonsViewControllerProtocol {
-    func update(seasons: [Season])
+    func update(seasons: [SeasonWithEpisodes])
 }
 
 class SeasonsViewController: ParentViewController {
@@ -17,10 +17,10 @@ class SeasonsViewController: ParentViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var serieID: Int?
-    var seasons = [Season]()
+    var seasons = [SeasonWithEpisodes]()
     let cellID = "seasonCell"
-    var size: CGFloat?
-    var cellSize: CGSize?
+    var selectedIndexPath: IndexPath?
+    var openCells = [IndexPath]()
 
     let presenter: SeasonPresenterProtocol
     
@@ -49,18 +49,19 @@ extension SeasonsViewController: SeasonsViewControllerProtocol {
         presenter.getSeasons(serieID: serieID ?? 0)
     }
     
-    func update(seasons: [Season]) {
+    func update(seasons: [SeasonWithEpisodes]) {
         self.seasons = seasons
         removeSpinner()
         collectionView.reloadData()
     }
     
+    // Private functions
+    
     private func setCellSize() {
-        cellSize = CGSize(width: UIScreen.main.bounds.width, height: 70)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = cellSize!
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 70)
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0
@@ -69,7 +70,7 @@ extension SeasonsViewController: SeasonsViewControllerProtocol {
     }
 }
 
-extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return seasons.count
     }
@@ -78,16 +79,31 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SeasonsCollectionViewCell
         
         if cell != nil {
-            let season = seasons[indexPath.row]
-            
-            cell?.imgPicture.imageFromUrl(urlString: season.image?.medium ?? "")
-            cell?.lblSeason.text = "TEMPORADA \(season.number ?? 0)"
-            cell?.lblDates.text = "\(season.premiereDate?.formatDate() ?? "") - \(season.endDate?.formatDate() ?? "")"
-            cell?.lblEpisodes.text = String(season.episodeOrder ?? 0)
+            let currentSeason = seasons[indexPath.row]
+            cell?.set(season: currentSeason)
             
             return cell!
         } else {
             return UICollectionViewCell()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndexPath = indexPath
+        
+        openCells.append(indexPath)
+
+        collectionView.performBatchUpdates(nil, completion: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        var size = CGSize(width: UIScreen.main.bounds.width, height: 60)
+
+        if selectedIndexPath == indexPath {
+            size.height = CGFloat((seasons[indexPath.row].season.episodeOrder ?? 0) * 20)
+        }
+        return size
+    }
+    
 }

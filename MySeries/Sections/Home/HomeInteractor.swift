@@ -8,9 +8,6 @@
 
 import Foundation
 
-typealias CompletionSerieHandler = (_ serie:Serie) -> Void
-typealias CompletionEpisodeHandler = (_ episode:[Episode]) -> Void
-
 protocol HomeInteractorProtocol {
     func searchSerie(id: Int, completion: @escaping CompletionSerieHandler)
     func searchEpisodes(url: String, completion: @escaping CompletionEpisodeHandler)
