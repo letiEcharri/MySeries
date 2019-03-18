@@ -97,10 +97,10 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        var size = CGSize(width: UIScreen.main.bounds.width, height: 60)
+        var size = CGSize(width: UIScreen.main.bounds.width, height: 50)
 
         if selectedIndexPath == indexPath && seasons[indexPath.row].isOpen {
-            size.height = CGFloat((seasons[indexPath.row].season.episodeOrder ?? 0) * 20)
+            size.height = CGFloat(((seasons[indexPath.row].season.episodeOrder ?? 0) * 20) + 60)
         }
         return size
     }

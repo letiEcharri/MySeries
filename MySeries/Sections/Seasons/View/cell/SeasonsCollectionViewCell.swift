@@ -47,9 +47,9 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         
         var cont = 0
         for item in season.episodes {
-            let label = UILabel(frame: CGRect(x: 0, y: CGFloat(cont * 20), width: episodesView.frame.width, height: 20))
+            let label = UILabel(frame: CGRect(x: 0, y: CGFloat(cont * 20) + 5, width: episodesView.frame.width, height: 20))
             label.font = UIFont(name: "Noteworthy-Light", size: 15)
-            label.text = "\(item.number ?? 0) \(item.name ?? "")"
+            label.text = "\(item.number ?? 0) - \(item.name ?? "")"
             
             episodesView.addSubview(label)
             cont += 1
