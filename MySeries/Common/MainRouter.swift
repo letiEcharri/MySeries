@@ -49,7 +49,6 @@ extension MainRouter {
         
         let controllers = [homeView, seriesView]
         tabBar.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
-        //tabBar.viewControllers = controllers
         tabBar.navigationItem.title = "MySERIES"
         
         let rootViewController = UINavigationController(rootViewController: tabBar)

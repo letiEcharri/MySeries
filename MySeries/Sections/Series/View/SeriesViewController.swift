@@ -39,6 +39,12 @@ class SeriesViewController: ParentViewController {
 
 extension SeriesViewController: SeriesViewControllerProtocol {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.hideBackButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
