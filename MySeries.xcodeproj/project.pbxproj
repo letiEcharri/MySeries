@@ -15,6 +15,10 @@
 		26036DDF2237CE2100EACA1B /* ParentRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DDE2237CE2100EACA1B /* ParentRouter.swift */; };
 		26036DE12237D00300EACA1B /* ParentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DE02237D00300EACA1B /* ParentPresenter.swift */; };
 		26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26036DE22237D41700EACA1B /* ParentViewController.swift */; };
+		261C9DDA22410B2A00C1BBAA /* SearchSerieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C9DD822410B2A00C1BBAA /* SearchSerieViewController.swift */; };
+		261C9DDB22410B2A00C1BBAA /* SearchSerieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261C9DD922410B2A00C1BBAA /* SearchSerieViewController.xib */; };
+		261C9DDD22410B8B00C1BBAA /* SearchSerieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C9DDC22410B8B00C1BBAA /* SearchSerieRouter.swift */; };
+		261C9DDF22410C2700C1BBAA /* SearchSeriePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C9DDE22410C2700C1BBAA /* SearchSeriePresenter.swift */; };
 		26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B282237D8DA008CB7AB /* HomeRouter.swift */; };
 		26616B2D2237E1A3008CB7AB /* SerieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */; };
 		26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */; };
@@ -68,6 +72,10 @@
 		26036DDE2237CE2100EACA1B /* ParentRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentRouter.swift; sourceTree = "<group>"; };
 		26036DE02237D00300EACA1B /* ParentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPresenter.swift; sourceTree = "<group>"; };
 		26036DE22237D41700EACA1B /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		261C9DD822410B2A00C1BBAA /* SearchSerieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieViewController.swift; sourceTree = "<group>"; };
+		261C9DD922410B2A00C1BBAA /* SearchSerieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSerieViewController.xib; sourceTree = "<group>"; };
+		261C9DDC22410B8B00C1BBAA /* SearchSerieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieRouter.swift; sourceTree = "<group>"; };
+		261C9DDE22410C2700C1BBAA /* SearchSeriePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSeriePresenter.swift; sourceTree = "<group>"; };
 		26616B282237D8DA008CB7AB /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailViewController.swift; sourceTree = "<group>"; };
 		26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieDetailViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +152,25 @@
 			path = Parents;
 			sourceTree = "<group>";
 		};
+		261C9DD622410AE100C1BBAA /* SearchSerie */ = {
+			isa = PBXGroup;
+			children = (
+				261C9DDC22410B8B00C1BBAA /* SearchSerieRouter.swift */,
+				261C9DDE22410C2700C1BBAA /* SearchSeriePresenter.swift */,
+				261C9DD722410AFF00C1BBAA /* View */,
+			);
+			path = SearchSerie;
+			sourceTree = "<group>";
+		};
+		261C9DD722410AFF00C1BBAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				261C9DD822410B2A00C1BBAA /* SearchSerieViewController.swift */,
+				261C9DD922410B2A00C1BBAA /* SearchSerieViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		26616B3422380A23008CB7AB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +197,7 @@
 				26616B48223A6059008CB7AB /* SerieDetail */,
 				26616B4E223A7025008CB7AB /* EpisodeDetail */,
 				26616B5C223A9FBB008CB7AB /* Seasons */,
+				261C9DD622410AE100C1BBAA /* SearchSerie */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -432,6 +460,7 @@
 				26616B3D22383176008CB7AB /* TableViewCell.xib in Resources */,
 				26616B53223A704D008CB7AB /* EpisodeDetailViewController.xib in Resources */,
 				26C6DF1122318AC8006ACFCC /* HomeViewController.xib in Resources */,
+				261C9DDB22410B2A00C1BBAA /* SearchSerieViewController.xib in Resources */,
 				26036DD82237C3DC00EACA1B /* SerieListTableViewCell.xib in Resources */,
 				26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */,
 				26C6DF1D22318B73006ACFCC /* SeriesViewController.xib in Resources */,
@@ -475,16 +504,19 @@
 				26616B67223AAF07008CB7AB /* Constants.swift in Sources */,
 				26036DDC2237CDDB00EACA1B /* SeriesRouter.swift in Sources */,
 				26616B3C22383176008CB7AB /* TableViewCell.swift in Sources */,
+				261C9DDA22410B2A00C1BBAA /* SearchSerieViewController.swift in Sources */,
 				26616B69223AB32D008CB7AB /* Season.swift in Sources */,
 				26616B41223837E4008CB7AB /* HomeDataSource.swift in Sources */,
 				26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */,
 				26616B6D223AB598008CB7AB /* SeasonsInteractor.swift in Sources */,
 				26036DDA2237CBC900EACA1B /* MainRouter.swift in Sources */,
 				26C6DF1522318B38006ACFCC /* HomePresenter.swift in Sources */,
+				261C9DDD22410B8B00C1BBAA /* SearchSerieRouter.swift in Sources */,
 				26616B462238FB8E008CB7AB /* SerieEpisodes.swift in Sources */,
 				26036DDF2237CE2100EACA1B /* ParentRouter.swift in Sources */,
 				26616B6B223AB49A008CB7AB /* SeasonsDataSource.swift in Sources */,
 				26616B65223AA390008CB7AB /* SeasonsRouter.swift in Sources */,
+				261C9DDF22410C2700C1BBAA /* SearchSeriePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
