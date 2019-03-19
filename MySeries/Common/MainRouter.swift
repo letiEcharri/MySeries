@@ -38,6 +38,12 @@ class MainRouter {
 extension MainRouter {
     
     func presentRootViewController() {
+        
+        let rootViewController = UINavigationController(rootViewController: customTabBar())
+        window.rootViewController = rootViewController
+    }
+    
+    private func customTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         let homeView = HomeRouter.create(withMainRouter: self, parameters: nil)
         let seriesView = SeriesRouter.create(withMainRouter: self, parameters: nil)
@@ -54,8 +60,13 @@ extension MainRouter {
         tabBar.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
         tabBar.navigationItem.title = "MySERIES"
         
-        let rootViewController = UINavigationController(rootViewController: tabBar)
-        window.rootViewController = rootViewController
+        UITabBar.appearance().barTintColor = UIColor(red: 0/255, green: 153/255, blue: 153/255, alpha: 1)
+        UITabBar.appearance().tintColor = UIColor.black
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        tabBar.tabBar.unselectedItemTintColor = UIColor.white
+        
+        return tabBar
     }
 }
 
