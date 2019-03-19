@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainRouter = MainRouter(window: window!)
         mainRouter!.presentRootViewController()
         
+        customizeNavigationBar()
+        
         return true
     }
 
@@ -49,6 +51,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
         self.saveContext()
+    }
+    
+    private func customizeNavigationBar() {
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = .white // Items
+        navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 153/255, alpha: 1) // Background
+        navigationBarAppearace.titleTextAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 15)!,
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ] // Title
     }
     
     // MARK: - Core Data stack
