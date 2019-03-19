@@ -13,6 +13,8 @@ protocol SearchSerieViewControllerProtocol: ParentViewControllerProtocol {
 
 class SearchSerieViewController: ParentViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     let presenter: SearchSeriePresenterProtocol
     
     init(presenter: SearchSeriePresenterProtocol) {
