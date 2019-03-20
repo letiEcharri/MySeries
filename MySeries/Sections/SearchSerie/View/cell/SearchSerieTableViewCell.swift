@@ -42,7 +42,7 @@ class SearchSerieTableViewCell: UITableViewCell {
         imgFavorite.addGestureRecognizer(tap)
     }
     
-    @objc func favoriteAction(_ sender: UITapGestureRecognizer) {
+    @objc private func favoriteAction(_ sender: UITapGestureRecognizer) {
         var image = UIImage()
         
         if sender.view?.tag == 0 {

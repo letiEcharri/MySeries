@@ -15,6 +15,14 @@ class SearchSerieViewController: ParentViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let celID = "cellSearchSerie"
+    var series = [SearchSerieModel]()
+    
+    //Search Bar
+    var searchController: UISearchController?
+    var filteredSeries = [SearchSerieModel]()
+    var activeSearchBar = false
+    
     let presenter: SearchSeriePresenterProtocol
     
     init(presenter: SearchSeriePresenterProtocol) {
@@ -33,6 +41,59 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        tableView.register(UINib(nibName: "SearchSerieTableViewCell", bundle: nil), forCellReuseIdentifier: celID)
+        tableView.rowHeight = 90
+        tableView.tableFooterView = UIView() //Clear extra lines
+    }
+    
+    private func configureSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchBar.delegate = self
+        searchController?.obscuresBackgroundDuringPresentation = false
+        searchController?.searchBar.placeholder = "Nombre de la serie a buscar"
+        tableView.tableHeaderView = searchController?.searchBar
+    }
+}
+
+extension SearchSerieViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return !activeSearchBar ? series.count : filteredSeries.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! SearchSerieTableViewCell
+        
+        var serie: SearchSerieModel?
+        
+        if !activeSearchBar {
+            serie = series[indexPath.row]
+        } else {
+            serie = filteredSeries[indexPath.row]
+        }
+        
+        cell.set(serie: (serie?.show)!, score: (serie?.score)!)
+        
+        return cell
+    }
+}
+
+extension SearchSerieViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if !searchText.isEmpty {
+            filteredSeries = series.filter { ($0.show.name.lowercased().contains(searchText.lowercased())) }
+            activeSearchBar = true
+        } else {
+            filteredSeries.removeAll(keepingCapacity: true)
+            activeSearchBar = false
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filteredSeries.removeAll(keepingCapacity: true)
+        activeSearchBar = false
+        tableView.reloadData()
     }
 }

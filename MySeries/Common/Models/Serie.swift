@@ -20,7 +20,7 @@ struct Serie: Codable {
     let premiered: String
     let officialSite: String
     let schedule: SerieSchedule
-    let rating: SerieRating
+    let rating: SerieRating?
     let weight: Int
     let network: SerieNetwork
     let image: SerieImage
@@ -56,7 +56,7 @@ struct SerieSchedule: Codable {
 }
 
 struct SerieRating: Codable {
-    let average: Double
+    let average: Double?
 }
 
 struct SerieNetwork: Codable {
