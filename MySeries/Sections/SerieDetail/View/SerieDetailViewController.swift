@@ -50,10 +50,10 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
         
         self.showBackButton()
         
-        lblName.text = serie?.name.uppercased()
-        imgPicture.imageFromUrl(urlString: serie?.image.medium ?? "")
-        lblRating.text = String(format:"%.2f", serie?.rating.average ?? 0)
-        lblCountry.text = serie?.network.country.name ?? ""
+        lblName.text = serie?.name?.uppercased()
+        imgPicture.imageFromUrl(urlString: serie?.image?.medium ?? "")
+        lblRating.text = String(format:"%.2f", serie?.rating?.average ?? 0)
+        lblCountry.text = serie?.network?.country.name ?? ""
         lblLanguage.text = serie?.language ?? ""
         lblStatus.text = serie?.statusSerie ?? ""
         lblRuntime.text = "\(serie?.runtime ?? 0) min"

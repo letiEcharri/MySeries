@@ -10,23 +10,23 @@ import UIKit
 
 struct Serie: Codable {
     let id: Int
-    let url: String
-    let name: String
-    let type: String
-    let language: String
-    let genres: [String]
-    let statusSerie: String
-    let runtime: Int
-    let premiered: String
-    let officialSite: String
-    let schedule: SerieSchedule
+    let url: String?
+    let name: String?
+    let type: String?
+    let language: String?
+    let genres: [String]?
+    let statusSerie: String?
+    let runtime: Int?
+    let premiered: String?
+    let officialSite: String?
+    let schedule: SerieSchedule?
     let rating: SerieRating?
-    let weight: Int
-    let network: SerieNetwork
-    let image: SerieImage
-    let summary: String
-    let updated: Int
-    let links: SerieLinks
+    let weight: Int?
+    let network: SerieNetwork?
+    let image: SerieImage?
+    let summary: String?
+    let updated: Int?
+    let links: SerieLinks?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -78,8 +78,8 @@ struct SerieImage: Codable {
 
 struct SerieLinks: Codable {
     let selff: SerieLinksRef
-    let previousepisode: SerieLinksRef
-    let nextepisode: SerieLinksRef
+    let previousepisode: SerieLinksRef?
+    let nextepisode: SerieLinksRef?
     
     enum CodingKeys: String, CodingKey {
         case selff = "self"

@@ -38,8 +38,6 @@ class SearchSerieTableViewCell: UITableViewCell {
     }
     
     private func configureView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteAction(_:)))
-        imgFavorite.addGestureRecognizer(tap)
     }
     
     @objc private func favoriteAction(_ sender: UITapGestureRecognizer) {
@@ -59,11 +57,14 @@ class SearchSerieTableViewCell: UITableViewCell {
     }
     
     func set(serie: Serie, score: Double) {
-        imgPicture.image = UIImage(named: serie.image.medium)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteAction(_:)))
+        imgFavorite.addGestureRecognizer(tap)
+        
+        imgPicture.imageFromUrl(urlString: serie.image?.medium ?? "")
         lblTitle.text = serie.name
         
         var genres = ""
-        for item in serie.genres {
+        for item in serie.genres ?? [String]() {
             genres += "\(item) "
         }
         lblGenres.text = genres

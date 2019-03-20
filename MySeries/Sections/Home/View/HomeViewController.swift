@@ -70,7 +70,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let serie = presenter.getPendingEpisodes()[indexPath.row]
         
         cell.lblTitle.text = serie.serie.name
-        cell.imgPicture.imageFromUrl(urlString: serie.serie.image.medium)
+        cell.imgPicture.imageFromUrl(urlString: serie.serie.image?.medium ?? "")
         cell.set(episodes: serie.episodes)
         cell.delegate = self
         

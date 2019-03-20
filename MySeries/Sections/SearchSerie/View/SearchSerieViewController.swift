@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SearchSerieViewControllerProtocol: ParentViewControllerProtocol {
+    func update(series: [SearchSerieModel])
 }
 
 class SearchSerieViewController: ParentViewController {
@@ -44,6 +45,13 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
         tableView.register(UINib(nibName: "SearchSerieTableViewCell", bundle: nil), forCellReuseIdentifier: celID)
         tableView.rowHeight = 90
         tableView.tableFooterView = UIView() //Clear extra lines
+        
+        configureSearchBar()
+    }
+    
+    func update(series: [SearchSerieModel]) {
+        self.filteredSeries = series
+        tableView.reloadData()
     }
     
     private func configureSearchBar() {
@@ -51,6 +59,8 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
         searchController?.searchBar.delegate = self
         searchController?.obscuresBackgroundDuringPresentation = false
         searchController?.searchBar.placeholder = "Nombre de la serie a buscar"
+        searchController?.hidesNavigationBarDuringPresentation = false
+        self.definesPresentationContext = false
         tableView.tableHeaderView = searchController?.searchBar
     }
 }
@@ -79,9 +89,11 @@ extension SearchSerieViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension SearchSerieViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        presenter.searchSeries(text: searchText)
         
         if !searchText.isEmpty {
-            filteredSeries = series.filter { ($0.show.name.lowercased().contains(searchText.lowercased())) }
+            filteredSeries = series.filter { (($0.show.name?.lowercased().contains(searchText.lowercased()))!) }
             activeSearchBar = true
         } else {
             filteredSeries.removeAll(keepingCapacity: true)

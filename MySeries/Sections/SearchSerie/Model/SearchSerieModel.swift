@@ -9,6 +9,6 @@
 import UIKit
 
 struct SearchSerieModel: Codable {
-    var score: Double
-    var show: Serie
+    let score: Double
+    let show: Serie
 }

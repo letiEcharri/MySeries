@@ -23,6 +23,8 @@
 		261C9DE62241196300C1BBAA /* SearchSerieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261C9DE42241196300C1BBAA /* SearchSerieTableViewCell.xib */; };
 		261C9DE822415F4800C1BBAA /* Number+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C9DE722415F4800C1BBAA /* Number+Format.swift */; };
 		261C9DEA2241630900C1BBAA /* SearchSerieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C9DE92241630900C1BBAA /* SearchSerieModel.swift */; };
+		263691E922425ECD000E69BA /* SearchSerieDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263691E822425ECD000E69BA /* SearchSerieDataSource.swift */; };
+		263691EB2242601B000E69BA /* SearchSerieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263691EA2242601B000E69BA /* SearchSerieInteractor.swift */; };
 		26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B282237D8DA008CB7AB /* HomeRouter.swift */; };
 		26616B2D2237E1A3008CB7AB /* SerieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */; };
 		26616B2E2237E1A3008CB7AB /* SerieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */; };
@@ -84,6 +86,8 @@
 		261C9DE42241196300C1BBAA /* SearchSerieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSerieTableViewCell.xib; sourceTree = "<group>"; };
 		261C9DE722415F4800C1BBAA /* Number+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Format.swift"; sourceTree = "<group>"; };
 		261C9DE92241630900C1BBAA /* SearchSerieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieModel.swift; sourceTree = "<group>"; };
+		263691E822425ECD000E69BA /* SearchSerieDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieDataSource.swift; sourceTree = "<group>"; };
+		263691EA2242601B000E69BA /* SearchSerieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSerieInteractor.swift; sourceTree = "<group>"; };
 		26616B282237D8DA008CB7AB /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		26616B2B2237E1A3008CB7AB /* SerieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailViewController.swift; sourceTree = "<group>"; };
 		26616B2C2237E1A3008CB7AB /* SerieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieDetailViewController.xib; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				261C9DEB2241630D00C1BBAA /* Model */,
 				261C9DDC22410B8B00C1BBAA /* SearchSerieRouter.swift */,
 				261C9DDE22410C2700C1BBAA /* SearchSeriePresenter.swift */,
+				263691EA2242601B000E69BA /* SearchSerieInteractor.swift */,
+				263691E822425ECD000E69BA /* SearchSerieDataSource.swift */,
 				261C9DD722410AFF00C1BBAA /* View */,
 			);
 			path = SearchSerie;
@@ -518,11 +524,13 @@
 				26616B4D223A6192008CB7AB /* SerieDetailPresenter.swift in Sources */,
 				26616B75223BCB09008CB7AB /* SeasonWithEpisodes.swift in Sources */,
 				26616B71223ABDE1008CB7AB /* SeasonsCollectionViewCell.swift in Sources */,
+				263691EB2242601B000E69BA /* SearchSerieInteractor.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,
 				26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */,
 				26616B292237D8DA008CB7AB /* HomeRouter.swift in Sources */,
 				26C6DF1022318AC8006ACFCC /* HomeViewController.swift in Sources */,
 				26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */,
+				263691E922425ECD000E69BA /* SearchSerieDataSource.swift in Sources */,
 				26616B5E223A9FEA008CB7AB /* SeasonPresenter.swift in Sources */,
 				26616B3622380A46008CB7AB /* UIImageView+URL.swift in Sources */,
 				26BD0172223265C600DD2344 /* Serie.swift in Sources */,

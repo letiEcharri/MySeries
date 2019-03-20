@@ -18,6 +18,7 @@ struct Constants {
             static let episodes = "/episodes"
             static let seasons = "/seasons"
             static let episodeByNumber = "/episodebynumber"
+            static let search = "/search/shows"
         }
         
         struct Parameters {
