@@ -20,7 +20,6 @@ class HomePresenter: ParentPresenter {
     let router: HomeRouterProtocol
     let interactor: HomeInteractorProtocol
     
-    let savedSeries = CoreDataManager().fetchSeries()
     var pendingSeries = [SerieEpisodes]()
     
     init(router: HomeRouterProtocol, interactor: HomeInteractorProtocol) {
@@ -32,6 +31,7 @@ class HomePresenter: ParentPresenter {
 
 extension HomePresenter: HomePresenterProtocol {
     func checkNewEpisodes() {
+        let savedSeries = CoreDataManager().fetchSeries()
         self.pendingSeries.removeAll()
         
         var cont = 0
@@ -53,7 +53,7 @@ extension HomePresenter: HomePresenterProtocol {
                     let newSerie = SerieEpisodes(serie: rSerie, episodes: pendingEpisodes)
                     self.pendingSeries.append(newSerie)
                     
-                    if (cont == self.savedSeries.count && epCont == rEpisodes.count) {
+                    if (cont == savedSeries.count && epCont == rEpisodes.count) {
                         self.view?.updatePending()
                     }
                 })

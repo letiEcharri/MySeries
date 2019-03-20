@@ -16,6 +16,11 @@ class SearchSerieTableViewCell: UITableViewCell {
     @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var imgFavorite: UIImageView!
     
+    let favoriteIcon = UIImage(named: "favIconFull")
+    let noFavoriteIcon = UIImage(named: "favIcon")
+    
+    var serie: Serie?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureView()
@@ -45,10 +50,16 @@ class SearchSerieTableViewCell: UITableViewCell {
         
         if sender.view?.tag == 0 {
             sender.view?.tag = 1
-            image = UIImage(named: "favIconFull") ?? UIImage()
+            image = favoriteIcon ?? UIImage()
+            if serie?.id != nil {
+                CoreDataManager().save(serie: serie?.name ?? "", id: (serie?.id)!)
+            }
         } else {
             sender.view?.tag = 0
-            image = UIImage(named: "favIcon") ?? UIImage()
+            image = noFavoriteIcon ?? UIImage()
+            if serie?.id != nil {
+                CoreDataManager().deleteSerie(id: (serie?.id)!)
+            }
         }
         
         if let favorite = sender.view as? UIImageView {
@@ -57,6 +68,8 @@ class SearchSerieTableViewCell: UITableViewCell {
     }
     
     func set(serie: Serie, score: Double) {
+        self.serie = serie
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(favoriteAction(_:)))
         imgFavorite.addGestureRecognizer(tap)
         
@@ -69,6 +82,12 @@ class SearchSerieTableViewCell: UITableViewCell {
         }
         lblGenres.text = genres
         lblScore.text = score.format(f: ".2")
+        
+        if CoreDataManager().exitsSerie(id: serie.id) {
+            imgFavorite.image = favoriteIcon
+        } else {
+            imgFavorite.image = noFavoriteIcon
+        }
     }
     
 }
