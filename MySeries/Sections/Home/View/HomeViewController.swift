@@ -36,6 +36,9 @@ extension HomeViewController: HomeViewControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        self.hideBackButton()
+        showSpinner()
         presenter.checkNewEpisodes()
     }
     
@@ -45,8 +48,6 @@ extension HomeViewController: HomeViewControllerProtocol {
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: celID)
         tableView.rowHeight = 120
         tableView.tableFooterView = UIView() //Clear extra lines
-        
-        showSpinner()
     }
     
     func updatePending() {
@@ -69,8 +70,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let serie = presenter.getPendingEpisodes()[indexPath.row]
         
-        cell.lblTitle.text = serie.serie.name
-        cell.imgPicture.imageFromUrl(urlString: serie.serie.image?.medium ?? "")
+        cell.set(serie: serie.serie)
         cell.set(episodes: serie.episodes)
         cell.delegate = self
         
@@ -78,6 +78,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.updateConstraintsIfNeeded()
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.goDetail(row: indexPath.row)
     }
 }
 
