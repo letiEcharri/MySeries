@@ -9,7 +9,6 @@
 import UIKit
 
 protocol ParentViewControllerProtocol {
-    func showSpinner()
 }
 
 class ParentViewController: UIViewController {
@@ -27,6 +26,19 @@ class ParentViewController: UIViewController {
         
         self.presenterParent = presenterParent != nil ? presenterParent : nil
         super.init(nibName: nibName, bundle: bundle)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.edgesForExtendedLayout = .bottom
+        self.definesPresentationContext = true
+    }
+    
+    @objc private func backAction(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -47,5 +59,22 @@ extension ParentViewController: ParentViewControllerProtocol {
     
     func removeSpinner() {
         spinnerView?.removeFromSuperview()
+    }
+    
+    func showBackButton() {
+        let iconButton = UIButton(type: .system)
+        iconButton.setImage(UIImage(named: "backWhite"), for: .normal)
+        iconButton.addTarget(self, action: #selector(backAction(_:)), for: .touchUpInside)
+        
+        let menuBarItem = UIBarButtonItem(customView: iconButton)
+        menuBarItem.customView?.translatesAutoresizingMaskIntoConstraints = false
+        menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
+
+        self.navigationController?.tabBarController?.navigationItem.leftBarButtonItem = menuBarItem
+    }
+    
+    func hideBackButton() {
+        self.navigationController?.tabBarController?.navigationItem.leftBarButtonItem = nil
     }
 }

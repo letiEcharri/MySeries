@@ -19,6 +19,7 @@ protocol CoreDataProtocol {
     func deleteSerie(id: Int)
     func watchEpisode(id: Int, value: Bool)
     func fetchEpisode(id: Int) -> CDEpisode
+    func exitsSerie(id: Int) -> Bool
 }
 
 class CoreDataManager: CoreDataProtocol {
@@ -197,5 +198,26 @@ class CoreDataManager: CoreDataProtocol {
         }
         
         return episode
+    }
+    
+    func exitsSerie(id: Int) -> Bool {
+        let fetchRequest = NSFetchRequest<CDSerie>(entityName: serieEntity)
+        
+        do {
+            let fetchedResults = try getContext().fetch(fetchRequest)
+            if fetchedResults.count > 0 {
+                for item in fetchedResults {
+                    if item.id == id{
+                        return true
+                    }
+                }
+                
+            }
+            return false
+        } catch let error as NSError {
+            // something went wrong, print the error.
+            print(error.description)
+            return false
+        }
     }
 }

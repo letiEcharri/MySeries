@@ -25,6 +25,7 @@ class TableViewCell: UITableViewCell {
     var delegate: TableViewCellDelegate?
     
     var episodes = [Episode]()
+    var serie: Serie?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,6 +64,13 @@ class TableViewCell: UITableViewCell {
         for item in episodes where (item.id == sender.view?.tag) {
             delegate?.click(episode: item)
         }
+    }
+    
+    func set(serie: Serie) {
+        self.serie = serie
+        
+        lblTitle.text = serie.name
+        imgPicture.imageFromUrl(urlString: serie.image?.medium ?? "")
     }
     
     func set(episodes: [Episode]) {
