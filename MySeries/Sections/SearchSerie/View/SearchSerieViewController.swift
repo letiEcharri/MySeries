@@ -21,8 +21,6 @@ class SearchSerieViewController: ParentViewController {
     
     //Search Bar
     var searchController: UISearchController?
-    var filteredSeries = [SearchSerieModel]()
-    var activeSearchBar = false
     
     let presenter: SearchSeriePresenterProtocol
     
@@ -50,7 +48,7 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
     }
     
     func update(series: [SearchSerieModel]) {
-        self.filteredSeries = series
+        self.series = series
         tableView.reloadData()
     }
     
@@ -67,21 +65,15 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
 
 extension SearchSerieViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return !activeSearchBar ? series.count : filteredSeries.count
+        return series.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! SearchSerieTableViewCell
         
-        var serie: SearchSerieModel?
+        let serie = series[indexPath.row]
         
-        if !activeSearchBar {
-            serie = series[indexPath.row]
-        } else {
-            serie = filteredSeries[indexPath.row]
-        }
-        
-        cell.set(serie: (serie?.show)!, score: (serie?.score)!)
+        cell.set(serie: serie.show, score: serie.score)
         
         return cell
     }
@@ -92,20 +84,11 @@ extension SearchSerieViewController: UISearchBarDelegate {
 
         presenter.searchSeries(text: searchText)
         
-        if !searchText.isEmpty {
-            filteredSeries = series.filter { (($0.show.name?.lowercased().contains(searchText.lowercased()))!) }
-            activeSearchBar = true
-        } else {
-            filteredSeries.removeAll(keepingCapacity: true)
-            activeSearchBar = false
-        }
-        
         tableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        filteredSeries.removeAll(keepingCapacity: true)
-        activeSearchBar = false
+        series.removeAll()
         tableView.reloadData()
     }
 }

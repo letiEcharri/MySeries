@@ -32,6 +32,9 @@ class ParentViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.extendedLayoutIncludesOpaqueBars = true
+        self.edgesForExtendedLayout = .bottom
+        self.definesPresentationContext = true
     }
     
     @objc private func backAction(_ sender: UIBarButtonItem) {

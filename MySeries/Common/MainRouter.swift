@@ -59,6 +59,7 @@ extension MainRouter {
         let controllers = [homeView, seriesView, searchView]
         tabBar.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
         tabBar.navigationItem.title = "MySERIES"
+        tabBar.tabBar.isTranslucent = true
         
         UITabBar.appearance().barTintColor = UIColor(red: 0/255, green: 153/255, blue: 153/255, alpha: 1)
         UITabBar.appearance().tintColor = UIColor.black
