@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EpisodeDetailViewController" customModule="MySeries" customModuleProvider="target">
             <connections>
+                <outlet property="btnWatched" destination="w4i-H9-Kjy" id="vRK-Kk-4CQ"/>
                 <outlet property="imgPicture" destination="AGf-73-rTE" id="mmo-91-wOY"/>
                 <outlet property="lblEpisode" destination="Kau-VI-XF4" id="rRa-KG-aii"/>
                 <outlet property="lblHour" destination="nJa-wX-MWC" id="ctD-Ne-2Aw"/>

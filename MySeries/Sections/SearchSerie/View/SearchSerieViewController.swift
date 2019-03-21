@@ -74,6 +74,7 @@ extension SearchSerieViewController: UITableViewDelegate, UITableViewDataSource 
         let serie = series[indexPath.row]
         
         cell.set(serie: serie.show, score: serie.score)
+        cell.delegate = self
         
         return cell
     }
@@ -91,4 +92,15 @@ extension SearchSerieViewController: UISearchBarDelegate {
         series.removeAll()
         tableView.reloadData()
     }
+}
+
+extension SearchSerieViewController: SearchFavoriteDelegate {
+    func save(serie: Serie) {
+        presenter.save(serie: serie)
+    }
+    
+    func delete(serie: Int) {
+        presenter.delete(serieID: serie)
+    }
+    
 }

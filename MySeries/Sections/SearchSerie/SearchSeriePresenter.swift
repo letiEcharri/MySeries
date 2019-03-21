@@ -10,6 +10,8 @@ import Foundation
 
 protocol SearchSeriePresenterProtocol: ParentPresenterProtocol {
     func searchSeries(text: String)
+    func save(serie: Serie)
+    func delete(serieID: Int)
 }
 
 class SearchSeriePresenter: ParentPresenter {
@@ -28,6 +30,14 @@ class SearchSeriePresenter: ParentPresenter {
 extension SearchSeriePresenter: SearchSeriePresenterProtocol {
     func searchSeries(text: String) {
         interactor.searchSerie(text: text)
+    }
+    
+    func save(serie: Serie) {
+        CoreDataManager().save(serie: serie.name ?? "", id: serie.id)
+    }
+    
+    func delete(serieID: Int) {
+        CoreDataManager().deleteSerie(id: serieID)
     }
 }
 

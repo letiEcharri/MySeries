@@ -51,8 +51,10 @@ extension HomePresenter: HomePresenterProtocol {
                         }
                     }
                     
-                    let newSerie = SerieEpisodes(serie: rSerie, episodes: pendingEpisodes)
-                    self.pendingSeries.append(newSerie)
+                    if pendingEpisodes.count > 0 {
+                        let newSerie = SerieEpisodes(serie: rSerie, episodes: pendingEpisodes)
+                        self.pendingSeries.append(newSerie)
+                    }
                     
                     if (cont == savedSeries.count && epCont == rEpisodes.count) {
                         self.view?.updatePending()
@@ -60,6 +62,8 @@ extension HomePresenter: HomePresenterProtocol {
                 })
             }
         }
+        
+        self.view?.updatePending()
     }
     
     func getPendingEpisodes() -> [SerieEpisodes] {
@@ -79,8 +83,9 @@ extension HomePresenter: HomePresenterProtocol {
     
     private func isPending(episode: Episode) -> Bool {
         let savedEpisode = CoreDataManager().fetchEpisode(id: episode.id)
+        let epiDate = episode.airstamp?.toDate() ?? Date()
         
-        if savedEpisode.watched {
+        if savedEpisode.watched && epiDate <= Date() {
             return false
         } 
         

@@ -21,6 +21,7 @@ class EpisodeDetailViewController: ParentViewController {
     @IBOutlet weak var lblHour: UILabel!
     @IBOutlet weak var lblRuntime: UILabel!
     @IBOutlet weak var txtSumary: UITextView!
+    @IBOutlet weak var btnWatched: UIButton!
     
     var episode: Episode?
     
@@ -39,11 +40,15 @@ class EpisodeDetailViewController: ParentViewController {
         if sender.tag == 0 {
             sender.tag = 1
             sender.setBackgroundImage(UIImage(named: "eyeIcon"), for: .normal)
-            presenter.watch(episode: episode?.id ?? 0, value: true)
+            if episode != nil {
+                presenter.watch(episode: episode!, value: true)
+            }
         } else {
             sender.tag = 0
             sender.setBackgroundImage(UIImage(named: "noWatched"), for: .normal)
-            presenter.watch(episode: episode?.id ?? 0, value: false)
+            if episode != nil {
+                presenter.watch(episode: episode!, value: false)
+            }
         }
     }
 }
@@ -61,6 +66,12 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
         lblHour.text = "Hora: \(episode?.airtime ?? "")"
         lblRuntime.text = "\(episode?.runtime ?? 0) min"
         txtSumary.text = episode?.summary?.htmlToString
+        
+        var imageWatched = ""
+        (presenter.isWatched(episodeID: (episode?.id)!)) ? (imageWatched = "eyeIcon") : (imageWatched = "noWatched")
+        
+        btnWatched.setBackgroundImage(UIImage(named: imageWatched), for: .normal)
+        btnWatched.tag = (presenter.isWatched(episodeID: (episode?.id)!)) ? 1 : 0
     }
     
     
