@@ -25,6 +25,8 @@ extension DataSource {
         request.httpMethod = "GET"
         
         let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 10.0
+        config.timeoutIntervalForResource = 20.0
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: request) { (responseData, response, responseError) in
             DispatchQueue.main.async {
