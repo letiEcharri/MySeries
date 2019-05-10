@@ -54,7 +54,7 @@ extension SeriesViewController: SeriesViewControllerProtocol {
         
         configureSearchBar()
         
-        series = CoreDataManager().fetchSeries()
+        series = CoreDataManager().fetchSeries().sorted(by: { ($0.value(forKeyPath: "name") as! String).localizedCaseInsensitiveCompare(($1.value(forKeyPath: "name") as! String)) == ComparisonResult.orderedAscending } )
     }
     
     private func configureSearchBar() {
