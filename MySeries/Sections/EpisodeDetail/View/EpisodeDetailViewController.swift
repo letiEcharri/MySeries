@@ -55,6 +55,12 @@ class EpisodeDetailViewController: ParentViewController {
 
 extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.showBackButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
