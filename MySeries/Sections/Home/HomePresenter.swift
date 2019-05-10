@@ -69,7 +69,20 @@ extension HomePresenter: HomePresenterProtocol {
     }
     
     func getPendingEpisodes() -> [SerieEpisodes] {
-        return self.pendingSeries
+        let seriesSorted = self.pendingSeries.sorted(by: { getFirstPending(episodes: $0.episodes) > getFirstPending(episodes: $1.episodes) })
+        return seriesSorted
+    }
+    
+    private func getFirstPending(episodes: [Episode]) -> Date {
+        
+        for item in episodes {
+            let ep = CoreDataManager().fetchEpisode(id: item.id)
+            if !ep.watched {
+                return item.airdate?.toDate(format: .date) ?? Date()
+            }
+        }
+        
+        return Date()
     }
     
     func show(episode: Episode) {
@@ -85,7 +98,7 @@ extension HomePresenter: HomePresenterProtocol {
     
     private func isPending(episode: Episode) -> Bool {
         let savedEpisode = CoreDataManager().fetchEpisode(id: episode.id)
-        let epiDate = episode.airstamp?.toDate() ?? Date()
+        let epiDate = episode.airstamp?.toDate(format: .complete) ?? Date()
         
         if savedEpisode.watched && epiDate <= Date() {
             return false
