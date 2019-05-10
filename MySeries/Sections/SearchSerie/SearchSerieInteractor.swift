@@ -10,6 +10,7 @@ import Foundation
 
 protocol SearchSerieInteractorProtocol {
     func searchSerie(text: String)
+    func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler)
 }
 
 protocol SearchSerieInteractorOutput: class {
@@ -44,6 +45,31 @@ extension SearchSerieInteractor: SearchSerieInteractorProtocol {
                 self.interactorOutput?.onFailure(error: error.localizedDescription)
             }
             
+        }) { (error) in
+            self.interactorOutput?.onFailure(error: error.localizedDescription)
+        }
+    }
+    
+    func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler) {
+        
+        datasource.getEpisodes(idSerie: serieID, success: { (response) in
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                if let data = response as? Data {
+                    
+                    let episodes = try decoder.decode([Episode].self, from: data)
+                    
+                    completion(episodes)
+                    
+                } else {
+                    self.interactorOutput?.onFailure(error: "Interactor error: No Data")
+                }
+                
+            } catch {
+                self.interactorOutput?.onFailure(error: error.localizedDescription)
+            }
         }) { (error) in
             self.interactorOutput?.onFailure(error: error.localizedDescription)
         }

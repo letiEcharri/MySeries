@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SearchFavoriteDelegate {
+    func save(serie: Serie)
+    func delete(serie: Int)
+}
+
 class SearchSerieTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgPicture: UIImageView!
@@ -20,6 +25,8 @@ class SearchSerieTableViewCell: UITableViewCell {
     let noFavoriteIcon = UIImage(named: "favIcon")
     
     var serie: Serie?
+    
+    var delegate: SearchFavoriteDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -51,14 +58,14 @@ class SearchSerieTableViewCell: UITableViewCell {
         if sender.view?.tag == 0 {
             sender.view?.tag = 1
             image = favoriteIcon ?? UIImage()
-            if serie?.id != nil {
-                CoreDataManager().save(serie: serie?.name ?? "", id: (serie?.id)!)
+            if serie != nil {
+                delegate?.save(serie: serie!)
             }
         } else {
             sender.view?.tag = 0
             image = noFavoriteIcon ?? UIImage()
             if serie?.id != nil {
-                CoreDataManager().deleteSerie(id: (serie?.id)!)
+                delegate?.delete(serie: (serie?.id)!)
             }
         }
         
@@ -85,8 +92,10 @@ class SearchSerieTableViewCell: UITableViewCell {
         
         if CoreDataManager().exitsSerie(id: serie.id) {
             imgFavorite.image = favoriteIcon
+            imgFavorite.tag = 1
         } else {
             imgFavorite.image = noFavoriteIcon
+            imgFavorite.tag = 0
         }
     }
     

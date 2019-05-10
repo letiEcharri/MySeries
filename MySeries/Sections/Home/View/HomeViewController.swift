@@ -35,7 +35,7 @@ class HomeViewController: ParentViewController {
 extension HomeViewController: HomeViewControllerProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         self.hideBackButton()
         showSpinner()
@@ -52,7 +52,12 @@ extension HomeViewController: HomeViewControllerProtocol {
     
     func updatePending() {
         removeSpinner()
-        tableView.reloadData()
+        if presenter.getPendingEpisodes().count > 0 {
+            tableView.isHidden = false
+            tableView.reloadData()
+        } else {
+            tableView.isHidden = true
+        }
     }
     
     func getViewController() -> HomeViewController {

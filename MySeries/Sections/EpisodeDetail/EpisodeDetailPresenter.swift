@@ -9,7 +9,8 @@
 import Foundation
 
 protocol EpisodeDetailPresenterProtocol: ParentPresenterProtocol {
-    func watch(episode: Int, value: Bool)
+    func watch(episode: Episode, value: Bool)
+    func isWatched(episodeID: Int) -> Bool
 }
 
 class EpisodeDetailPresenter: ParentPresenter {
@@ -24,7 +25,15 @@ class EpisodeDetailPresenter: ParentPresenter {
 }
 
 extension EpisodeDetailPresenter: EpisodeDetailPresenterProtocol {
-    func watch(episode: Int, value: Bool) {
-        CoreDataManager().watchEpisode(id: episode, value: value)
+    func watch(episode: Episode, value: Bool) {
+        if !(CoreDataManager().exitsEpisode(id: episode.id)) {
+            CoreDataManager().save(episode: episode.name ?? "", id: episode.id)
+        }
+        CoreDataManager().watchEpisode(id: episode.id, value: value)
+    }
+    
+    func isWatched(episodeID: Int) -> Bool {
+        let episode = CoreDataManager().fetchEpisode(id: episodeID)
+        return episode.watched
     }
 }

@@ -30,6 +30,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No hay capítulos pendientes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck7-aO-rUf">
+                    <rect key="frame" x="0.0" y="308.5" width="375" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="s5x-Bp-l2K"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9xV-Zx-NHI">
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,7 +56,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9xV-Zx-NHI" secondAttribute="bottom" id="LZC-oB-Ede"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9xV-Zx-NHI" secondAttribute="trailing" id="WfD-KL-c6Q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jh6-EM-30k" secondAttribute="trailing" id="aqL-a3-y7S"/>
+                <constraint firstItem="Ck7-aO-rUf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="auc-tf-MT0"/>
                 <constraint firstItem="9xV-Zx-NHI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cSV-93-5ZI"/>
+                <constraint firstItem="Ck7-aO-rUf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oLR-8N-bcO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ck7-aO-rUf" secondAttribute="trailing" id="zfV-4Y-dZz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

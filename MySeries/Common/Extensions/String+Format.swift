@@ -8,15 +8,21 @@
 
 import UIKit
 
+enum DateFormat: String {
+    case complete = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+    case date = "yyyy-MM-dd"
+    case time = "HH:mm:ss"
+}
+
 extension String {
     func formatDate() -> String {
         let date = self.components(separatedBy: "-")
         return "\(date[2])/\(date[1])/\(date[0])"
     }
     
-    func toDate() -> Date {
+    func toDate(format: DateFormat) -> Date {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        dateFormatter.dateFormat = format.rawValue
         let date = dateFormatter.date(from: self)
         
         return date ?? Date()
