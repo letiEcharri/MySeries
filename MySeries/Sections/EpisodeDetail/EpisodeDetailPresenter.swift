@@ -26,7 +26,7 @@ class EpisodeDetailPresenter: ParentPresenter {
 
 extension EpisodeDetailPresenter: EpisodeDetailPresenterProtocol {
     func watch(episode: Episode, value: Bool) {
-        if !CoreDataManager().exitsEpisode(id: episode.id) {
+        if !(CoreDataManager().exitsEpisode(id: episode.id)) {
             CoreDataManager().save(episode: episode.name ?? "", id: episode.id)
         }
         CoreDataManager().watchEpisode(id: episode.id, value: value)

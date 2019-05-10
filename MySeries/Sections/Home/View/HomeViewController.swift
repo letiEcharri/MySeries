@@ -37,9 +37,6 @@ extension HomeViewController: HomeViewControllerProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        CoreDataManager().deleteAllRecords(entity: .episode)
-        CoreDataManager().fetchEpisode(id: 0)
-
         self.hideBackButton()
         showSpinner()
         presenter.checkNewEpisodes()
