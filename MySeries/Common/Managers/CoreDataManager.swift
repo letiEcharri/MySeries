@@ -216,6 +216,7 @@ class CoreDataManager {
                     if item.id == id {
                         item.watched = value
                         try context.save()
+                        print("Episode watched: \(value)")
                     }
                 }
             }

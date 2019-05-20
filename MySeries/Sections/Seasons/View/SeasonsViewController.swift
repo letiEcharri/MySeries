@@ -127,4 +127,8 @@ extension SeasonsViewController: SeasonsCollectionViewCellDelegate {
     func watch(season: Int) {
         presenter.watch(season: season, serieID: serieID ?? 0)
     }
+    
+    func unwatched(season: Int) {
+        presenter.unwatch(season: season, serieID: serieID ?? 0)
+    }
 }

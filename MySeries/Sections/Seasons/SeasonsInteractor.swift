@@ -12,6 +12,7 @@ protocol SeasonsInteractorProtocol {
     func getSeasons(serieID: Int)
     func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler)
     func wacth(season: Int, serieID: Int)
+    func unwacth(season: Int, serieID: Int)
     func watchedEpisodes(season: Int, serieID: Int, completion: @escaping (_ numberOfEpisodes: Int) -> Void) 
 }
 
@@ -82,6 +83,7 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
     }
     
     func wacth(season: Int, serieID: Int) {
+        
         datasource.getEpisodes(idSerie: serieID, success: { (response) in
             let decoder = JSONDecoder()
             
@@ -133,6 +135,14 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
             }
         } else {
             completion(0)
+        }
+    }
+    
+    func unwacth(season: Int, serieID: Int) {
+        let episodes = CoreDataManager().fetchEpisodes()
+        
+        for item in episodes where (item.serieID == serieID && item.season == season) {
+            CoreDataManager().watchEpisode(id: Int(item.id), value: false)
         }
     }
     

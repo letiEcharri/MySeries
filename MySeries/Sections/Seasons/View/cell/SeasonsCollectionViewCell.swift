@@ -11,6 +11,7 @@ import UIKit
 protocol SeasonsCollectionViewCellDelegate {
     func click(episode: Episode)
     func watch(season: Int)
+    func unwatched(season: Int)
 }
 
 class SeasonsCollectionViewCell: UICollectionViewCell {
@@ -28,6 +29,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     var episodes = [Episode]()
     var seasonNumber = 0
     var serieID: Int?
+    var isWatched = false
     
     var delegate: SeasonsCollectionViewCellDelegate?
     
@@ -51,28 +53,9 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         seasonNumber = info.number ?? 0
     }
     
-    func set(season: SeasonWithEpisodes) {
-        self.episodes = season.episodes
-        set(info: season.season)
-        watched(season.isWatched)
-        
-        var cont = 0
-        for item in season.episodes {
-            let label = UILabel(frame: CGRect(x: 0, y: (CGFloat(cont) * episodeRowHeight) + 5, width: episodesView.frame.width, height: episodeRowHeight))
-            label.font = UIFont(name: "Noteworthy-Light", size: 15)
-            label.text = "\(item.number ?? 0) - \(item.name ?? "")"
-            label.tag = item.id
-            label.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: #selector(goToEpisodeDetailAction(_:)))
-            label.addGestureRecognizer(tap)
-            btnEye.tag = season.season.number ?? 0
-            
-            episodesView.addSubview(label)
-            cont += 1
-        }
-    }
-    
     private func watched(_ value: Bool) {
+        isWatched = value
+        
         var imageName = ""
         if value {
             imageName = "eyeIcon"
@@ -92,6 +75,36 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func watch(_ sender: UIButton) {
-        delegate?.watch(season: seasonNumber)
+
+        if !isWatched {
+            watched(true)
+            delegate?.watch(season: seasonNumber)
+        } else {
+            watched(false)
+            delegate?.unwatched(season: seasonNumber)
+        }
+    }
+    
+    // MARK: Public functions
+    
+    func set(season: SeasonWithEpisodes) {
+        self.episodes = season.episodes
+        set(info: season.season)
+        watched(season.isWatched)
+        
+        var cont = 0
+        for item in season.episodes {
+            let label = UILabel(frame: CGRect(x: 0, y: (CGFloat(cont) * episodeRowHeight) + 5, width: episodesView.frame.width, height: episodeRowHeight))
+            label.font = UIFont(name: "Noteworthy-Light", size: 15)
+            label.text = "\(item.number ?? 0) - \(item.name ?? "")"
+            label.tag = item.id
+            label.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(goToEpisodeDetailAction(_:)))
+            label.addGestureRecognizer(tap)
+            btnEye.tag = season.season.number ?? 0
+            
+            episodesView.addSubview(label)
+            cont += 1
+        }
     }
 }
