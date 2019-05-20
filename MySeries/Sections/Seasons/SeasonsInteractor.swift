@@ -11,10 +11,12 @@ import Foundation
 protocol SeasonsInteractorProtocol {
     func getSeasons(serieID: Int)
     func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler)
+    func wacth(season: Int, serieID: Int)
 }
 
 protocol SeasonsInteractorOutput: class {
     func onSuccess(seasons: [Season], serieID: Int)
+    func onWatchSuccess()
     func onFailure(error: String)
 }
 
@@ -73,6 +75,38 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
             } catch {
                 self.interactorOutput?.onFailure(error: error.localizedDescription)
             }
+        }) { (error) in
+            self.interactorOutput?.onFailure(error: error.localizedDescription)
+        }
+    }
+    
+    func wacth(season: Int, serieID: Int) {
+        datasource.getEpisodes(idSerie: serieID, success: { (response) in
+            let decoder = JSONDecoder()
+            
+            do {
+                if let data = response as? Data {
+                    
+                    let episodes = try decoder.decode([Episode].self, from: data)
+                    
+                    var cont = 0
+                    for item in episodes where (item.season == season) {
+                        CoreDataManager().watchEpisode(id: item.id, value: true)
+                        
+                        cont += 1
+                        if cont == episodes.count {
+                            self.interactorOutput?.onWatchSuccess()
+                        }
+                    }
+                    
+                } else {
+                    self.interactorOutput?.onFailure(error: "Error")
+                }
+                
+            } catch {
+                self.interactorOutput?.onFailure(error: error.localizedDescription)
+            }
+            
         }) { (error) in
             self.interactorOutput?.onFailure(error: error.localizedDescription)
         }

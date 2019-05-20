@@ -10,6 +10,7 @@ import UIKit
 
 protocol SeasonsCollectionViewCellDelegate {
     func click(episode: Episode)
+    func watch(season: Int)
 }
 
 class SeasonsCollectionViewCell: UICollectionViewCell {
@@ -17,9 +18,9 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgPicture: UIImageView!
     @IBOutlet weak var lblSeason: UILabel!
     @IBOutlet weak var lblDates: UILabel!
-    @IBOutlet weak var lblEpisodes: UILabel!
     @IBOutlet weak var imgArrow: UIImageView!
     @IBOutlet weak var episodesView: UIView!
+    @IBOutlet weak var btnEye: UIButton!
     
     var isOpen = false
     var episodeRowHeight: CGFloat = 25
@@ -43,9 +44,9 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     
     private func set(info: Season) {
         imgPicture.imageFromUrl(urlString: info.image?.medium ?? "")
-        lblSeason.text = "TEMPORADA \(info.number ?? 0)"
+        lblSeason.text = "TEMPORADA \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) Caps"
         lblDates.text = "\(info.premiereDate?.formatDate() ?? "") - \(info.endDate?.formatDate() ?? "")"
-        lblEpisodes.text = String(info.episodeOrder ?? 0)
+        //lblEpisodes.text = String(info.episodeOrder ?? 0)
     }
     
     func set(season: SeasonWithEpisodes) {
@@ -61,6 +62,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
             label.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer(target: self, action: #selector(goToEpisodeDetailAction(_:)))
             label.addGestureRecognizer(tap)
+            btnEye.tag = season.season.number ?? 0
             
             episodesView.addSubview(label)
             cont += 1
@@ -73,4 +75,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    @IBAction func watch(_ sender: UIButton) {
+//        delegate?.watch(season: <#T##Int#>)
+    }
 }

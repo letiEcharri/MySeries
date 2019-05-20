@@ -35,6 +35,10 @@ extension SeasonPresenter: SeasonPresenterProtocol {
     func goDetail(episode: Episode) {
         router.pushDetail(episode: episode, view: (view?.getViewController())!)
     }
+    
+    func watch(season: Int, serieID: Int) {
+        interactor.wacth(season: season, serieID: serieID)
+    }
 }
 
 extension SeasonPresenter: SeasonsInteractorOutput {
@@ -58,6 +62,10 @@ extension SeasonPresenter: SeasonsInteractorOutput {
                 }
             }
         }
+    }
+    
+    func onWatchSuccess() {
+        <#code#>
     }
     
     func onFailure(error: String) {

@@ -138,24 +138,26 @@ class CoreDataManager {
     
     func save(episode: String, id: Int) {
         let context = getContext()
-
-        //retrieve the entity
-        let entity =  NSEntityDescription.entity(forEntityName: Entity.episode.rawValue, in: context)
-        let transc = NSManagedObject(entity: entity!, insertInto: context)
-
-        //set the entity values
-        transc.setValue(id, forKey: "id")
-        transc.setValue(episode, forKey: "name")
-        transc.setValue(false, forKey: "watched")
-
-        //save the object
-        do {
-            try context.save()
-            print("Episode saved!")
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        } catch {
-
+        
+        if !exitsEpisode(id: id) {
+            //retrieve the entity
+            let entity =  NSEntityDescription.entity(forEntityName: Entity.episode.rawValue, in: context)
+            let transc = NSManagedObject(entity: entity!, insertInto: context)
+            
+            //set the entity values
+            transc.setValue(id, forKey: "id")
+            transc.setValue(episode, forKey: "name")
+            transc.setValue(false, forKey: "watched")
+            
+            //save the object
+            do {
+                try context.save()
+                print("Episode saved!")
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            } catch {
+                
+            }
         }
     }
     
@@ -212,7 +214,6 @@ class CoreDataManager {
                     if item.id == id {
                         item.watched = value
                         try context.save()
-                        //item.setValue(value, forKey: "watched")
                     }
                 }
             }
