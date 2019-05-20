@@ -13,6 +13,7 @@ struct SeasonWithEpisodes {
     var season: Season
     var episodes: [Episode]
     var isOpen: Bool = false
+    var isWatched = false
     
     init(season: Season, episodes: [Episode]) {
         self.season = season

@@ -12,6 +12,7 @@ protocol SeasonsInteractorProtocol {
     func getSeasons(serieID: Int)
     func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler)
     func wacth(season: Int, serieID: Int)
+    func watchedEpisodes(season: Int, serieID: Int, completion: @escaping (_ numberOfEpisodes: Int) -> Void) 
 }
 
 protocol SeasonsInteractorOutput: class {
@@ -91,6 +92,9 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
                     
                     var cont = 0
                     for item in episodes where (item.season == season) {
+                        if !CoreDataManager().exitsEpisode(id: item.id) {
+                            CoreDataManager().save(episode: item.name ?? "", id: item.id, serieID: serieID, season: season)
+                        }
                         CoreDataManager().watchEpisode(id: item.id, value: true)
                         
                         cont += 1
@@ -100,7 +104,7 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
                     }
                     
                 } else {
-                    self.interactorOutput?.onFailure(error: "Error")
+                    self.interactorOutput?.onFailure(error: "Interactor error: watch episodes")
                 }
                 
             } catch {
@@ -109,6 +113,43 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
             
         }) { (error) in
             self.interactorOutput?.onFailure(error: error.localizedDescription)
+        }
+    }
+    
+    func watchedEpisodes(season: Int, serieID: Int, completion: @escaping (_ numberOfEpisodes: Int) -> Void) {
+        let episodes = CoreDataManager().fetchEpisodes()
+        if episodes.count > 0 {
+            var totalEpisodes = 0
+            
+            var cont = 0
+            for item in episodes {
+                cont += 1
+                if (item.serieID == serieID && item.season == season && item.watched) {
+                    totalEpisodes += 1
+                }
+                if cont == episodes.count {
+                    completion(totalEpisodes)
+                }
+            }
+        } else {
+            completion(0)
+        }
+    }
+    
+    private func isWatched(episodeID: Int, completion: @escaping (_ result: Bool) -> Void) {
+        let episodes = CoreDataManager().fetchEpisodes()
+        
+        var cont = 0
+        for item in episodes {
+            cont += 1
+            
+            if item.id == episodeID {
+                completion(true)
+            }
+            
+            if cont == episodes.count {
+                completion(false)
+            }
         }
     }
 }

@@ -26,6 +26,8 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     var episodeRowHeight: CGFloat = 25
     
     var episodes = [Episode]()
+    var seasonNumber = 0
+    var serieID: Int?
     
     var delegate: SeasonsCollectionViewCellDelegate?
     
@@ -46,12 +48,13 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         imgPicture.imageFromUrl(urlString: info.image?.medium ?? "")
         lblSeason.text = "TEMPORADA \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) Caps"
         lblDates.text = "\(info.premiereDate?.formatDate() ?? "") - \(info.endDate?.formatDate() ?? "")"
-        //lblEpisodes.text = String(info.episodeOrder ?? 0)
+        seasonNumber = info.number ?? 0
     }
     
     func set(season: SeasonWithEpisodes) {
         self.episodes = season.episodes
         set(info: season.season)
+        watched(season.isWatched)
         
         var cont = 0
         for item in season.episodes {
@@ -69,6 +72,19 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private func watched(_ value: Bool) {
+        var imageName = ""
+        if value {
+            imageName = "eyeIcon"
+        } else {
+            imageName = "noWatched"
+        }
+        
+        if let image = UIImage(named: imageName) {
+            btnEye.setBackgroundImage(image, for: .normal)
+        }
+    }
+    
     @objc func goToEpisodeDetailAction(_ sender: UITapGestureRecognizer) {
         for item in episodes where (item.id == sender.view?.tag) {
             delegate?.click(episode: item)
@@ -76,6 +92,6 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func watch(_ sender: UIButton) {
-//        delegate?.watch(season: <#T##Int#>)
+        delegate?.watch(season: seasonNumber)
     }
 }

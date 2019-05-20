@@ -33,7 +33,7 @@ extension SearchSeriePresenter: SearchSeriePresenterProtocol {
     }
     
     func save(serie: Serie) {
-        CoreDataManager().save(serie: serie.name ?? "", id: serie.id)
+        interactor.save(serie: serie)
     }
     
     func delete(serieID: Int) {

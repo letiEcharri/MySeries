@@ -136,7 +136,7 @@ class CoreDataManager {
         }
     }
     
-    func save(episode: String, id: Int) {
+    func save(episode: String, id: Int, serieID: Int, season: Int) {
         let context = getContext()
         
         if !exitsEpisode(id: id) {
@@ -148,6 +148,8 @@ class CoreDataManager {
             transc.setValue(id, forKey: "id")
             transc.setValue(episode, forKey: "name")
             transc.setValue(false, forKey: "watched")
+            transc.setValue(serieID, forKey: "serieID")
+            transc.setValue(season, forKey: "season")
             
             //save the object
             do {

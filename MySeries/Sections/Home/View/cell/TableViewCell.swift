@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TableViewCellDelegate {
-    func click(episode: Episode)
+    func click(episode: Episode, serieID: Int)
 }
 
 class TableViewCell: UITableViewCell {
@@ -62,7 +62,7 @@ class TableViewCell: UITableViewCell {
     
     @objc func goToDetailAction(_ sender: UITapGestureRecognizer) {
         for item in episodes where (item.id == sender.view?.tag) {
-            delegate?.click(episode: item)
+            delegate?.click(episode: item, serieID: serie?.id ?? 0)
         }
     }
     

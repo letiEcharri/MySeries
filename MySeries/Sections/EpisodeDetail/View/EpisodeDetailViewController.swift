@@ -24,6 +24,7 @@ class EpisodeDetailViewController: ParentViewController {
     @IBOutlet weak var btnWatched: UIButton!
     
     var episode: Episode?
+    var serieID: Int?
     
     let presenter: EpisodeDetailPresenterProtocol
     
@@ -41,13 +42,13 @@ class EpisodeDetailViewController: ParentViewController {
             sender.tag = 1
             sender.setBackgroundImage(UIImage(named: "eyeIcon"), for: .normal)
             if episode != nil {
-                presenter.watch(episode: episode!, value: true)
+                presenter.watch(episode: episode!, value: true, serieID: serieID ?? 0)
             }
         } else {
             sender.tag = 0
             sender.setBackgroundImage(UIImage(named: "noWatched"), for: .normal)
             if episode != nil {
-                presenter.watch(episode: episode!, value: false)
+                presenter.watch(episode: episode!, value: false, serieID: serieID ?? 0)
             }
         }
     }

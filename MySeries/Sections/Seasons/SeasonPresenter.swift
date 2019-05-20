@@ -10,7 +10,9 @@ import UIKit
 
 protocol SeasonPresenterProtocol: ParentPresenterProtocol {
     func getSeasons(serieID: Int)
-    func goDetail(episode: Episode)
+    func goDetail(episode: Episode, serieID: Int)
+    func watch(season: Int, serieID: Int)
+    func isWatched(season: Season, serieID: Int, completion: @escaping (_ result: Bool) -> Void)
 }
 
 class SeasonPresenter: ParentPresenter {
@@ -32,12 +34,20 @@ extension SeasonPresenter: SeasonPresenterProtocol {
         interactor.getSeasons(serieID: serieID)
     }
     
-    func goDetail(episode: Episode) {
-        router.pushDetail(episode: episode, view: (view?.getViewController())!)
+    func goDetail(episode: Episode, serieID: Int) {
+        router.pushDetail(episode: episode, serieID: serieID, view: (view?.getViewController())!)
     }
     
     func watch(season: Int, serieID: Int) {
         interactor.wacth(season: season, serieID: serieID)
+    }
+    
+    func isWatched(season: Season, serieID: Int, completion: @escaping (_ result: Bool) -> Void) {
+        
+        interactor.watchedEpisodes(season: season.number ?? 0, serieID: serieID) { (watchedEpisodes) in
+            
+            completion(watchedEpisodes == season.episodeOrder)
+        }
     }
 }
 
@@ -54,18 +64,25 @@ extension SeasonPresenter: SeasonsInteractorOutput {
                 for episode in response where (episode.season == season.number) {
                     episodes.append(episode)
                 }
-                seasonsWithEpisodes.append(SeasonWithEpisodes(season: season, episodes: episodes))
-                cont += 1
                 
-                if cont == seasons.count {
-                    self.view?.update(seasons: seasonsWithEpisodes)
-                }
+                var new = SeasonWithEpisodes(season: season, episodes: episodes)
+                self.isWatched(season: season, serieID: serieID, completion: { (value) in
+                    new.isWatched = value
+                    
+                    seasonsWithEpisodes.append(new)
+                    
+                    cont += 1
+                    
+                    if cont == seasons.count {
+                        self.view?.update(seasons: seasonsWithEpisodes)
+                    }
+                })
             }
         }
     }
     
     func onWatchSuccess() {
-        <#code#>
+        self.view?.updateView()
     }
     
     func onFailure(error: String) {
