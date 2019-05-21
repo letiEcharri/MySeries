@@ -91,20 +91,31 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         self.episodes = season.episodes
         set(info: season.season)
         watched(season.isWatched)
-        
+
         var cont = 0
         for item in season.episodes {
-            let label = UILabel(frame: CGRect(x: 0, y: (CGFloat(cont) * episodeRowHeight) + 5, width: episodesView.frame.width, height: episodeRowHeight))
-            label.font = UIFont(name: "Noteworthy-Light", size: 15)
-            label.text = "\(item.number ?? 0) - \(item.name ?? "")"
-            label.tag = item.id
-            label.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: #selector(goToEpisodeDetailAction(_:)))
-            label.addGestureRecognizer(tap)
+            let epView = EpisodeView(frame: CGRect(x: 0, y: (CGFloat(cont) * episodeRowHeight) + 5, width: self.frame.width - 30, height: episodeRowHeight))
+            epView.set(title: "\(item.number ?? 0) - \(item.name ?? "")")
+            epView.set(parameters: EpisodeView.Parameters(episodeID: item.id, serieID: self.serieID ?? 0))
+            epView.delegate = self
+            episodesView.addSubview(epView)
+            
             btnEye.tag = season.season.number ?? 0
             
-            episodesView.addSubview(label)
             cont += 1
+        }
+    }
+}
+
+extension SeasonsCollectionViewCell: EpisodeViewDelegate {
+    
+    func clickEye(_ parameters: EpisodeView.Parameters) {
+        print("Click")
+    }
+    
+    func clickView(_ parameters: EpisodeView.Parameters) {
+        for item in episodes where (item.id == parameters.episodeID) {
+            delegate?.click(episode: item)
         }
     }
 }
