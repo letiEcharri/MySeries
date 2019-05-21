@@ -13,7 +13,9 @@ protocol SeasonsInteractorProtocol {
     func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler)
     func wacth(season: Int, serieID: Int)
     func unwacth(season: Int, serieID: Int)
-    func watchedEpisodes(season: Int, serieID: Int, completion: @escaping (_ numberOfEpisodes: Int) -> Void) 
+    func watchedEpisodes(season: Int, serieID: Int, completion: @escaping (_ numberOfEpisodes: Int) -> Void)
+    func watch(episode: Int, value: Bool)
+    func isWatched(episode: Int) -> Bool
 }
 
 protocol SeasonsInteractorOutput: class {
@@ -145,6 +147,18 @@ extension SeasonsInteractor: SeasonsInteractorProtocol {
             CoreDataManager().watchEpisode(id: Int(item.id), value: false)
         }
     }
+    
+    func watch(episode: Int, value: Bool) {
+        CoreDataManager().watchEpisode(id: episode, value: value)
+    }
+    
+    func isWatched(episode: Int) -> Bool {
+        let episode = CoreDataManager().fetchEpisode(id: episode)
+        
+        return episode.watched
+    }
+    
+    // MARK: Private functions
     
     private func isWatched(episodeID: Int, completion: @escaping (_ result: Bool) -> Void) {
         let episodes = CoreDataManager().fetchEpisodes()

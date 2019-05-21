@@ -14,6 +14,8 @@ protocol SeasonPresenterProtocol: ParentPresenterProtocol {
     func watch(season: Int, serieID: Int)
     func isWatched(season: Season, serieID: Int, completion: @escaping (_ result: Bool) -> Void)
     func unwatch(season: Int, serieID: Int)
+    func watch(episode: Int, value: Bool)
+    func isWatched(episode: Int) -> Bool
 }
 
 class SeasonPresenter: ParentPresenter {
@@ -53,6 +55,14 @@ extension SeasonPresenter: SeasonPresenterProtocol {
             
             completion(watchedEpisodes == season.episodeOrder)
         }
+    }
+    
+    func watch(episode: Int, value: Bool) {
+        interactor.watch(episode: episode, value: value)
+    }
+    
+    func isWatched(episode: Int) -> Bool {
+        return interactor.isWatched(episode: episode)
     }
 }
 

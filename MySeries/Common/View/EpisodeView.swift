@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EpisodeViewDelegate {
-    func clickEye(_ parameters: EpisodeView.Parameters)
+    func clickEye(episodeID: Int, watch: Bool)
     func clickView(_ parameters: EpisodeView.Parameters)
 }
 
@@ -23,12 +23,16 @@ class EpisodeView: UIView {
     var delegate: EpisodeViewDelegate?
     
     struct Parameters {
-        var episodeID: Int?
-        var serieID: Int?
+        var episodeID: Int
+        var serieID: Int
+        var title: String
+        var isWatched: Bool
         
-        init(episodeID: Int, serieID: Int) {
+        init(episodeID: Int, serieID: Int, title: String, isWatched: Bool) {
             self.episodeID = episodeID
             self.serieID = serieID
+            self.title = title
+            self.isWatched = isWatched
         }
     }
     var parameters: Parameters?
@@ -67,7 +71,13 @@ class EpisodeView: UIView {
     
     @objc private func clickEye(_ sender: UIButton) {
         if let data = parameters {
-            delegate?.clickEye(data)
+            self.parameters?.isWatched = !data.isWatched
+            if (self.parameters?.isWatched)! {
+                btnEye.setBackgroundImage(Constants.Images.Episode.watched ?? UIImage(), for: .normal)
+            } else {
+                btnEye.setBackgroundImage(Constants.Images.Episode.unwatched ?? UIImage(), for: .normal)
+            }
+            delegate?.clickEye(episodeID: data.episodeID, watch: (self.parameters?.isWatched)!)
         }
     }
     
@@ -79,11 +89,14 @@ class EpisodeView: UIView {
     
     // MARK: Public functions
     
-    func set(title: String) {
-        lblTitle.text = title
-    }
-    
     func set(parameters: Parameters) {
         self.parameters = parameters
+        
+        lblTitle.text = parameters.title
+        if parameters.isWatched {
+            btnEye.setBackgroundImage(Constants.Images.Episode.watched ?? UIImage(), for: .normal)
+        } else {
+            btnEye.setBackgroundImage(Constants.Images.Episode.unwatched ?? UIImage(), for: .normal)
+        }
     }
 }

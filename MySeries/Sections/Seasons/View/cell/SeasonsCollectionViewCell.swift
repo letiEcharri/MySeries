@@ -33,6 +33,8 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     
     var delegate: SeasonsCollectionViewCellDelegate?
     
+    var presenter: SeasonPresenterProtocol?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -56,16 +58,14 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     private func watched(_ value: Bool) {
         isWatched = value
         
-        var imageName = ""
+        var image = UIImage()
         if value {
-            imageName = "eyeIcon"
+            image = Constants.Images.Episode.watched ?? UIImage()
         } else {
-            imageName = "noWatched"
+            image = Constants.Images.Episode.unwatched ?? UIImage()
         }
         
-        if let image = UIImage(named: imageName) {
-            btnEye.setBackgroundImage(image, for: .normal)
-        }
+        btnEye.setBackgroundImage(image, for: .normal)
     }
     
     @objc func goToEpisodeDetailAction(_ sender: UITapGestureRecognizer) {
@@ -95,8 +95,11 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         var cont = 0
         for item in season.episodes {
             let epView = EpisodeView(frame: CGRect(x: 0, y: (CGFloat(cont) * episodeRowHeight) + 5, width: self.frame.width - 30, height: episodeRowHeight))
-            epView.set(title: "\(item.number ?? 0) - \(item.name ?? "")")
-            epView.set(parameters: EpisodeView.Parameters(episodeID: item.id, serieID: self.serieID ?? 0))
+            let parameters = EpisodeView.Parameters(episodeID: item.id,
+                                                    serieID: self.serieID ?? 0,
+                                                    title: "\(item.number ?? 0) - \(item.name ?? "")",
+                                                    isWatched: presenter?.isWatched(episode: item.id) ?? false)
+            epView.set(parameters: parameters)
             epView.delegate = self
             episodesView.addSubview(epView)
             
@@ -108,9 +111,16 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
 }
 
 extension SeasonsCollectionViewCell: EpisodeViewDelegate {
-    
-    func clickEye(_ parameters: EpisodeView.Parameters) {
-        print("Click")
+    func clickEye(episodeID: Int, watch: Bool) {
+        if self.isWatched {
+            
+            if !watch {
+                self.watched(false)
+            }
+        } else {
+            // TODO: Check
+        }
+        presenter?.watch(episode: episodeID, value: watch)
     }
     
     func clickView(_ parameters: EpisodeView.Parameters) {

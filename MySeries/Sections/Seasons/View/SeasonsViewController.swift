@@ -89,6 +89,7 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if cell != nil {
             let currentSeason = seasons[indexPath.row]
+            cell?.presenter = presenter
             cell?.serieID = serieID
             cell?.set(season: currentSeason)
             cell?.delegate = self
