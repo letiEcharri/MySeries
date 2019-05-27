@@ -26,6 +26,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     var isOpen = false
     var episodeRowHeight: CGFloat = 25
     
+    var season: Season?
     var episodes = [Episode]()
     var seasonNumber = 0
     var serieID: Int?
@@ -88,6 +89,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     // MARK: Public functions
     
     func set(season: SeasonWithEpisodes) {
+        self.season = season.season
         self.episodes = season.episodes
         set(info: season.season)
         watched(season.isWatched)
@@ -112,15 +114,14 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
 
 extension SeasonsCollectionViewCell: EpisodeViewDelegate {
     func clickEye(episodeID: Int, watch: Bool) {
-        if self.isWatched {
-            
-            if !watch {
-                self.watched(false)
-            }
-        } else {
-            // TODO: Check
-        }
+        
         presenter?.watch(episode: episodeID, value: watch)
+        
+        if self.season != nil {
+            presenter?.isWatched(season: season!, serieID: serieID ?? 0, completion: { (response) in
+                self.watched(response)
+            })
+        }
     }
     
     func clickView(_ parameters: EpisodeView.Parameters) {
