@@ -54,7 +54,7 @@ class EpisodeView: UIView {
         
         // Button Eye
         btnEye.frame = CGRect(x: self.frame.width - height, y: 0, width: height, height: height)
-        btnEye.setBackgroundImage(UIImage(named: "noWatched"), for: .normal)
+        btnEye.setBackgroundImage(Constants.Images.Episode.unwatched, for: .normal)
         btnEye.addTarget(self, action: #selector(clickEye(_:)), for: .touchUpInside)
         self.addSubview(btnEye)
         
@@ -97,6 +97,14 @@ class EpisodeView: UIView {
             btnEye.setBackgroundImage(Constants.Images.Episode.watched ?? UIImage(), for: .normal)
         } else {
             btnEye.setBackgroundImage(Constants.Images.Episode.unwatched ?? UIImage(), for: .normal)
+        }
+    }
+    
+    func watch(_ value: Bool) {
+        if value {
+            self.btnEye.setBackgroundImage(Constants.Images.Episode.watched, for: .normal)
+        } else {
+            self.btnEye.setBackgroundImage(Constants.Images.Episode.unwatched, for: .normal)
         }
     }
 }

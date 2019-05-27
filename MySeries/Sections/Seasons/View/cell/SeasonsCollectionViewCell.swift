@@ -30,7 +30,6 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     var episodes = [Episode]()
     var seasonNumber = 0
     var serieID: Int?
-    var isWatched = false
     
     var delegate: SeasonsCollectionViewCellDelegate?
     
@@ -44,11 +43,6 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     private func set(info: Season) {
         imgPicture.imageFromUrl(urlString: info.image?.medium ?? "")
         lblSeason.text = "TEMPORADA \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) Caps"
@@ -57,8 +51,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     }
     
     private func watched(_ value: Bool) {
-        isWatched = value
-        
+
         var image = UIImage()
         if value {
             image = Constants.Images.Episode.watched ?? UIImage()
@@ -76,14 +69,21 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func watch(_ sender: UIButton) {
-
-        if !isWatched {
-            watched(true)
-            delegate?.watch(season: seasonNumber)
-        } else {
-            watched(false)
-            delegate?.unwatched(season: seasonNumber)
-        }
+        sender.isEnabled = false
+        
+        presenter?.isWatched(season: season!, serieID: serieID ?? 0, completion: { (response) in
+            sender.isEnabled = true
+            
+            if response {
+                self.watched(false)
+                self.watchFullSeason(false)
+                self.delegate?.unwatched(season: self.seasonNumber)
+            } else {
+                self.watched(true)
+                self.watchFullSeason(true)
+                self.delegate?.watch(season: self.seasonNumber)
+            }
+        })
     }
     
     // MARK: Public functions
@@ -108,6 +108,14 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
             btnEye.tag = season.season.number ?? 0
             
             cont += 1
+        }
+    }
+    
+    func watchFullSeason(_ value: Bool) {
+        for item in episodesView.subviews where (item is EpisodeView) {
+            if let epView = item as? EpisodeView {
+                epView.watch(value)
+            }
         }
     }
 }
