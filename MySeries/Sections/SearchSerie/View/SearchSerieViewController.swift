@@ -14,9 +14,15 @@ protocol SearchSerieViewControllerProtocol: ParentViewControllerProtocol {
 
 class SearchSerieViewController: ParentViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(SearchSerieTableViewCell.nib, forCellReuseIdentifier: SearchSerieTableViewCell.cellID)
+            tableView.rowHeight = 90
+            tableView.tableFooterView = UIView() //Clear extra lines
+        }
+    }
     
-    let celID = "cellSearchSerie"
+//    let celID = "cellSearchSerie"
     var series = [SearchSerieModel]()
     
     //Search Bar
@@ -39,10 +45,6 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "SearchSerieTableViewCell", bundle: nil), forCellReuseIdentifier: celID)
-        tableView.rowHeight = 90
-        tableView.tableFooterView = UIView() //Clear extra lines
         
         configureSearchBar()
     }
@@ -69,7 +71,7 @@ extension SearchSerieViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! SearchSerieTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchSerieTableViewCell.cellID, for: indexPath) as! SearchSerieTableViewCell
         
         let serie = series[indexPath.row]
         

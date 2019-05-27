@@ -15,9 +15,13 @@ protocol HomeViewControllerProtocol: ParentViewControllerProtocol {
 
 class HomeViewController: ParentViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    let celID = "homeCell"
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.cellID)
+            tableView.rowHeight = 120
+            tableView.tableFooterView = UIView() //Clear extra lines
+        }
+    }
     
     let presenter: HomePresenterProtocol
     
@@ -45,9 +49,7 @@ extension HomeViewController: HomeViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: celID)
-        tableView.rowHeight = 120
-        tableView.tableFooterView = UIView() //Clear extra lines
+        
     }
     
     func updatePending() {
@@ -71,7 +73,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.cellID, for: indexPath) as! TableViewCell
         
         let serie = presenter.getPendingEpisodes()[indexPath.row]
         
@@ -86,12 +88,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.goDetail(row: indexPath.row)
+        let selected = presenter.getPendingEpisodes()[indexPath.row]
+        presenter.goDetail(serie: selected)
     }
 }
 
 extension HomeViewController: TableViewCellDelegate {
-    func click(episode: Episode) {
-        presenter.show(episode: episode)
+    func click(episode: Episode, serieID: Int) {
+        presenter.show(episode: episode, serieID: serieID)
     }
 }

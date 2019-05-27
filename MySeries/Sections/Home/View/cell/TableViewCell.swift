@@ -9,15 +9,30 @@
 import UIKit
 
 protocol TableViewCellDelegate {
-    func click(episode: Episode)
+    func click(episode: Episode, serieID: Int)
 }
 
 class TableViewCell: UITableViewCell {
     
+    static let cellID = "homeCell"
+    
+    static var nib:UINib {
+        return UINib(nibName: "TableViewCell", bundle: nil)
+    }
+    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var imgPicture: UIImageView!
     @IBOutlet weak var episodesView: UIView!
-    @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var containerView: UIView! {
+        didSet {
+            containerView.layer.borderColor = UIColor.lightGray.cgColor
+            containerView.layer.borderWidth = 1
+            containerView.layer.cornerRadius = 10.0
+            containerView.layer.masksToBounds = true
+        }
+    }
+    
     @IBOutlet weak var lblEpisodeTop: UILabel!
     @IBOutlet weak var lblEpisodeCenter: UILabel!
     @IBOutlet weak var lblEpisodeBottom: UILabel!
@@ -29,29 +44,10 @@ class TableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureView()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    private func configureView() {
-        if containerView != nil {
-            containerView.layer.borderColor = UIColor.lightGray.cgColor
-            containerView.layer.borderWidth = 1
-            containerView.layer.cornerRadius = 10.0
-            containerView.layer.masksToBounds = true
-        }
     }
     
     private func addButtonWith(label: UILabel) {
@@ -62,7 +58,7 @@ class TableViewCell: UITableViewCell {
     
     @objc func goToDetailAction(_ sender: UITapGestureRecognizer) {
         for item in episodes where (item.id == sender.view?.tag) {
-            delegate?.click(episode: item)
+            delegate?.click(episode: item, serieID: serie?.id ?? 0)
         }
     }
     

@@ -14,9 +14,15 @@ protocol SeriesViewControllerProtocol {
 
 class SeriesViewController: ParentViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(SerieListTableViewCell.nib, forCellReuseIdentifier: SerieListTableViewCell.cellID)
+            tableView.rowHeight = 50
+            tableView.tableFooterView = UIView() //Clear extra lines
+        }
+    }
     
-    let celID = "seriesCell"
+//    let celID = "seriesCell"
     var series = [CDSerie]()
     
     //Search Bar
@@ -48,13 +54,11 @@ extension SeriesViewController: SeriesViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "SerieListTableViewCell", bundle: nil), forCellReuseIdentifier: celID)
-        tableView.rowHeight = 50
-        tableView.tableFooterView = UIView() //Clear extra lines
-        
         configureSearchBar()
         
-        series = CoreDataManager().fetchSeries().sorted(by: { ($0.value(forKeyPath: "name") as! String).localizedCaseInsensitiveCompare(($1.value(forKeyPath: "name") as! String)) == ComparisonResult.orderedAscending } )
+        presenter.getSeries { (response) in
+            self.series = response
+        }
     }
     
     private func configureSearchBar() {
@@ -76,7 +80,7 @@ extension SeriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: celID, for: indexPath) as! SerieListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SerieListTableViewCell.cellID, for: indexPath) as! SerieListTableViewCell
         
         var serie: CDSerie?
         

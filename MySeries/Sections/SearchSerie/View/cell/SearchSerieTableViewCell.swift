@@ -15,14 +15,20 @@ protocol SearchFavoriteDelegate {
 
 class SearchSerieTableViewCell: UITableViewCell {
     
+    static let cellID = "cellSearchSerie"
+    
+    static var nib:UINib {
+        return UINib(nibName: "SearchSerieTableViewCell", bundle: nil)
+    }
+    
     @IBOutlet weak var imgPicture: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblGenres: UILabel!
     @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var imgFavorite: UIImageView!
     
-    let favoriteIcon = UIImage(named: "favIconFull")
-    let noFavoriteIcon = UIImage(named: "favIcon")
+    let favoriteIcon = Constants.Images.Favorite.favorite
+    let noFavoriteIcon = Constants.Images.Favorite.noFavorite
     
     var serie: Serie?
     
@@ -30,26 +36,10 @@ class SearchSerieTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configureView()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    private func configureView() {
     }
     
     @objc private func favoriteAction(_ sender: UITapGestureRecognizer) {

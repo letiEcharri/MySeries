@@ -17,13 +17,15 @@ class EpisodeDetailRouter: ParentRouter {
 extension EpisodeDetailRouter: RouterFactory {
     static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController {
         let router = EpisodeDetailRouter(mainRouter: mainRouter)
-        let presenter = EpisodeDetailPresenter(router: router)
+        let interactor = EpisodeDetailInteractor()
+        let presenter = EpisodeDetailPresenter(router: router, interactor: interactor)
         let view = EpisodeDetailViewController(presenter: presenter)
         
         presenter.view = view
         
-        if let episode = parameters as? Episode {
-            view.episode = episode
+        if let myParameters = parameters as? EpisodeDetailParameters {
+            view.episode = myParameters.episode
+            view.serieID = myParameters.serieID
         }
         
         return view
@@ -31,4 +33,14 @@ extension EpisodeDetailRouter: RouterFactory {
 }
 
 extension EpisodeDetailRouter: EpisodeDetailRouterProtocol {
+}
+
+struct EpisodeDetailParameters {
+    var episode: Episode
+    var serieID: Int
+    
+    init(episode: Episode, serieID: Int) {
+        self.episode = episode
+        self.serieID = serieID
+    }
 }

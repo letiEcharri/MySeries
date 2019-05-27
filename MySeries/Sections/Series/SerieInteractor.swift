@@ -10,6 +10,7 @@ import Foundation
 
 protocol SerieInteractorProtocol {
     func searchSerie(id: Int)
+    func getSeries(completion: @escaping (_ series: [CDSerie]) -> Void)
 }
 
 protocol SerieInteractorOutput: class {
@@ -48,5 +49,11 @@ extension SerieInteractor: SerieInteractorProtocol {
         }) { (error) in
             self.interactorOutput?.onFailure(error: error.localizedDescription)
         }
+    }
+    
+    func getSeries(completion: @escaping ([CDSerie]) -> Void) {
+        let series = CoreDataManager().fetchSeries().sorted(by: { ($0.value(forKeyPath: "name") as! String).localizedCaseInsensitiveCompare(($1.value(forKeyPath: "name") as! String)) == ComparisonResult.orderedAscending } )
+        
+        completion(series)
     }
 }

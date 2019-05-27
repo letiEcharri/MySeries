@@ -9,31 +9,32 @@
 import Foundation
 
 protocol EpisodeDetailPresenterProtocol: ParentPresenterProtocol {
-    func watch(episode: Episode, value: Bool)
-    func isWatched(episodeID: Int) -> Bool
+    func watch(episode: Episode, value: Bool, serieID: Int)
+    func isWatched(episodeID: Int, completion: @escaping (_ value: Bool) -> Void)
 }
 
 class EpisodeDetailPresenter: ParentPresenter {
     
     var view: EpisodeDetailViewControllerProtocol?
     let router: EpisodeDetailRouterProtocol
+    let interactor: EpisodeDetailInteractorProtocol
     
-    init(router: EpisodeDetailRouterProtocol) {
+    init(router: EpisodeDetailRouterProtocol, interactor: EpisodeDetailInteractorProtocol) {
         self.router = router
+        self.interactor = interactor
         super.init(parentRouter: router)
     }
 }
 
 extension EpisodeDetailPresenter: EpisodeDetailPresenterProtocol {
-    func watch(episode: Episode, value: Bool) {
-        if !(CoreDataManager().exitsEpisode(id: episode.id)) {
-            CoreDataManager().save(episode: episode.name ?? "", id: episode.id)
-        }
-        CoreDataManager().watchEpisode(id: episode.id, value: value)
+    
+    func watch(episode: Episode, value: Bool, serieID: Int) {
+        interactor.watch(episode:episode, value: value, serieID: serieID)
     }
     
-    func isWatched(episodeID: Int) -> Bool {
-        let episode = CoreDataManager().fetchEpisode(id: episodeID)
-        return episode.watched
+    func isWatched(episodeID: Int, completion: @escaping (Bool) -> Void) {
+        interactor.getEpisode(episodeID: episodeID) { (response) in
+            completion(response.watched)
+        }
     }
 }

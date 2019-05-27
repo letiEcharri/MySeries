@@ -6,7 +6,7 @@
 //  Copyright © 2019 Leticia. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants {
     struct URL {
@@ -24,6 +24,18 @@ struct Constants {
         struct Parameters {
             static let season = "season"
             static let number = "number"
+        }
+    }
+    
+    struct Images {
+        struct Episode {
+            static let watched = UIImage(named: "eyeIcon")
+            static let unwatched = UIImage(named: "noWatched")
+        }
+        
+        struct Favorite {
+            static let favorite = UIImage(named: "favIconFull")
+            static let noFavorite = UIImage(named: "favIcon")
         }
     }
 }
