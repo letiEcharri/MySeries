@@ -13,6 +13,7 @@ protocol HomePresenterProtocol: ParentPresenterProtocol {
     func getPendingEpisodes() -> [SerieEpisodes]
     func show(episode: Episode, serieID: Int)
     func goDetail(serie: SerieEpisodes)
+    func cleanEpisodes()
 }
 
 class HomePresenter: ParentPresenter {
@@ -94,6 +95,10 @@ extension HomePresenter: HomePresenterProtocol {
     
     func goDetail(serie: SerieEpisodes) {
         router.pushDetail(serie: serie.serie, view: (view?.getViewController())!)
+    }
+    
+    func cleanEpisodes() {
+        self.pendingSeries = [SerieEpisodes]()
     }
     
     

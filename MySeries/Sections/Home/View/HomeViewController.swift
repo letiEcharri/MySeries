@@ -42,22 +42,29 @@ extension HomeViewController: HomeViewControllerProtocol {
         super.viewWillAppear(animated)
         
         self.hideBackButton()
+        
         showSpinner()
+        presenter.cleanEpisodes()
+        tableView.reloadData()
         presenter.checkNewEpisodes()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     func updatePending() {
-        removeSpinner()
+        
         if presenter.getPendingEpisodes().count > 0 {
             tableView.isHidden = false
-            tableView.reloadData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { 
+                self.removeSpinner()
+                self.tableView.reloadData()
+            }
         } else {
+            removeSpinner()
             tableView.isHidden = true
         }
     }
