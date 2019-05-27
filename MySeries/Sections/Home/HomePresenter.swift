@@ -62,11 +62,12 @@ extension HomePresenter: HomePresenterProtocol {
                             if (cont == savedSeries.count && epCont == rEpisodes.count) {
                                 self.view?.updatePending()
                             }
+                            
+                            self.view?.updatePending()
                         })
                     }
                 }
             }
-            self.view?.updatePending()
         }
     }
     
