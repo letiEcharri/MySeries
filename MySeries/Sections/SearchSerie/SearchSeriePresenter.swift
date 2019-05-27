@@ -37,7 +37,7 @@ extension SearchSeriePresenter: SearchSeriePresenterProtocol {
     }
     
     func delete(serieID: Int) {
-        CoreDataManager().deleteSerie(id: serieID)
+        interactor.delete(serieID: serieID)
     }
 }
 

@@ -16,6 +16,12 @@ protocol SeasonsCollectionViewCellDelegate {
 
 class SeasonsCollectionViewCell: UICollectionViewCell {
     
+    static let cellID = "seasonCell"
+    
+    static var nib:UINib {
+        return UINib(nibName: "SeasonsCollectionViewCell", bundle: nil)
+    }
+    
     @IBOutlet weak var imgPicture: UIImageView!
     @IBOutlet weak var lblSeason: UILabel!
     @IBOutlet weak var lblDates: UILabel!

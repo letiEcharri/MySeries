@@ -32,5 +32,10 @@ struct Constants {
             static let watched = UIImage(named: "eyeIcon")
             static let unwatched = UIImage(named: "noWatched")
         }
+        
+        struct Favorite {
+            static let favorite = UIImage(named: "favIconFull")
+            static let noFavorite = UIImage(named: "favIcon")
+        }
     }
 }

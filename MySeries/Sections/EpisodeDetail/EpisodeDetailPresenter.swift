@@ -10,7 +10,7 @@ import Foundation
 
 protocol EpisodeDetailPresenterProtocol: ParentPresenterProtocol {
     func watch(episode: Episode, value: Bool, serieID: Int)
-    func isWatched(episodeID: Int) -> Bool
+    func isWatched(episodeID: Int, completion: @escaping (_ value: Bool) -> Void)
 }
 
 class EpisodeDetailPresenter: ParentPresenter {
@@ -27,12 +27,14 @@ class EpisodeDetailPresenter: ParentPresenter {
 }
 
 extension EpisodeDetailPresenter: EpisodeDetailPresenterProtocol {
+    
     func watch(episode: Episode, value: Bool, serieID: Int) {
         interactor.watch(episode:episode, value: value, serieID: serieID)
     }
     
-    func isWatched(episodeID: Int) -> Bool {
-        let episode = CoreDataManager().fetchEpisode(id: episodeID)
-        return episode.watched
+    func isWatched(episodeID: Int, completion: @escaping (Bool) -> Void) {
+        interactor.getEpisode(episodeID: episodeID) { (response) in
+            completion(response.watched)
+        }
     }
 }

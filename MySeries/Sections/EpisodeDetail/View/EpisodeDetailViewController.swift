@@ -74,11 +74,13 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
         lblRuntime.text = "\(episode?.runtime ?? 0) min"
         txtSumary.text = episode?.summary?.htmlToString
         
-        var imageWatched = ""
-        (presenter.isWatched(episodeID: (episode?.id)!)) ? (imageWatched = "eyeIcon") : (imageWatched = "noWatched")
-        
-        btnWatched.setBackgroundImage(UIImage(named: imageWatched), for: .normal)
-        btnWatched.tag = (presenter.isWatched(episodeID: (episode?.id)!)) ? 1 : 0
+        var imageWatched = UIImage()
+        presenter.isWatched(episodeID: (episode?.id)!) { (response) in
+            (response) ? (imageWatched = Constants.Images.Episode.watched ?? UIImage()) : (imageWatched = Constants.Images.Episode.unwatched ?? UIImage())
+            
+            self.btnWatched.setBackgroundImage(imageWatched, for: .normal)
+            self.btnWatched.tag = (response) ? 1 : 0
+        }  
     }
     
     

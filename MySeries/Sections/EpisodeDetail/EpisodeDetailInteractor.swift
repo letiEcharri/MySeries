@@ -11,6 +11,7 @@ import Foundation
 protocol EpisodeDetailInteractorProtocol {
     
     func watch(episode: Episode, value: Bool, serieID: Int)
+    func getEpisode(episodeID: Int, compeltion: @escaping (_ episode: CDEpisode) -> Void)
 }
 
 class EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
@@ -24,5 +25,11 @@ class EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
             CoreDataManager().save(episode: episode.name ?? "", id: episode.id, serieID: serieID, season: episode.season ?? 0)
         }
         CoreDataManager().watchEpisode(id: episode.id, value: value)
+    }
+    
+    func getEpisode(episodeID: Int, compeltion: @escaping (CDEpisode) -> Void) {
+        let episode = CoreDataManager().fetchEpisode(id: episodeID)
+        
+        compeltion(episode)
     }
 }

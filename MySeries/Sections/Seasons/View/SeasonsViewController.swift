@@ -16,11 +16,23 @@ protocol SeasonsViewControllerProtocol {
 
 class SeasonsViewController: ParentViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.register(SeasonsCollectionViewCell.nib, forCellWithReuseIdentifier: SeasonsCollectionViewCell.cellID)
+            
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 70)
+            layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+            layout.minimumLineSpacing = 1.0
+            layout.minimumInteritemSpacing = 1.0
+            collectionView.setCollectionViewLayout(layout, animated: true)
+            collectionView.reloadData()
+        }
+    }
     
     var serieID: Int?
     var seasons = [SeasonWithEpisodes]()
-    let cellID = "seasonCell"
     var selectedIndexPath: IndexPath?
 
     let presenter: SeasonPresenterProtocol
@@ -37,14 +49,8 @@ class SeasonsViewController: ParentViewController {
 
 extension SeasonsViewController: SeasonsViewControllerProtocol {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setCellSize()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: "SeasonsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellID)
         
         showSpinner()
         presenter.getSeasons(serieID: serieID ?? 0)
@@ -63,20 +69,6 @@ extension SeasonsViewController: SeasonsViewControllerProtocol {
     func updateView() {
         collectionView.reloadData()
     }
-    
-    // Private functions
-    
-    private func setCellSize() {
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 70)
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.minimumLineSpacing = 1.0
-        layout.minimumInteritemSpacing = 1.0
-        collectionView.setCollectionViewLayout(layout, animated: true)
-        collectionView.reloadData()
-    }
 }
 
 extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -85,7 +77,7 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SeasonsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeasonsCollectionViewCell.cellID, for: indexPath) as? SeasonsCollectionViewCell
         
         if cell != nil {
             let currentSeason = seasons[indexPath.row]

@@ -11,6 +11,7 @@ import UIKit
 protocol SeriesPresenterProtocol: ParentPresenterProtocol {
     func navigateToDetail(serie: CDSerie)
     func navigateToSeasons(episodes: [Episode])
+    func getSeries(completion: @escaping ([CDSerie]) -> Void)
 }
 
 class SeriesPresenter: ParentPresenter {
@@ -32,6 +33,12 @@ extension SeriesPresenter: SeriesPresenterProtocol {
     
     func navigateToSeasons(episodes: [Episode]) {
         router.pushSeasons(view: (view?.getViewController())!, episodes: episodes)
+    }
+    
+    func getSeries(completion: @escaping ([CDSerie]) -> Void) {
+        interactor.getSeries { (response) in
+            completion(response)
+        }
     }
 }
 

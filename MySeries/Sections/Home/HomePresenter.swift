@@ -32,40 +32,42 @@ class HomePresenter: ParentPresenter {
 
 extension HomePresenter: HomePresenterProtocol {
     func checkNewEpisodes() {
-        let savedSeries = CoreDataManager().fetchSeries()
-        
-        if savedSeries.count > 0 {
-            self.pendingSeries.removeAll()
+        interactor.getSeries { (response) in
+            let savedSeries = response
             
-            var cont = 0
-            for item in savedSeries {
+            if savedSeries.count > 0 {
+                self.pendingSeries.removeAll()
                 
-                interactor.searchSerie(id: Int(item.id)) { rSerie in
-                    self.interactor.searchEpisodes(id: Int(item.id), completion: { rEpisodes in
-                        var pendingEpisodes = [Episode]()
-                        var epCont = 0
-                        
-                        cont += 1
-                        for ep in rEpisodes {
-                            epCont += 1
-                            if self.isPending(episode: ep) {
-                                pendingEpisodes.append(ep)
+                var cont = 0
+                for item in savedSeries {
+                    
+                    self.interactor.searchSerie(id: Int(item.id)) { rSerie in
+                        self.interactor.searchEpisodes(id: Int(item.id), completion: { rEpisodes in
+                            var pendingEpisodes = [Episode]()
+                            var epCont = 0
+                            
+                            cont += 1
+                            for ep in rEpisodes {
+                                epCont += 1
+                                if self.isPending(episode: ep) {
+                                    pendingEpisodes.append(ep)
+                                }
                             }
-                        }
-                        
-                        if pendingEpisodes.count > 0 {
-                            let newSerie = SerieEpisodes(serie: rSerie, episodes: pendingEpisodes)
-                            self.pendingSeries.append(newSerie)
-                        }
-                        
-                        if (cont == savedSeries.count && epCont == rEpisodes.count) {
-                            self.view?.updatePending()
-                        }
-                    })
+                            
+                            if pendingEpisodes.count > 0 {
+                                let newSerie = SerieEpisodes(serie: rSerie, episodes: pendingEpisodes)
+                                self.pendingSeries.append(newSerie)
+                            }
+                            
+                            if (cont == savedSeries.count && epCont == rEpisodes.count) {
+                                self.view?.updatePending()
+                            }
+                        })
+                    }
                 }
             }
+            self.view?.updatePending()
         }
-        self.view?.updatePending()
     }
     
     func getPendingEpisodes() -> [SerieEpisodes] {
@@ -76,7 +78,7 @@ extension HomePresenter: HomePresenterProtocol {
     private func getFirstPending(episodes: [Episode]) -> Date {
         
         for item in episodes {
-            let ep = CoreDataManager().fetchEpisode(id: item.id)
+            let ep = interactor.get(episode: item.id)
             if !ep.watched {
                 return item.airdate?.toDate(format: .date) ?? Date()
             }
@@ -97,7 +99,7 @@ extension HomePresenter: HomePresenterProtocol {
     // Private functions
     
     private func isPending(episode: Episode) -> Bool {
-        let savedEpisode = CoreDataManager().fetchEpisode(id: episode.id)
+        let savedEpisode = interactor.get(episode: episode.id)
         let epiDate = episode.airstamp?.toDate(format: .complete) ?? Date()
         
         if savedEpisode.watched && epiDate <= Date() {

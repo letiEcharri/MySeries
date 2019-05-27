@@ -11,6 +11,8 @@ import Foundation
 protocol HomeInteractorProtocol {
     func searchSerie(id: Int, completion: @escaping CompletionSerieHandler)
     func searchEpisodes(id: Int, completion: @escaping CompletionEpisodeHandler)
+    func getSeries(completion: @escaping (_ series: [CDSerie]) -> Void)
+    func get(episode: Int) -> CDEpisode
 }
 
 protocol HomeInteractorOutput: class {
@@ -93,5 +95,13 @@ extension HomeInteractor: HomeInteractorProtocol {
         }) { (error) in
             self.interactorOutput?.onFailure(error: error.localizedDescription)
         }
+    }
+    
+    func getSeries(completion: @escaping ([CDSerie]) -> Void) {
+        completion(CoreDataManager().fetchSeries())
+    }
+    
+    func get(episode: Int) -> CDEpisode {
+        return CoreDataManager().fetchEpisode(id: episode)
     }
 }

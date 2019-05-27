@@ -12,6 +12,7 @@ protocol SearchSerieInteractorProtocol {
     func searchSerie(text: String)
     func getEpisodes(serieID: Int, completion: @escaping CompletionEpisodeHandler)
     func save(serie: Serie)
+    func delete(serieID: Int)
 }
 
 protocol SearchSerieInteractorOutput: class {
@@ -78,5 +79,9 @@ extension SearchSerieInteractor: SearchSerieInteractorProtocol {
     
     func save(serie: Serie) {
         CoreDataManager().save(serie: serie.name ?? "", id: serie.id)
+    }
+    
+    func delete(serieID: Int) {
+        CoreDataManager().deleteSerie(id: serieID)
     }
 }
