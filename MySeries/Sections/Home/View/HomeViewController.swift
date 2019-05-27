@@ -88,7 +88,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.goDetail(row: indexPath.row)
+        let selected = presenter.getPendingEpisodes()[indexPath.row]
+        presenter.goDetail(serie: selected)
     }
 }
 
