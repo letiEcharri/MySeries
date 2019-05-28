@@ -117,14 +117,20 @@
                         <constraint firstAttribute="width" constant="60" id="d60-s8-EtW"/>
                     </constraints>
                     <state key="normal" backgroundImage="left-arrow"/>
+                    <connections>
+                        <action selector="moveEpisodeAction:" destination="-1" eventType="touchUpInside" id="YJ3-Wq-jRj"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUb-vw-6Qk">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUb-vw-6Qk">
                     <rect key="frame" x="315" y="597" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="2Ab-55-HyC"/>
                         <constraint firstAttribute="height" constant="60" id="Ckf-I9-eME"/>
                     </constraints>
                     <state key="normal" backgroundImage="right-arrow"/>
+                    <connections>
+                        <action selector="moveEpisodeAction:" destination="-1" eventType="touchUpInside" id="lMd-Wx-Kef"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

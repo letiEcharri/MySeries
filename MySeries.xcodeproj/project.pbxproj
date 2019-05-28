@@ -69,6 +69,7 @@
 		26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DF1722318B5A006ACFCC /* SeriesPresenter.swift */; };
 		26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DF1A22318B73006ACFCC /* SeriesViewController.swift */; };
 		26C6DF1D22318B73006ACFCC /* SeriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C6DF1B22318B73006ACFCC /* SeriesViewController.xib */; };
+		26F44627229D394800F3BEF6 /* EpisodeDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F44626229D394800F3BEF6 /* EpisodeDetailDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		26C6DF1722318B5A006ACFCC /* SeriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesPresenter.swift; sourceTree = "<group>"; };
 		26C6DF1A22318B73006ACFCC /* SeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		26C6DF1B22318B73006ACFCC /* SeriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesViewController.xib; sourceTree = "<group>"; };
+		26F44626229D394800F3BEF6 /* EpisodeDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				26616B54223A7176008CB7AB /* EpisodeDetailRouter.swift */,
 				26BC5AAE2292E6C000991503 /* EpisodeDetailInteractor.swift */,
 				26616B56223A71D2008CB7AB /* EpisodeDetailPresenter.swift */,
+				26F44626229D394800F3BEF6 /* EpisodeDetailDataSource.swift */,
 				26616B4F223A7036008CB7AB /* View */,
 			);
 			path = EpisodeDetail;
@@ -572,6 +575,7 @@
 				26036DDF2237CE2100EACA1B /* ParentRouter.swift in Sources */,
 				26616B6B223AB49A008CB7AB /* SeasonsDataSource.swift in Sources */,
 				26616B65223AA390008CB7AB /* SeasonsRouter.swift in Sources */,
+				26F44627229D394800F3BEF6 /* EpisodeDetailDataSource.swift in Sources */,
 				261C9DDF22410C2700C1BBAA /* SearchSeriePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

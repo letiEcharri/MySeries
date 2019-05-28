@@ -12,11 +12,21 @@ protocol EpisodeDetailInteractorProtocol {
     
     func watch(episode: Episode, value: Bool, serieID: Int)
     func getEpisode(episodeID: Int, compeltion: @escaping (_ episode: CDEpisode) -> Void)
+    func getEpisode(serieID: Int, season: Int, number: Int)
+}
+
+protocol EpisodeDetailInteractorOutput: class {
+    func onSuccess(espisode: Episode)
+    func onFailure(error: String)
 }
 
 class EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
     
-    init() {
+    let datasource: EpisodeDetailDataSourceProtocol
+    weak var interactorOutput: EpisodeDetailInteractorOutput?
+    
+    init(datasource: EpisodeDetailDataSourceProtocol) {
+        self.datasource = datasource
     }
     
     func watch(episode: Episode, value: Bool, serieID: Int) {
@@ -31,5 +41,28 @@ class EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
         let episode = CoreDataManager().fetchEpisode(id: episodeID)
         
         compeltion(episode)
+    }
+    
+    func getEpisode(serieID: Int, season: Int, number: Int) {
+        datasource.searchEpisode(id: serieID, season: season, number: number, success: { (response) in
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                if let dataSerie = response as? Data {
+                    let episode = try decoder.decode(Episode.self, from: dataSerie)
+                    self.interactorOutput?.onSuccess(espisode: episode)
+                    
+                } else {
+                    self.interactorOutput?.onFailure(error: "Interactor error: No Data")
+                }
+                
+            } catch {
+                self.interactorOutput?.onFailure(error: error.localizedDescription)
+            }
+            
+        }) { (error) in
+            self.interactorOutput?.onFailure(error: error.localizedDescription)
+        }
     }
 }

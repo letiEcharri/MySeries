@@ -11,6 +11,7 @@ import Foundation
 protocol EpisodeDetailPresenterProtocol: ParentPresenterProtocol {
     func watch(episode: Episode, value: Bool, serieID: Int)
     func isWatched(episodeID: Int, completion: @escaping (_ value: Bool) -> Void)
+    func moveEpisode(serieID: Int, season: Int, number: Int)
 }
 
 class EpisodeDetailPresenter: ParentPresenter {
@@ -36,5 +37,19 @@ extension EpisodeDetailPresenter: EpisodeDetailPresenterProtocol {
         interactor.getEpisode(episodeID: episodeID) { (response) in
             completion(response.watched)
         }
+    }
+    
+    func moveEpisode(serieID: Int, season: Int, number: Int) {
+        interactor.getEpisode(serieID: serieID, season: season, number: number)
+    }
+}
+
+extension EpisodeDetailPresenter: EpisodeDetailInteractorOutput {
+    func onSuccess(espisode: Episode) {
+        self.view?.update(episode: espisode)
+    }
+    
+    func onFailure(error: String) {
+        print(error)
     }
 }

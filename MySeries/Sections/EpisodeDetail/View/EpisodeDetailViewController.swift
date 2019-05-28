@@ -9,6 +9,7 @@
 import UIKit
 
 protocol EpisodeDetailViewControllerProtocol {
+    func update(episode: Episode)
 }
 
 class EpisodeDetailViewController: ParentViewController {
@@ -52,6 +53,22 @@ class EpisodeDetailViewController: ParentViewController {
             }
         }
     }
+    
+    @IBAction func moveEpisodeAction(_ sender: UIButton) {
+        var number = episode?.number ?? 0
+        
+        if sender.tag == 0 {
+            if number > 1 {
+                number -= 1
+            }
+        } else {
+            number += 1
+        }
+        
+        self.showSpinner()
+        presenter.moveEpisode(serieID: serieID ?? 0, season: episode?.season ?? 0, number: number)
+    }
+    
 }
 
 extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
@@ -65,6 +82,10 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
+    }
+    
+    private func configureView() {
         lblTitle.text = episode?.name ?? ""
         imgPicture.imageFromUrl(urlString: episode?.image?.medium ?? "")
         lblSeason.text = "Temporada: \(episode?.season ?? 0)"
@@ -81,7 +102,15 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
             
             self.btnWatched.setBackgroundImage(imageWatched, for: .normal)
             self.btnWatched.tag = (response) ? 1 : 0
-        }  
+        }
+    }
+    
+    func update(episode: Episode) {
+        self.episode = episode
+        
+        self.removeSpinner()
+        
+        configureView()
     }
     
     
