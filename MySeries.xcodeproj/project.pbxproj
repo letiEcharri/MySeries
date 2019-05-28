@@ -391,10 +391,10 @@
 			isa = PBXGroup;
 			children = (
 				26C6DEFC22318A2C006ACFCC /* AppDelegate.swift */,
+				26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */,
 				26BD014722318FC500DD2344 /* Resources */,
 				26BD016C2232631F00DD2344 /* Common */,
 				26616B47223A602F008CB7AB /* Sections */,
-				26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */,
 			);
 			path = MySeries;
 			sourceTree = "<group>";

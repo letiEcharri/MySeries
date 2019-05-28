@@ -20,7 +20,7 @@ class EpisodeDetailViewController: ParentViewController {
     @IBOutlet weak var lblRelease: UILabel!
     @IBOutlet weak var lblHour: UILabel!
     @IBOutlet weak var lblRuntime: UILabel!
-    @IBOutlet weak var txtSumary: UITextView!
+    @IBOutlet weak var txtSumary: UILabel!
     @IBOutlet weak var btnWatched: UIButton!
     
     var episode: Episode?
@@ -73,6 +73,7 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
         lblHour.text = "Hora: \(episode?.airtime ?? "")"
         lblRuntime.text = "\(episode?.runtime ?? 0) min"
         txtSumary.text = episode?.summary?.htmlToString
+        txtSumary.sizeToFit()
         
         var imageWatched = UIImage()
         presenter.isWatched(episodeID: (episode?.id)!) { (response) in
