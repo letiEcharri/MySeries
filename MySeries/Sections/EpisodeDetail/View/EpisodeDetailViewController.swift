@@ -23,9 +23,12 @@ class EpisodeDetailViewController: ParentViewController {
     @IBOutlet weak var lblRuntime: UILabel!
     @IBOutlet weak var txtSumary: UILabel!
     @IBOutlet weak var btnWatched: UIButton!
+    @IBOutlet weak var btnPrevEpisode: UIButton!
+    @IBOutlet weak var btnNextEpisode: UIButton!
     
     var episode: Episode?
     var serieID: Int?
+    var seasonNumberEpisodes: Int?
     
     let presenter: EpisodeDetailPresenterProtocol
     
@@ -103,14 +106,18 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
             self.btnWatched.setBackgroundImage(imageWatched, for: .normal)
             self.btnWatched.tag = (response) ? 1 : 0
         }
+        
+        btnPrevEpisode.isHidden = (episode?.number == 1) ? true : false
+        btnNextEpisode.isHidden = (seasonNumberEpisodes == episode?.number) ? true : false
+        
     }
     
     func update(episode: Episode) {
         self.episode = episode
         
-        self.removeSpinner()
-        
         configureView()
+        
+        self.removeSpinner()
     }
     
     

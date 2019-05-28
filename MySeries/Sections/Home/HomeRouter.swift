@@ -10,7 +10,7 @@ import UIKit
 
 protocol HomeRouterProtocol: ParentRouterProtocol {
     func pushDetail(serie: Serie, view: UIViewController)
-    func pushDetail(episode: Episode, serieID: Int, view: UIViewController)
+    func pushDetail(episode: Episode, serieID: Int, seasonNumberEpisodes: Int, view: UIViewController)
 }
 
 class HomeRouter: ParentRouter {
@@ -38,8 +38,8 @@ extension HomeRouter: HomeRouterProtocol {
         mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
     }
     
-    func pushDetail(episode: Episode, serieID: Int, view: UIViewController) {
-        let parameters = EpisodeDetailParameters(episode: episode, serieID: serieID)
+    func pushDetail(episode: Episode, serieID: Int, seasonNumberEpisodes: Int, view: UIViewController) {
+        let parameters = EpisodeDetailParameters(episode: episode, serieID: serieID, seasonNumberEpisodes: seasonNumberEpisodes)
         let detailVC = EpisodeDetailRouter.create(withMainRouter: mainRouter, parameters: parameters as AnyObject)
         mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
     }

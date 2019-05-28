@@ -28,6 +28,7 @@ extension EpisodeDetailRouter: RouterFactory {
         if let myParameters = parameters as? EpisodeDetailParameters {
             view.episode = myParameters.episode
             view.serieID = myParameters.serieID
+            view.seasonNumberEpisodes = myParameters.seasonNumberEpisodes
         }
         
         return view
@@ -40,9 +41,11 @@ extension EpisodeDetailRouter: EpisodeDetailRouterProtocol {
 struct EpisodeDetailParameters {
     var episode: Episode
     var serieID: Int
+    var seasonNumberEpisodes: Int
     
-    init(episode: Episode, serieID: Int) {
+    init(episode: Episode, serieID: Int, seasonNumberEpisodes: Int) {
         self.episode = episode
         self.serieID = serieID
+        self.seasonNumberEpisodes = seasonNumberEpisodes
     }
 }
