@@ -10,6 +10,7 @@ import UIKit
 
 protocol SerieDetailRouterProtocol: ParentRouterProtocol {
     func pushSeasons(view: UIViewController, serieID: Int)
+    func presentCast(view: UIViewController, cast: [Cast])
 }
 
 class SerieDetailRouter: ParentRouter {
@@ -19,9 +20,12 @@ extension SerieDetailRouter: RouterFactory {
     
     static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController {
         let router = SerieDetailRouter(mainRouter: mainRouter)
-        let presenter = SerieDetailPresenter(router: router)
+        let datasource = SerieDetailDataSource()
+        let interactor = SerieDetailInteractor(datasource: datasource)
+        let presenter = SerieDetailPresenter(router: router, interactor: interactor)
         let view = SerieDetailViewController(presenter: presenter)
         
+        interactor.interactorOutput = presenter
         presenter.view = view
         
         if let serie = parameters as? Serie {
@@ -37,5 +41,12 @@ extension SerieDetailRouter: SerieDetailRouterProtocol {
     func pushSeasons(view: UIViewController, serieID: Int) {
         let seasonsVC = SeasonsRouter.create(withMainRouter: mainRouter, parameters: serieID as AnyObject)
         mainRouter.push(navigationController: view.navigationController, viewController: seasonsVC, animated: true)
+    }
+    
+    func presentCast(view: UIViewController, cast: [Cast]) {
+        let castVC = CastRouter.create(withMainRouter: mainRouter, parameters: cast as AnyObject)
+        
+        castVC.modalPresentationStyle = .overCurrentContext
+        mainRouter.present(viewController: castVC, animated: true, completion: nil)
     }
 }

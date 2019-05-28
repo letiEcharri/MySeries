@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SerieDetailViewController" customModule="MySeries" customModuleProvider="target">
             <connections>
+                <outlet property="btnCast" destination="B68-Qf-BWv" id="HJn-kj-WiB"/>
                 <outlet property="imgPicture" destination="ffY-yj-tFc" id="9uc-Ef-jMb"/>
                 <outlet property="lblCountry" destination="TQS-Hg-4tv" id="TMA-dM-fDw"/>
                 <outlet property="lblGenres" destination="YTu-Qu-tP1" id="p3f-Rg-BpU"/>
@@ -54,16 +55,16 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPi-yL-yvd">
-                    <rect key="frame" x="171" y="92" width="194" height="52"/>
+                    <rect key="frame" x="171" y="92" width="194" height="42"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="52" id="s1W-cb-d78"/>
+                        <constraint firstAttribute="height" constant="42" id="s1W-cb-d78"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="45"/>
+                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="36"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQS-Hg-4tv">
-                    <rect key="frame" x="171" y="149" width="194" height="28"/>
+                    <rect key="frame" x="171" y="139" width="194" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="J9O-i1-tHy"/>
                     </constraints>
@@ -72,19 +73,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOj-UM-xy3">
-                    <rect key="frame" x="171" y="177" width="194" height="28"/>
+                    <rect key="frame" x="171" y="167" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcQ-1V-q0m">
-                    <rect key="frame" x="171" y="205" width="194" height="28"/>
+                    <rect key="frame" x="171" y="195" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-9g-EFF">
-                    <rect key="frame" x="171" y="233" width="194" height="28"/>
+                    <rect key="frame" x="171" y="223" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -124,10 +125,22 @@
                         <action selector="episodesAction:" destination="-1" eventType="touchUpInside" id="lfC-vM-54J"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B68-Qf-BWv">
+                    <rect key="frame" x="171" y="256" width="194" height="26"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="15"/>
+                    <state key="normal" title="REPARTO">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="castAction:" destination="-1" eventType="touchUpInside" id="MDV-zE-vm6"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="8aa-jV-hFR" firstAttribute="top" secondItem="ZVx-LW-VQC" secondAttribute="bottom" constant="10" id="0Av-pf-Z3S"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="trailing" secondItem="1Pf-9g-EFF" secondAttribute="trailing" id="1Hq-0U-wuy"/>
                 <constraint firstItem="1Pf-9g-EFF" firstAttribute="height" secondItem="TQS-Hg-4tv" secondAttribute="height" id="2Gb-Ic-QLg"/>
                 <constraint firstItem="ffY-yj-tFc" firstAttribute="top" secondItem="gYk-xO-Q81" secondAttribute="bottom" constant="27" id="38Q-G1-wat"/>
                 <constraint firstItem="1Pf-9g-EFF" firstAttribute="leading" secondItem="TQS-Hg-4tv" secondAttribute="leading" id="3ET-hr-NcG"/>
@@ -149,9 +162,12 @@
                 <constraint firstItem="6ah-51-ib2" firstAttribute="height" secondItem="8aa-jV-hFR" secondAttribute="height" id="QF0-P3-i8V"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ySh-bC-kjL" secondAttribute="bottom" id="QSo-jj-94a"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZVx-LW-VQC" secondAttribute="trailing" constant="16" id="TFI-o2-wlL"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="top" secondItem="1Pf-9g-EFF" secondAttribute="bottom" constant="5" id="TP2-0h-PF8"/>
                 <constraint firstItem="gYk-xO-Q81" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="V4x-JT-VZT"/>
                 <constraint firstItem="VPi-yL-yvd" firstAttribute="top" secondItem="ffY-yj-tFc" secondAttribute="top" id="Vuj-Zm-jsw"/>
                 <constraint firstItem="6ah-51-ib2" firstAttribute="top" secondItem="8aa-jV-hFR" secondAttribute="bottom" constant="5" id="YgW-oK-No9"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="leading" secondItem="1Pf-9g-EFF" secondAttribute="leading" id="b6w-Is-nhy"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="bottom" secondItem="ffY-yj-tFc" secondAttribute="bottom" id="fRL-xs-Ds6"/>
                 <constraint firstItem="oOj-UM-xy3" firstAttribute="height" secondItem="TQS-Hg-4tv" secondAttribute="height" id="hFK-yJ-16M"/>
                 <constraint firstItem="8aa-jV-hFR" firstAttribute="leading" secondItem="ZVx-LW-VQC" secondAttribute="leading" id="kXq-NH-eXj"/>
                 <constraint firstItem="6ah-51-ib2" firstAttribute="leading" secondItem="ZVx-LW-VQC" secondAttribute="leading" id="kpN-TV-Ir9"/>

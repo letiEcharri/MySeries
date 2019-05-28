@@ -10,15 +10,18 @@ import Foundation
 
 protocol SerieDetailPresenterProtocol: ParentPresenterProtocol {
     func navigateToSeasons(serie: Int)
+    func openCast(serieID: Int)
 }
 
 class SerieDetailPresenter: ParentPresenter {
     
     var view: SerieDetailViewControllerProtocol?
     let router: SerieDetailRouterProtocol
+    let interactor: SerieDetailInteractorProtocol
     
-    init(router: SerieDetailRouterProtocol) {
+    init(router: SerieDetailRouterProtocol, interactor: SerieDetailInteractorProtocol) {
         self.router = router
+        self.interactor = interactor
         super.init(parentRouter: router)
     }
 }
@@ -27,4 +30,19 @@ extension SerieDetailPresenter: SerieDetailPresenterProtocol {
     func navigateToSeasons(serie: Int) {
         router.pushSeasons(view: (view?.getViewController())!, serieID: serie)
     }
+    
+    func openCast(serieID: Int) {
+        interactor.getCast(serieID: serieID)
+    }
+}
+
+extension SerieDetailPresenter: SerieDetailInteractorOutput {
+    func onSuccess(cast: [Cast]) {
+        router.presentCast(view: (view?.getViewController())!, cast: cast)
+    }
+    
+    func onFailure(error: String) {
+        print(error)
+    }
+    
 }

@@ -24,6 +24,13 @@ class SerieDetailViewController: ParentViewController {
     @IBOutlet weak var lblSumary: UITextView!
     @IBOutlet weak var lblPremiere: UILabel!
     @IBOutlet weak var lblGenres: UILabel!
+    @IBOutlet weak var btnCast: UIButton! {
+        didSet {
+            btnCast.layer.borderWidth = 1
+            btnCast.layer.borderColor = UIColor.black.cgColor
+            btnCast.layer.cornerRadius = 10
+        }
+    }
     
     var serie: Serie?
     
@@ -41,6 +48,11 @@ class SerieDetailViewController: ParentViewController {
     @IBAction func episodesAction(_ sender: UIButton) {
         presenter.navigateToSeasons(serie: serie?.id ?? 0)
     }
+    
+    @IBAction func castAction(_ sender: UIButton) {
+        presenter.openCast(serieID: serie?.id ?? 0)
+    }
+    
 }
 
 extension SerieDetailViewController: SerieDetailViewControllerProtocol {

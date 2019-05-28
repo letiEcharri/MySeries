@@ -57,6 +57,17 @@
 		26616B75223BCB09008CB7AB /* SeasonWithEpisodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26616B74223BCB09008CB7AB /* SeasonWithEpisodes.swift */; };
 		26BC5AAF2292E6C000991503 /* EpisodeDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC5AAE2292E6C000991503 /* EpisodeDetailInteractor.swift */; };
 		26BC5AB222930DBE00991503 /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC5AB122930DBE00991503 /* EpisodeView.swift */; };
+		26BC9D65229D619100B8003E /* SerieDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D64229D619100B8003E /* SerieDetailDataSource.swift */; };
+		26BC9D67229D62E900B8003E /* SerieDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D66229D62E900B8003E /* SerieDetailInteractor.swift */; };
+		26BC9D69229D6AAD00B8003E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D68229D6AAD00B8003E /* Person.swift */; };
+		26BC9D6B229D6C3800B8003E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D6A229D6C3800B8003E /* Character.swift */; };
+		26BC9D6D229D6C8E00B8003E /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D6C229D6C8E00B8003E /* Cast.swift */; };
+		26BC9D70229D70EF00B8003E /* CastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D6F229D70EF00B8003E /* CastPresenter.swift */; };
+		26BC9D74229D711D00B8003E /* CastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D72229D711D00B8003E /* CastViewController.swift */; };
+		26BC9D75229D711D00B8003E /* CastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9D73229D711D00B8003E /* CastViewController.xib */; };
+		26BC9D77229D732700B8003E /* CastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D76229D732700B8003E /* CastRouter.swift */; };
+		26BC9D7B229D873400B8003E /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */; };
+		26BC9D7C229D873400B8003E /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -123,6 +134,17 @@
 		26616B74223BCB09008CB7AB /* SeasonWithEpisodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonWithEpisodes.swift; sourceTree = "<group>"; };
 		26BC5AAE2292E6C000991503 /* EpisodeDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailInteractor.swift; sourceTree = "<group>"; };
 		26BC5AB122930DBE00991503 /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
+		26BC9D64229D619100B8003E /* SerieDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailDataSource.swift; sourceTree = "<group>"; };
+		26BC9D66229D62E900B8003E /* SerieDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieDetailInteractor.swift; sourceTree = "<group>"; };
+		26BC9D68229D6AAD00B8003E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		26BC9D6A229D6C3800B8003E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		26BC9D6C229D6C8E00B8003E /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
+		26BC9D6F229D70EF00B8003E /* CastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastPresenter.swift; sourceTree = "<group>"; };
+		26BC9D72229D711D00B8003E /* CastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewController.swift; sourceTree = "<group>"; };
+		26BC9D73229D711D00B8003E /* CastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastViewController.xib; sourceTree = "<group>"; };
+		26BC9D76229D732700B8003E /* CastRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastRouter.swift; sourceTree = "<group>"; };
+		26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
+		26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCollectionViewCell.xib; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -232,6 +254,7 @@
 		26616B47223A602F008CB7AB /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				26BC9D6E229D70CD00B8003E /* Cast */,
 				26C6DF1222318AF6006ACFCC /* Home */,
 				26C6DF1322318AFF006ACFCC /* Series */,
 				26616B48223A6059008CB7AB /* SerieDetail */,
@@ -247,6 +270,8 @@
 			children = (
 				26616B4A223A60EE008CB7AB /* SerieDetailRouter.swift */,
 				26616B4C223A6192008CB7AB /* SerieDetailPresenter.swift */,
+				26BC9D66229D62E900B8003E /* SerieDetailInteractor.swift */,
+				26BC9D64229D619100B8003E /* SerieDetailDataSource.swift */,
 				26616B49223A6078008CB7AB /* View */,
 			);
 			path = SerieDetail;
@@ -330,9 +355,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		26BC9D6E229D70CD00B8003E /* Cast */ = {
+			isa = PBXGroup;
+			children = (
+				26BC9D76229D732700B8003E /* CastRouter.swift */,
+				26BC9D6F229D70EF00B8003E /* CastPresenter.swift */,
+				26BC9D71229D70F400B8003E /* View */,
+			);
+			path = Cast;
+			sourceTree = "<group>";
+		};
+		26BC9D71229D70F400B8003E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26BC9D78229D871A00B8003E /* cell */,
+				26BC9D72229D711D00B8003E /* CastViewController.swift */,
+				26BC9D73229D711D00B8003E /* CastViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26BC9D78229D871A00B8003E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */,
+				26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */,
 				26C6DF0322318A2E006ACFCC /* Assets.xcassets */,
 				26C6DF0822318A2E006ACFCC /* Info.plist */,
 			);
@@ -342,14 +397,14 @@
 		26BD016C2232631F00DD2344 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26036DD22236B8AD00EACA1B /* DataSource.swift */,
+				26036DD92237CBC900EACA1B /* MainRouter.swift */,
+				26616B66223AAF07008CB7AB /* Constants.swift */,
 				26BC5AB022930D7000991503 /* View */,
 				26616B3422380A23008CB7AB /* Extensions */,
 				26036DDD2237CE0300EACA1B /* Parents */,
 				26BD0170223265A800DD2344 /* Models */,
 				26BD016D2232632C00DD2344 /* Managers */,
-				26036DD22236B8AD00EACA1B /* DataSource.swift */,
-				26036DD92237CBC900EACA1B /* MainRouter.swift */,
-				26616B66223AAF07008CB7AB /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -370,6 +425,9 @@
 				26616B3E22383522008CB7AB /* Episode.swift */,
 				26616B452238FB8E008CB7AB /* SerieEpisodes.swift */,
 				26616B68223AB32D008CB7AB /* Season.swift */,
+				26BC9D68229D6AAD00B8003E /* Person.swift */,
+				26BC9D6A229D6C3800B8003E /* Character.swift */,
+				26BC9D6C229D6C8E00B8003E /* Cast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,7 +452,6 @@
 			isa = PBXGroup;
 			children = (
 				26C6DEFC22318A2C006ACFCC /* AppDelegate.swift */,
-				26C6DF0522318A2E006ACFCC /* LaunchScreen.storyboard */,
 				26BD014722318FC500DD2344 /* Resources */,
 				26BD016C2232631F00DD2344 /* Common */,
 				26616B47223A602F008CB7AB /* Sections */,
@@ -508,6 +565,8 @@
 				26616B72223ABDE1008CB7AB /* SeasonsCollectionViewCell.xib in Resources */,
 				261C9DE62241196300C1BBAA /* SearchSerieTableViewCell.xib in Resources */,
 				26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */,
+				26BC9D75229D711D00B8003E /* CastViewController.xib in Resources */,
+				26BC9D7C229D873400B8003E /* CastCollectionViewCell.xib in Resources */,
 				26616B63223AA33A008CB7AB /* SeasonsViewController.xib in Resources */,
 				26616B3D22383176008CB7AB /* TableViewCell.xib in Resources */,
 				26616B53223A704D008CB7AB /* EpisodeDetailViewController.xib in Resources */,
@@ -528,19 +587,24 @@
 			files = (
 				261C9DEA2241630900C1BBAA /* SearchSerieModel.swift in Sources */,
 				26616B4B223A60EE008CB7AB /* SerieDetailRouter.swift in Sources */,
+				26BC9D6B229D6C3800B8003E /* Character.swift in Sources */,
 				26616B38223813A1008CB7AB /* String+Format.swift in Sources */,
 				26616B52223A704D008CB7AB /* EpisodeDetailViewController.swift in Sources */,
 				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
+				26BC9D77229D732700B8003E /* CastRouter.swift in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
 				26616B57223A71D2008CB7AB /* EpisodeDetailPresenter.swift in Sources */,
 				26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */,
 				26616B332237EADD008CB7AB /* SerieDataSource.swift in Sources */,
 				26616B55223A7176008CB7AB /* EpisodeDetailRouter.swift in Sources */,
 				26616B312237E7B5008CB7AB /* SerieInteractor.swift in Sources */,
+				26BC9D70229D70EF00B8003E /* CastPresenter.swift in Sources */,
 				26036DD32236B8AD00EACA1B /* DataSource.swift in Sources */,
 				26616B4D223A6192008CB7AB /* SerieDetailPresenter.swift in Sources */,
 				26616B75223BCB09008CB7AB /* SeasonWithEpisodes.swift in Sources */,
 				26616B71223ABDE1008CB7AB /* SeasonsCollectionViewCell.swift in Sources */,
+				26BC9D74229D711D00B8003E /* CastViewController.swift in Sources */,
+				26BC9D6D229D6C8E00B8003E /* Cast.swift in Sources */,
 				263691EB2242601B000E69BA /* SearchSerieInteractor.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,
 				26616B432238399F008CB7AB /* HomeInteractor.swift in Sources */,
@@ -553,6 +617,7 @@
 				26BD0172223265C600DD2344 /* Serie.swift in Sources */,
 				26036DE12237D00300EACA1B /* ParentPresenter.swift in Sources */,
 				26616B3F22383522008CB7AB /* Episode.swift in Sources */,
+				26BC9D67229D62E900B8003E /* SerieDetailInteractor.swift in Sources */,
 				26036DD72237C3DC00EACA1B /* SerieListTableViewCell.swift in Sources */,
 				26616B62223AA33A008CB7AB /* SeasonsViewController.swift in Sources */,
 				26616B2D2237E1A3008CB7AB /* SerieDetailViewController.swift in Sources */,
@@ -567,6 +632,7 @@
 				26036DE32237D41700EACA1B /* ParentViewController.swift in Sources */,
 				26616B6D223AB598008CB7AB /* SeasonsInteractor.swift in Sources */,
 				26036DDA2237CBC900EACA1B /* MainRouter.swift in Sources */,
+				26BC9D69229D6AAD00B8003E /* Person.swift in Sources */,
 				26C6DF1522318B38006ACFCC /* HomePresenter.swift in Sources */,
 				261C9DDD22410B8B00C1BBAA /* SearchSerieRouter.swift in Sources */,
 				261C9DE52241196300C1BBAA /* SearchSerieTableViewCell.swift in Sources */,
@@ -574,7 +640,9 @@
 				26616B462238FB8E008CB7AB /* SerieEpisodes.swift in Sources */,
 				26036DDF2237CE2100EACA1B /* ParentRouter.swift in Sources */,
 				26616B6B223AB49A008CB7AB /* SeasonsDataSource.swift in Sources */,
+				26BC9D65229D619100B8003E /* SerieDetailDataSource.swift in Sources */,
 				26616B65223AA390008CB7AB /* SeasonsRouter.swift in Sources */,
+				26BC9D7B229D873400B8003E /* CastCollectionViewCell.swift in Sources */,
 				26F44627229D394800F3BEF6 /* EpisodeDetailDataSource.swift in Sources */,
 				261C9DDF22410C2700C1BBAA /* SearchSeriePresenter.swift in Sources */,
 			);
