@@ -38,6 +38,7 @@ extension SerieDetailPresenter: SerieDetailPresenterProtocol {
 
 extension SerieDetailPresenter: SerieDetailInteractorOutput {
     func onSuccess(cast: [Cast]) {
+        router.presentCast(view: (view?.getViewController())!, cast: cast)
     }
     
     func onFailure(error: String) {
