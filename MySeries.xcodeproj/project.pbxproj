@@ -68,6 +68,8 @@
 		26BC9D77229D732700B8003E /* CastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D76229D732700B8003E /* CastRouter.swift */; };
 		26BC9D7B229D873400B8003E /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */; };
 		26BC9D7C229D873400B8003E /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */; };
+		26BC9D80229D939B00B8003E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D7E229D939B00B8003E /* TabBarViewController.swift */; };
+		26BC9D83229D98DA00B8003E /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D82229D98DA00B8003E /* UIColor+Custom.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -145,6 +147,8 @@
 		26BC9D76229D732700B8003E /* CastRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastRouter.swift; sourceTree = "<group>"; };
 		26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
 		26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCollectionViewCell.xib; sourceTree = "<group>"; };
+		26BC9D7E229D939B00B8003E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		26BC9D82229D98DA00B8003E /* UIColor+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				26616B3522380A46008CB7AB /* UIImageView+URL.swift */,
 				26616B37223813A1008CB7AB /* String+Format.swift */,
 				261C9DE722415F4800C1BBAA /* Number+Format.swift */,
+				26BC9D82229D98DA00B8003E /* UIColor+Custom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -384,6 +389,14 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		26BC9D7D229D933A00B8003E /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				26BC9D7E229D939B00B8003E /* TabBarViewController.swift */,
+			);
+			path = tabBar;
+			sourceTree = "<group>";
+		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,6 +413,7 @@
 				26036DD22236B8AD00EACA1B /* DataSource.swift */,
 				26036DD92237CBC900EACA1B /* MainRouter.swift */,
 				26616B66223AAF07008CB7AB /* Constants.swift */,
+				26BC9D7D229D933A00B8003E /* tabBar */,
 				26BC5AB022930D7000991503 /* View */,
 				26616B3422380A23008CB7AB /* Extensions */,
 				26036DDD2237CE0300EACA1B /* Parents */,
@@ -593,6 +607,8 @@
 				26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */,
 				26BC9D77229D732700B8003E /* CastRouter.swift in Sources */,
 				26C6DEFD22318A2C006ACFCC /* AppDelegate.swift in Sources */,
+				26BC9D83229D98DA00B8003E /* UIColor+Custom.swift in Sources */,
+				26BC9D80229D939B00B8003E /* TabBarViewController.swift in Sources */,
 				26616B57223A71D2008CB7AB /* EpisodeDetailPresenter.swift in Sources */,
 				26C6DF1822318B5A006ACFCC /* SeriesPresenter.swift in Sources */,
 				26616B332237EADD008CB7AB /* SerieDataSource.swift in Sources */,
