@@ -20,7 +20,7 @@ protocol EpisodeDetailInteractorOutput: class {
     func onFailure(error: String)
 }
 
-class EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
+class EpisodeDetailInteractor {
     
     let datasource: EpisodeDetailDataSourceProtocol
     weak var interactorOutput: EpisodeDetailInteractorOutput?
@@ -28,6 +28,9 @@ class EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
     init(datasource: EpisodeDetailDataSourceProtocol) {
         self.datasource = datasource
     }
+}
+
+extension EpisodeDetailInteractor: EpisodeDetailInteractorProtocol {
     
     func watch(episode: Episode, value: Bool, serieID: Int) {
         

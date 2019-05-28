@@ -21,7 +21,7 @@ class EpisodeDetailViewController: ParentViewController {
     @IBOutlet weak var lblRelease: UILabel!
     @IBOutlet weak var lblHour: UILabel!
     @IBOutlet weak var lblRuntime: UILabel!
-    @IBOutlet weak var txtSumary: UILabel!
+    @IBOutlet weak var txtSumary: UITextView!
     @IBOutlet weak var btnWatched: UIButton!
     @IBOutlet weak var btnPrevEpisode: UIButton!
     @IBOutlet weak var btnNextEpisode: UIButton!

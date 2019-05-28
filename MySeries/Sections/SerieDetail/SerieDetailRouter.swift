@@ -19,9 +19,12 @@ extension SerieDetailRouter: RouterFactory {
     
     static func create(withMainRouter mainRouter: MainRouterProtocol, parameters: AnyObject?) -> UIViewController {
         let router = SerieDetailRouter(mainRouter: mainRouter)
-        let presenter = SerieDetailPresenter(router: router)
+        let datasource = SerieDetailDataSource()
+        let interactor = SerieDetailInteractor(datasource: datasource)
+        let presenter = SerieDetailPresenter(router: router, interactor: interactor)
         let view = SerieDetailViewController(presenter: presenter)
         
+        interactor.interactorOutput = presenter
         presenter.view = view
         
         if let serie = parameters as? Serie {
