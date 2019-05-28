@@ -36,7 +36,7 @@
                         <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="2xO-NU-Qab"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IyN-XM-LDx">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IyN-XM-LDx">
                     <rect key="frame" x="27.5" y="83.5" width="320" height="500"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

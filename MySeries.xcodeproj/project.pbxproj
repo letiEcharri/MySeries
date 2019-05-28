@@ -66,6 +66,8 @@
 		26BC9D74229D711D00B8003E /* CastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D72229D711D00B8003E /* CastViewController.swift */; };
 		26BC9D75229D711D00B8003E /* CastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9D73229D711D00B8003E /* CastViewController.xib */; };
 		26BC9D77229D732700B8003E /* CastRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D76229D732700B8003E /* CastRouter.swift */; };
+		26BC9D7B229D873400B8003E /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */; };
+		26BC9D7C229D873400B8003E /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -141,6 +143,8 @@
 		26BC9D72229D711D00B8003E /* CastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewController.swift; sourceTree = "<group>"; };
 		26BC9D73229D711D00B8003E /* CastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastViewController.xib; sourceTree = "<group>"; };
 		26BC9D76229D732700B8003E /* CastRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastRouter.swift; sourceTree = "<group>"; };
+		26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
+		26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCollectionViewCell.xib; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -364,10 +368,20 @@
 		26BC9D71229D70F400B8003E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				26BC9D78229D871A00B8003E /* cell */,
 				26BC9D72229D711D00B8003E /* CastViewController.swift */,
 				26BC9D73229D711D00B8003E /* CastViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		26BC9D78229D871A00B8003E /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				26BC9D79229D873400B8003E /* CastCollectionViewCell.swift */,
+				26BC9D7A229D873400B8003E /* CastCollectionViewCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		26BD014722318FC500DD2344 /* Resources */ = {
@@ -552,6 +566,7 @@
 				261C9DE62241196300C1BBAA /* SearchSerieTableViewCell.xib in Resources */,
 				26C6DF0422318A2E006ACFCC /* Assets.xcassets in Resources */,
 				26BC9D75229D711D00B8003E /* CastViewController.xib in Resources */,
+				26BC9D7C229D873400B8003E /* CastCollectionViewCell.xib in Resources */,
 				26616B63223AA33A008CB7AB /* SeasonsViewController.xib in Resources */,
 				26616B3D22383176008CB7AB /* TableViewCell.xib in Resources */,
 				26616B53223A704D008CB7AB /* EpisodeDetailViewController.xib in Resources */,
@@ -627,6 +642,7 @@
 				26616B6B223AB49A008CB7AB /* SeasonsDataSource.swift in Sources */,
 				26BC9D65229D619100B8003E /* SerieDetailDataSource.swift in Sources */,
 				26616B65223AA390008CB7AB /* SeasonsRouter.swift in Sources */,
+				26BC9D7B229D873400B8003E /* CastCollectionViewCell.swift in Sources */,
 				26F44627229D394800F3BEF6 /* EpisodeDetailDataSource.swift in Sources */,
 				261C9DDF22410C2700C1BBAA /* SearchSeriePresenter.swift in Sources */,
 			);
