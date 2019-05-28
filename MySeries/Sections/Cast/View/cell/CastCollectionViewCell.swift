@@ -35,7 +35,7 @@ class CastCollectionViewCell: UICollectionViewCell {
     
     private func configureView() {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = UIColor.appColor.cgColor
         self.layer.cornerRadius = 5
     }
     

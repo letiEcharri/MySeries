@@ -39,4 +39,6 @@ struct Constants {
             static let noFavorite = UIImage(named: "favIcon")
         }
     }
+    
+    static let appColor = UIColor(red: 0/255, green: 153/255, blue: 153/255, alpha: 1)
 }

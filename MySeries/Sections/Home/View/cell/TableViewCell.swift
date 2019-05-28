@@ -26,7 +26,7 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView! {
         didSet {
-            containerView.layer.borderColor = UIColor.lightGray.cgColor
+            containerView.layer.borderColor = UIColor.appColor.cgColor
             containerView.layer.borderWidth = 1
             containerView.layer.cornerRadius = 10.0
             containerView.layer.masksToBounds = true
