@@ -101,7 +101,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: TableViewCellDelegate {
-    func click(episode: Episode, serieID: Int) {
-        presenter.show(episode: episode, serieID: serieID)
+    func click(episode: Episode, serieID: Int, seasonNumberEpisodes: Int) {
+        presenter.show(episode: episode, serieID: serieID, seasonNumberEpisodes: seasonNumberEpisodes)
     }
 }

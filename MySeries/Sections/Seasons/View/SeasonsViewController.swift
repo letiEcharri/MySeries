@@ -113,8 +113,8 @@ extension SeasonsViewController: UICollectionViewDelegate, UICollectionViewDataS
 }
 
 extension SeasonsViewController: SeasonsCollectionViewCellDelegate {
-    func click(episode: Episode) {
-        presenter.goDetail(episode: episode, serieID: serieID ?? 0)
+    func click(episode: Episode, seasonNumberEpisodes: Int) {
+        presenter.goDetail(episode: episode, serieID: serieID ?? 0, seasonNumberEpisodes: seasonNumberEpisodes)
     }
     
     func watch(season: Int) {

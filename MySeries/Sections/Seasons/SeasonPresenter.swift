@@ -10,7 +10,7 @@ import UIKit
 
 protocol SeasonPresenterProtocol: ParentPresenterProtocol {
     func getSeasons(serieID: Int)
-    func goDetail(episode: Episode, serieID: Int)
+    func goDetail(episode: Episode, serieID: Int, seasonNumberEpisodes: Int)
     func watch(season: Int, serieID: Int)
     func isWatched(season: Season, serieID: Int, completion: @escaping (_ result: Bool) -> Void)
     func unwatch(season: Int, serieID: Int)
@@ -37,8 +37,8 @@ extension SeasonPresenter: SeasonPresenterProtocol {
         interactor.getSeasons(serieID: serieID)
     }
     
-    func goDetail(episode: Episode, serieID: Int) {
-        router.pushDetail(episode: episode, serieID: serieID, view: (view?.getViewController())!)
+    func goDetail(episode: Episode, serieID: Int, seasonNumberEpisodes: Int) {
+        router.pushDetail(episode: episode, serieID: serieID, seasonNumberEpisodes: seasonNumberEpisodes, view: (view?.getViewController())!)
     }
     
     func watch(season: Int, serieID: Int) {

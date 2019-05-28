@@ -8,7 +8,7 @@
 
 import UIKit
 protocol SeasonsRouterProtocol: ParentRouterProtocol {
-    func pushDetail(episode: Episode, serieID: Int, view: UIViewController)
+    func pushDetail(episode: Episode, serieID: Int, seasonNumberEpisodes: Int, view: UIViewController)
 }
 
 class SeasonsRouter: ParentRouter {
@@ -36,8 +36,8 @@ extension SeasonsRouter: RouterFactory {
 
 extension SeasonsRouter: SeasonsRouterProtocol {
     
-    func pushDetail(episode: Episode, serieID: Int, view: UIViewController) {
-        let parameters = EpisodeDetailParameters(episode: episode, serieID: serieID)
+    func pushDetail(episode: Episode, serieID: Int, seasonNumberEpisodes: Int, view: UIViewController) {
+        let parameters = EpisodeDetailParameters(episode: episode, serieID: serieID, seasonNumberEpisodes: seasonNumberEpisodes)
         let detailVC = EpisodeDetailRouter.create(withMainRouter: mainRouter, parameters: parameters as AnyObject)
         mainRouter.push(navigationController: view.navigationController, viewController: detailVC, animated: true)
     }
