@@ -35,6 +35,8 @@ class ParentViewController: UIViewController {
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .bottom
         self.definesPresentationContext = true
+        
+        navigationBar()
     }
     
     @objc private func backAction(_ sender: UIBarButtonItem) {
@@ -76,5 +78,29 @@ extension ParentViewController: ParentViewControllerProtocol {
     
     func hideBackButton() {
         self.navigationController?.tabBarController?.navigationItem.leftBarButtonItem = nil
+    }
+    
+    private func navigationBar() {
+        
+        let languageButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(changeLanguageAction(_:)))
+        self.navigationController?.tabBarController?.navigationItem.rightBarButtonItem = languageButton
+    }
+    
+    @objc private func changeLanguageAction(_ sender: UIBarButtonItem) {
+        
+    }
+}
+
+enum Languages {
+    case spanish
+    case english
+    
+    func setIcon() -> UIImage {
+        switch self {
+        case .spanish:
+            return Constants.Images.Flags.spanish!
+        case .english:
+            return Constants.Images.Flags.english!
+        }
     }
 }

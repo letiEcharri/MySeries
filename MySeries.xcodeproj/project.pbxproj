@@ -389,14 +389,6 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
-		26BC9D7D229D933A00B8003E /* tabBar */ = {
-			isa = PBXGroup;
-			children = (
-				26BC9D7E229D939B00B8003E /* TabBarViewController.swift */,
-			);
-			path = tabBar;
-			sourceTree = "<group>";
-		};
 		26BD014722318FC500DD2344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,7 +405,7 @@
 				26036DD22236B8AD00EACA1B /* DataSource.swift */,
 				26036DD92237CBC900EACA1B /* MainRouter.swift */,
 				26616B66223AAF07008CB7AB /* Constants.swift */,
-				26BC9D7D229D933A00B8003E /* tabBar */,
+				26BC9D7E229D939B00B8003E /* TabBarViewController.swift */,
 				26BC5AB022930D7000991503 /* View */,
 				26616B3422380A23008CB7AB /* Extensions */,
 				26036DDD2237CE0300EACA1B /* Parents */,

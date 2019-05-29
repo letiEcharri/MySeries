@@ -38,7 +38,10 @@ struct Constants {
             static let favorite = UIImage(named: "favIconFull")
             static let noFavorite = UIImage(named: "favIcon")
         }
+        
+        struct Flags {
+            static let spanish = UIImage(named: "spainFlag")
+            static let english = UIImage(named: "ukFlag")
+        }
     }
-    
-    static let appColor = UIColor(red: 0/255, green: 153/255, blue: 153/255, alpha: 1)
 }
