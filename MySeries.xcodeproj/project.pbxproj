@@ -74,6 +74,7 @@
 		26BC9D9122A12F6600B8003E /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D9022A12F6600B8003E /* BundleExtension.swift */; };
 		26BC9D9322A12F7C00B8003E /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D9222A12F7C00B8003E /* Language.swift */; };
 		26BC9D9522A133B800B8003E /* LocaleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D9422A133B800B8003E /* LocaleManager.swift */; };
+		26BC9D9722A1594200B8003E /* LanguagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC9D9622A1594200B8003E /* LanguagePickerView.swift */; };
 		26BD016B2232619900DD2344 /* myseries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26BD01692232619900DD2344 /* myseries.xcdatamodeld */; };
 		26BD016F2232634400DD2344 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD016E2232634400DD2344 /* CoreDataManager.swift */; };
 		26BD0172223265C600DD2344 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD0171223265C600DD2344 /* Serie.swift */; };
@@ -159,6 +160,7 @@
 		26BC9D9022A12F6600B8003E /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		26BC9D9222A12F7C00B8003E /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		26BC9D9422A133B800B8003E /* LocaleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleManager.swift; sourceTree = "<group>"; };
+		26BC9D9622A1594200B8003E /* LanguagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerView.swift; sourceTree = "<group>"; };
 		26BD016A2232619900DD2344 /* myseries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myseries.xcdatamodel; sourceTree = "<group>"; };
 		26BD016E2232634400DD2344 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		26BD0171223265C600DD2344 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				26BC5AB122930DBE00991503 /* EpisodeView.swift */,
+				26BC9D9622A1594200B8003E /* LanguagePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				26616B75223BCB09008CB7AB /* SeasonWithEpisodes.swift in Sources */,
 				26616B71223ABDE1008CB7AB /* SeasonsCollectionViewCell.swift in Sources */,
 				26BC9D74229D711D00B8003E /* CastViewController.swift in Sources */,
+				26BC9D9722A1594200B8003E /* LanguagePickerView.swift in Sources */,
 				26BC9D6D229D6C8E00B8003E /* Cast.swift in Sources */,
 				263691EB2242601B000E69BA /* SearchSerieInteractor.swift in Sources */,
 				26C6DF1C22318B73006ACFCC /* SeriesViewController.swift in Sources */,

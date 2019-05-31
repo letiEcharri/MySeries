@@ -16,7 +16,8 @@ class ParentViewController: UIViewController {
     var spinnerView : UIView?
     private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
-    var languagePicker: UIPickerView = UIPickerView()
+//    var languagePicker: UIPickerView = UIPickerView()
+    var languagePicker: LanguagePickerView?
     var languages: [Language] = [.english, .spanish]
     
     let presenterParent: ParentPresenterProtocol?
@@ -96,31 +97,26 @@ extension ParentViewController: ParentViewControllerProtocol {
 //        presenterParent?.restartApp()
         
         configureLanguagePicker()
+        
     }
     
     private func configureLanguagePicker() {
-        languagePicker.delegate = self
-        languagePicker.dataSource = self
-        languagePicker.showsSelectionIndicator = true
-        let height: CGFloat = CGFloat(languages.count * 50)
-        languagePicker.frame = CGRect(x: 20, y: (self.view.frame.size.height - height - 100), width: self.view.frame.width - 40, height: height)
-        languagePicker.layer.borderColor = UIColor.appColor.cgColor
-        languagePicker.layer.borderWidth = 1
-        languagePicker.layer.cornerRadius = 10
+        let height: CGFloat = CGFloat(languages.count * 50) + 20
+        languagePicker = LanguagePickerView(frame: CGRect(x: 20, y: (self.view.frame.size.height - height - 100),
+                                                          width: self.view.frame.width - 40,
+                                                          height: height))
+        languagePicker?.picker.delegate = self
+        languagePicker?.picker.dataSource = self
         
-        self.view.addSubview(languagePicker)
-        
+        self.view.addSubview(languagePicker!)
+
         var cont = 0
         for item in languages {
             if item.code == Language.getLanguage() {
-                languagePicker.selectRow(cont, inComponent: 0, animated: true)
+                languagePicker?.picker.selectRow(cont, inComponent: 0, animated: true)
             }
             cont += 1
         }
-    }
-    
-    @objc private func languageAction(_ sernder: UIBarButtonItem) {
-        
     }
 }
 
@@ -138,10 +134,10 @@ extension ParentViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return languages[row].name
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(languages[row].name)
-        
-        Bundle.set(language: languages[row])
-        presenterParent?.restartApp()
-    }
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        print(languages[row].name)
+//
+//        Bundle.set(language: languages[row])
+//        presenterParent?.restartApp()
+//    }
 }
