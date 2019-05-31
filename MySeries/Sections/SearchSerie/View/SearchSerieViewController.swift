@@ -58,7 +58,7 @@ extension SearchSerieViewController: SearchSerieViewControllerProtocol {
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.delegate = self
         searchController?.obscuresBackgroundDuringPresentation = false
-        searchController?.searchBar.placeholder = "BUSCAR"
+        searchController?.searchBar.placeholder = "common.search".localize.uppercased()
         searchController?.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = false
         tableView.tableHeaderView = searchController?.searchBar

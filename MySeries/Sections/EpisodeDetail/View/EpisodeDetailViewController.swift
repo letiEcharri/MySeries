@@ -91,10 +91,10 @@ extension EpisodeDetailViewController: EpisodeDetailViewControllerProtocol {
     private func configureView() {
         lblTitle.text = episode?.name ?? ""
         imgPicture.imageFromUrl(urlString: episode?.image?.medium ?? "")
-        lblSeason.text = "Temporada: \(episode?.season ?? 0)"
-        lblEpisode.text = "Episodio: \(episode?.number ?? 0)"
-        lblRelease.text = "Estreno: \(episode?.airdate?.formatDate() ?? "")"
-        lblHour.text = "Hora: \(episode?.airtime ?? "")"
+        lblSeason.text = "common.season".localize + ": \(episode?.season ?? 0)"
+        lblEpisode.text = "common.episode".localize + ": \(episode?.number ?? 0)"
+        lblRelease.text = "common.premiere".localize + ": \(episode?.airdate?.formatDate() ?? "")"
+        lblHour.text = "episode_detail.hour".localize + ": \(episode?.airtime ?? "")"
         lblRuntime.text = "\(episode?.runtime ?? 0) min"
         txtSumary.text = episode?.summary?.htmlToString
         txtSumary.sizeToFit()

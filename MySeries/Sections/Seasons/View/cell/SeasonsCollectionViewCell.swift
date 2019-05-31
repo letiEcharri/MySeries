@@ -51,7 +51,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     
     private func set(info: Season) {
         imgPicture.imageFromUrl(urlString: info.image?.medium ?? "")
-        lblSeason.text = "TEMPORADA \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) Caps"
+        lblSeason.text = "common.season".localize.uppercased() + " \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) " + "seasons.eps".localize
         lblDates.text = "\(info.premiereDate?.formatDate() ?? "") - \(info.endDate?.formatDate() ?? "")"
         seasonNumber = info.number ?? 0
     }

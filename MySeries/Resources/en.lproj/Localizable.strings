@@ -9,6 +9,19 @@
 /***COMMON***/
 "common.episodes" = "Episodes";
 "common.cast" = "Cast";
+"common.season" = "Season";
+"common.episode" = "Episode";
+"common.premiere" = "Premiere";
+"common.genre" = "Genre";
+"common.search" = "Search";
+"common.home" = "Home";
+"common.series" = "Series";
 
 /***HOME***/
 "home.pendingEps" = "Pending Episodes";
+
+/***EPISODE DETAIL***/
+"episode_detail.hour" = "Hour";
+
+/***SEASONS***/
+"seasons.eps" = "Eps";

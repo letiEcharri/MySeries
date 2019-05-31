@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SerieDetailViewController" customModule="MySeries" customModuleProvider="target">
             <connections>
                 <outlet property="btnCast" destination="B68-Qf-BWv" id="HJn-kj-WiB"/>
+                <outlet property="btnEpisodes" destination="ySh-bC-kjL" id="w1u-eM-emK"/>
                 <outlet property="imgPicture" destination="ffY-yj-tFc" id="9uc-Ef-jMb"/>
                 <outlet property="lblCountry" destination="TQS-Hg-4tv" id="TMA-dM-fDw"/>
                 <outlet property="lblGenres" destination="YTu-Qu-tP1" id="p3f-Rg-BpU"/>
@@ -23,6 +24,7 @@
                 <outlet property="lblRuntime" destination="1Pf-9g-EFF" id="z7i-qn-GD9"/>
                 <outlet property="lblStatus" destination="TcQ-1V-q0m" id="zou-P7-nJJ"/>
                 <outlet property="lblSumary" destination="ZVx-LW-VQC" id="2ip-0e-GtA"/>
+                <outlet property="lblTextGender" destination="6ah-51-ib2" id="1eh-YC-Yvi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

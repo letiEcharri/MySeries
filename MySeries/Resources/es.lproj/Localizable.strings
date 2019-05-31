@@ -9,6 +9,19 @@
 /***COMMON***/
 "common.episodes" = "Episodios";
 "common.cast" = "Reparto";
+"common.season" = "Temporada";
+"common.episode" = "Episodio";
+"common.premiere" = "Estreno";
+"common.genre" = "Género";
+"common.search" = "Buscar";
+"common.home" = "Home";
+"common.series" = "Series";
 
 /***HOME***/
 "home.pendingEps" = "Episodios Pendientes";
+
+/***EPISODE DETAIL***/
+"episode_detail.hour" = "Hora";
+
+/***SEASONS***/
+"seasons.eps" = "Caps";
