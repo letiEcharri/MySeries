@@ -19,6 +19,7 @@
 
 /***HOME***/
 "home.pendingEps" = "Episodios Pendientes";
+"home.noPendingEps" = "No hay capítulos pendientes";
 
 /***EPISODE DETAIL***/
 "episode_detail.hour" = "Hora";

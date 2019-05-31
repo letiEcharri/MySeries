@@ -19,6 +19,7 @@
 
 /***HOME***/
 "home.pendingEps" = "Pending Episodes";
+"home.noPendingEps" = "No pending episodes";
 
 /***EPISODE DETAIL***/
 "episode_detail.hour" = "Hour";

@@ -27,6 +27,11 @@ class HomeViewController: ParentViewController {
             tableView.tableFooterView = UIView() //Clear extra lines
         }
     }
+    @IBOutlet weak var lblNoEpisodes: UILabel! {
+        didSet {
+            lblNoEpisodes.text = "home.noPendingEps".localize
+        }
+    }
     
     let presenter: HomePresenterProtocol
     

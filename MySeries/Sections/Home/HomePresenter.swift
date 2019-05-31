@@ -68,6 +68,8 @@ extension HomePresenter: HomePresenterProtocol {
                         })
                     }
                 }
+            } else {
+                self.view?.updatePending()
             }
         }
     }

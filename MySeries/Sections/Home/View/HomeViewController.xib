@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MySeries" customModuleProvider="target">
             <connections>
+                <outlet property="lblNoEpisodes" destination="Ck7-aO-rUf" id="CE3-1v-3Qs"/>
                 <outlet property="lblTitle" destination="jh6-EM-30k" id="1ef-y9-YMR"/>
                 <outlet property="tableView" destination="9xV-Zx-NHI" id="tlu-Kl-VIW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
