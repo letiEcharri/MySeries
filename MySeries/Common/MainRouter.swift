@@ -12,6 +12,7 @@ protocol MainRouterProtocol {
     func show(viewController: UIViewController, sender: Any?)
     func present(viewController: UIViewController, animated: Bool, completion:(() -> Void)?)
     func push(navigationController: UINavigationController?, viewController: UIViewController, animated: Bool)
+    func restartApp()
 }
 
 protocol RouterFactory {
@@ -59,5 +60,9 @@ extension MainRouter: MainRouterProtocol {
         } else {
             navigationController?.pushViewController(viewController, animated: animated)
         }
+    }
+    
+    func restartApp() {
+        presentRootViewController()
     }
 }

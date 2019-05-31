@@ -87,20 +87,9 @@ extension ParentViewController: ParentViewControllerProtocol {
     }
     
     @objc private func changeLanguageAction(_ sender: UIBarButtonItem) {
-        
-    }
-}
-
-enum Languages {
-    case spanish
-    case english
-    
-    func setIcon() -> UIImage {
-        switch self {
-        case .spanish:
-            return Constants.Images.Flags.spanish!
-        case .english:
-            return Constants.Images.Flags.english!
-        }
+//        var language: [Language] = [.english, .spanish]
+//        
+//        Bundle.set(language: .spanish)
+//        presenterParent?.restartApp()
     }
 }

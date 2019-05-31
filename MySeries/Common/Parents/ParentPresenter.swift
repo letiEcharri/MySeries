@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ParentPresenterProtocol {
+    func restartApp()
 }
 
 class ParentPresenter {
@@ -21,4 +22,7 @@ class ParentPresenter {
 }
 
 extension ParentPresenter: ParentPresenterProtocol {
+    func restartApp() {
+        parentRouter.restartApp()
+    }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ParentRouterProtocol {
+    func restartApp()
 }
 
 class ParentRouter {
@@ -20,4 +21,7 @@ class ParentRouter {
 }
 
 extension ParentRouter: ParentRouterProtocol {
+    func restartApp() {
+        mainRouter.restartApp()
+    }
 }
