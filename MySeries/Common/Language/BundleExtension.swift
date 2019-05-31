@@ -29,7 +29,7 @@ extension Bundle {
         
         UserDefaults.standard.set(isLanguageRTL,   forKey: "AppleTe  zxtDirection")
         UserDefaults.standard.set(isLanguageRTL,   forKey: "NSForceRightToLeftWritingDirection")
-        UserDefaults.standard.set([language.code], forKey: "AppleLanguages")
+        UserDefaults.standard.set(language.code, forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
         
         guard let path = Bundle.main.path(forResource: language.code, ofType: "lproj") else {

@@ -51,4 +51,10 @@ extension Language {
             return nil
         }
     }
+    
+    static func getLanguage() -> String {
+        let lang = UserDefaults.standard.string(forKey: "AppleLanguages") ?? ""
+        
+        return lang
+    }
 }
