@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  MySeries
+
+  Created by Leticia Echarri on 31/05/2019.
+  Copyright © 2019 Leticia. All rights reserved.
+*/
+
+/***COMMON***/
+"common.episodes" = "Episodios";
+"common.cast" = "Reparto";
+
+/***HOME***/
+"home.pendingEps" = "Episodios Pendientes";
