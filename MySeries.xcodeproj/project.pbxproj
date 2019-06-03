@@ -89,6 +89,7 @@
 		26C6DF1D22318B73006ACFCC /* SeriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C6DF1B22318B73006ACFCC /* SeriesViewController.xib */; };
 		26EF52A922A4FFD700425BD7 /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EF52A822A4FFD700425BD7 /* UIView+CornerRadius.swift */; };
 		26EF52AB22A5043A00425BD7 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EF52AA22A5043A00425BD7 /* UIFont+Custom.swift */; };
+		26EF52AD22A568CA00425BD7 /* FlagButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EF52AC22A568CA00425BD7 /* FlagButtonView.swift */; };
 		26F44627229D394800F3BEF6 /* EpisodeDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F44626229D394800F3BEF6 /* EpisodeDetailDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,7 @@
 		26C6DF1B22318B73006ACFCC /* SeriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeriesViewController.xib; sourceTree = "<group>"; };
 		26EF52A822A4FFD700425BD7 /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
 		26EF52AA22A5043A00425BD7 /* UIFont+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		26EF52AC22A568CA00425BD7 /* FlagButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagButtonView.swift; sourceTree = "<group>"; };
 		26F44626229D394800F3BEF6 /* EpisodeDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -375,6 +377,7 @@
 			children = (
 				26BC5AB122930DBE00991503 /* EpisodeView.swift */,
 				26BC9D9622A1594200B8003E /* LanguagePickerView.swift */,
+				26EF52AC22A568CA00425BD7 /* FlagButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				26036DDA2237CBC900EACA1B /* MainRouter.swift in Sources */,
 				26BC9D69229D6AAD00B8003E /* Person.swift in Sources */,
 				26C6DF1522318B38006ACFCC /* HomePresenter.swift in Sources */,
+				26EF52AD22A568CA00425BD7 /* FlagButtonView.swift in Sources */,
 				261C9DDD22410B8B00C1BBAA /* SearchSerieRouter.swift in Sources */,
 				261C9DE52241196300C1BBAA /* SearchSerieTableViewCell.swift in Sources */,
 				26BC5AB222930DBE00991503 /* EpisodeView.swift in Sources */,
