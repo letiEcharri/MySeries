@@ -6,7 +6,7 @@
 //  Copyright © 2019 Leticia. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Language: Equatable {
     case english
@@ -34,6 +34,15 @@ extension Language {
             return "Spanish"
         }
     }
+    
+    var flag: UIImage {
+        switch self {
+        case .english:
+            return UIImage(named: "ukFlag")!
+        case .spanish:
+            return UIImage(named: "spainFlag")!
+        }
+    }
 }
 
 extension Language {
@@ -56,5 +65,18 @@ extension Language {
         let lang = UserDefaults.standard.string(forKey: "AppleLanguages") ?? ""
         
         return lang
+    }
+    
+    static func getCurrent() -> Language {
+        let lang = UserDefaults.standard.string(forKey: "AppleLanguages") ?? ""
+        
+        switch lang {
+        case Language.english.code:
+            return .english
+        case Language.spanish.code:
+            return .spanish
+        default:
+            return .english
+        }
     }
 }

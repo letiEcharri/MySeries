@@ -89,19 +89,15 @@ extension ParentViewController: ParentViewControllerProtocol {
     }
     
     private func navigationBar() {
+        let langButton = UIButton(frame: CGRect(x: 0, y: 0, width: 10, height: 5))
+        langButton.setBackgroundImage(Language.getCurrent().flag, for: .normal)
+        langButton.addTarget(self, action: #selector(changeLanguageAction(_:)), for: .touchUpInside)
         
-        let languageButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(changeLanguageAction(_:)))
-        self.navigationController?.tabBarController?.navigationItem.rightBarButtonItem = languageButton
+        self.navigationController?.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: langButton)
     }
     
-    @objc private func changeLanguageAction(_ sender: UIBarButtonItem) {
-//        var language: [Language] = [.english, .spanish]
-//        
-//        Bundle.set(language: .spanish)
-//        presenterParent?.restartApp()
-        
+    @objc private func changeLanguageAction(_ sender: UIButton) {
         configureLanguagePicker()
-        
     }
     
     private func configureLanguagePicker() {
