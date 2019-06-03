@@ -18,7 +18,7 @@ extension Language {
     var code: String {
         switch self {
         case .english:
-            return "en-GB"
+            return "en"
             
         case .spanish:
             return "es"
@@ -41,7 +41,7 @@ extension Language {
     init?(languageCode: String?) {
         guard let languageCode = languageCode else { return nil }
         switch languageCode {
-        case "en-GB":
+        case "en":
             self = .english
             
         case "es":

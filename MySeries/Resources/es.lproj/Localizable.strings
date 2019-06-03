@@ -16,6 +16,8 @@
 "common.search" = "Buscar";
 "common.home" = "Home";
 "common.series" = "Series";
+"common.done" = "Hecho";
+"common.cancel" = "Cancelar";
 
 /***HOME***/
 "home.pendingEps" = "Episodios Pendientes";

@@ -65,7 +65,6 @@ class SerieDetailViewController: ParentViewController {
     @IBAction func castAction(_ sender: UIButton) {
         presenter.openCast(serieID: serie?.id ?? 0)
     }
-    
 }
 
 extension SerieDetailViewController: SerieDetailViewControllerProtocol {

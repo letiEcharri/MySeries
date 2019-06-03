@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.tintColor = .white // Items
         navigationBarAppearace.barTintColor = UIColor.appColor // Background
         navigationBarAppearace.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 15)!,
+            NSAttributedString.Key.font: UIFont().appFont(type: .bold, size: 15),
             NSAttributedString.Key.foregroundColor: UIColor.white
         ] // Title
     }

@@ -47,6 +47,10 @@ class ParentViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+//    func reload() {
+//        
+//    }
+    
 }
 
 extension ParentViewController: ParentViewControllerProtocol {
@@ -105,6 +109,8 @@ extension ParentViewController: ParentViewControllerProtocol {
         languagePicker = LanguagePickerView(frame: CGRect(x: 20, y: (self.view.frame.size.height - height - 100),
                                                           width: self.view.frame.width - 40,
                                                           height: height))
+        
+        languagePicker?.delegate = self
         languagePicker?.picker.delegate = self
         languagePicker?.picker.dataSource = self
         
@@ -133,11 +139,16 @@ extension ParentViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         return languages[row].name
     }
+}
+
+extension ParentViewController: LanguagePickerViewDelegate {
+    func done() {
+        let row = languages[(languagePicker?.picker.selectedRow(inComponent: 0))!]
+        Bundle.set(language: row)
+        presenterParent?.restartApp()
+    }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        print(languages[row].name)
-//
-//        Bundle.set(language: languages[row])
-//        presenterParent?.restartApp()
-//    }
+    func cancel() {
+        languagePicker?.removeFromSuperview()
+    }
 }

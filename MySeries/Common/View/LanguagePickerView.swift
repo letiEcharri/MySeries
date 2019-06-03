@@ -8,47 +8,61 @@
 
 import UIKit
 
+protocol LanguagePickerViewDelegate {
+    func done()
+    func cancel()
+}
+
 class LanguagePickerView: UIView {
     
     var picker = UIPickerView()
     
+    var delegate: LanguagePickerViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureView()
+        configureView(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureView() {
+    private func configureView(frame: CGRect) {
+        self.backgroundColor = .white
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.appColor.cgColor
         self.layer.cornerRadius = 10
         
-        let toolbarHeight: CGFloat = 20
+        let btnDone = UIButton(frame: CGRect(x: frame.width - 105, y: 5, width: 100, height: 20))
+        btnDone.setTitle("common.done".localize.uppercased(), for: .normal)
+        btnDone.tag = 0
         
-        let btnProfile = UIButton(frame: CGRect(x: 0, y: 0, width: toolbarHeight, height: toolbarHeight))
-        btnProfile.setTitle("DONE", for: .normal)
+        let btnCancel = UIButton(frame: CGRect(x: 5, y: 5, width: btnDone.frame.width, height: btnDone.frame.height))
+        btnCancel.setTitle("common.cancel".localize.uppercased(), for: .normal)
+        btnCancel.tag = 1
         
-        let btnDone = UIBarButtonItem(customView: btnProfile)
-        let btnCancel = UIBarButtonItem(customView: btnProfile)
+        let buttons = [btnDone, btnCancel]
+        for item in buttons {
+            item.titleLabel?.font =  UIFont().appFont(type: .bold, size: 15)
+            item.backgroundColor = UIColor.appColor
+            item.setCorner(radius: 10, color: btnDone.backgroundColor!, width: 1)
+            item.addTarget(self, action: #selector(languageAction(_:)), for: .touchUpInside)
+            self.addSubview(item)
+        }
         
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 20, width: self.frame.width, height: toolbarHeight))
-        toolbar.barStyle = .default
-        toolbar.isTranslucent = false
-        toolbar.items = [btnCancel, btnDone]
-        toolbar.backgroundColor = .red
-        toolbar.sizeToFit()
-        self.addSubview(toolbar)
-        
-        picker.frame = CGRect(x: 0, y: toolbarHeight, width: self.frame.width, height: self.frame.height - toolbarHeight)
+        picker.frame = CGRect(x: 0, y: 25, width: frame.width, height: frame.height - 25)
         picker.showsSelectionIndicator = true
         self.addSubview(picker)
     }
     
-    @objc private func languageAction(_ sernder: UIBarButtonItem) {
+    @objc private func languageAction(_ sender: UIButton) {
         
+        if sender.tag == 1 {
+            delegate?.cancel()
+        } else {
+            delegate?.done()
+        }
     }
 }
