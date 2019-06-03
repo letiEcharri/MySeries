@@ -136,6 +136,28 @@ extension ParentViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         return languages[row].name
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label:UILabel
+        
+        if let v = view as? UILabel{
+            label = v
+        }
+        else{
+            label = UILabel()
+        }
+        
+        label.textColor = .black
+        label.font = UIFont().appFont(type: .light, size: 25)
+        label.textAlignment = .center
+        label.text = languages[row].name
+        
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40
+    }
 }
 
 extension ParentViewController: LanguagePickerViewDelegate {

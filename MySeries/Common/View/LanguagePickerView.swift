@@ -52,7 +52,7 @@ class LanguagePickerView: UIView {
             self.addSubview(item)
         }
         
-        picker.frame = CGRect(x: 0, y: 25, width: frame.width, height: frame.height - 25)
+        picker.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         picker.showsSelectionIndicator = true
         self.addSubview(picker)
     }
