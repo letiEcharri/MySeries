@@ -10,6 +10,8 @@ import Foundation
 
 protocol SerieDetailInteractorProtocol {
     func getCast(serieID: Int)
+    func save(score: Int, serieID: Int)
+    func getScore(serieID: Int) -> Int
 }
 
 protocol SerieDetailInteractorOutput: class {
@@ -48,5 +50,13 @@ extension SerieDetailInteractor: SerieDetailInteractorProtocol {
         }) { (error) in
             self.interactorOutput?.onFailure(error: error.localizedDescription)
         }
+    }
+    
+    func save(score: Int, serieID: Int) {
+        CoreDataManager().saveSerie(score: score, id: serieID)
+    }
+    
+    func getScore(serieID: Int) -> Int {
+        return Int(CoreDataManager().fetchSerie(id: serieID).score)
     }
 }

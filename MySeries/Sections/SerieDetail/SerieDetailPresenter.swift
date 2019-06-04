@@ -11,6 +11,8 @@ import Foundation
 protocol SerieDetailPresenterProtocol: ParentPresenterProtocol {
     func navigateToSeasons(serie: Int)
     func openCast(serieID: Int)
+    func save(score: Int, serieID: Int)
+    func getScore(serieID: Int) -> Int
 }
 
 class SerieDetailPresenter: ParentPresenter {
@@ -33,6 +35,14 @@ extension SerieDetailPresenter: SerieDetailPresenterProtocol {
     
     func openCast(serieID: Int) {
         interactor.getCast(serieID: serieID)
+    }
+    
+    func save(score: Int, serieID: Int) {
+        interactor.save(score: score, serieID: serieID)
+    }
+    
+    func getScore(serieID: Int) -> Int {
+        return interactor.getScore(serieID: serieID)
     }
 }
 

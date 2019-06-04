@@ -24,6 +24,7 @@ class SerieDetailViewController: ParentViewController {
     @IBOutlet weak var lblSumary: UITextView!
     @IBOutlet weak var lblPremiere: UILabel!
     @IBOutlet weak var lblGenres: UILabel!
+    @IBOutlet weak var scoreView: ScoreView!
     
     @IBOutlet weak var lblTextGender: UILabel! {
         didSet {
@@ -90,9 +91,18 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
             genres += "\(item) "
         }
         lblGenres.text = genres
+        
+        scoreView.delegate = self
+        scoreView.set(score: presenter.getScore(serieID: serie?.id ?? 0))
     }
     
     func getViewController() -> SerieDetailViewController {
         return self
+    }
+}
+
+extension SerieDetailViewController: ScoreViewDelegate {
+    func save(score: Int) {
+        presenter.save(score: score, serieID: serie?.id ?? 0)
     }
 }
