@@ -24,11 +24,24 @@ class SerieDetailViewController: ParentViewController {
     @IBOutlet weak var lblSumary: UITextView!
     @IBOutlet weak var lblPremiere: UILabel!
     @IBOutlet weak var lblGenres: UILabel!
+    
+    @IBOutlet weak var lblTextGender: UILabel! {
+        didSet {
+            lblTextGender.text = "common.genre".localize + ":"
+        }
+    }
+    
     @IBOutlet weak var btnCast: UIButton! {
         didSet {
             btnCast.layer.borderWidth = 1
             btnCast.layer.borderColor = UIColor.black.cgColor
             btnCast.layer.cornerRadius = 10
+            btnCast.setTitle("common.cast".localize.uppercased(), for: .normal)
+        }
+    }
+    @IBOutlet weak var btnEpisodes: UIButton!{
+        didSet {
+            btnEpisodes.setTitle("common.episodes".localize.uppercased(), for: .normal)
         }
     }
     
@@ -52,7 +65,6 @@ class SerieDetailViewController: ParentViewController {
     @IBAction func castAction(_ sender: UIButton) {
         presenter.openCast(serieID: serie?.id ?? 0)
     }
-    
 }
 
 extension SerieDetailViewController: SerieDetailViewControllerProtocol {
@@ -71,7 +83,7 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
         lblRuntime.text = "\(serie?.runtime ?? 0) min"
         lblSumary.text = (serie?.summary ?? "").htmlToString
         let date = serie?.premiered ?? ""
-        lblPremiere.text = "Premiere: \(date.formatDate())"
+        lblPremiere.text = "common.premiere".localize + ": \(date.formatDate())"
         
         var genres = ""
         for item in (serie?.genres)! {

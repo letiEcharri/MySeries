@@ -28,11 +28,11 @@ class TabBarViewController: UITabBarController {
         let seriesView = SeriesRouter.create(withMainRouter: mainRouter, parameters: nil)
         let searchView = SearchSerieRouter.create(withMainRouter: mainRouter, parameters: nil)
         
-        homeView.tabBarItem = UITabBarItem(title: "HOME", image: nil, tag: 0)
+        homeView.tabBarItem = UITabBarItem(title: "common.home".localize.uppercased(), image: nil, tag: 0)
         homeView.tabBarItem.image = UIImage(named: "home")
-        seriesView.tabBarItem = UITabBarItem(title: "SERIES", image: nil, tag: 1)
+        seriesView.tabBarItem = UITabBarItem(title: "common.series".localize.uppercased(), image: nil, tag: 1)
         seriesView.tabBarItem.image = UIImage(named: "seriesIcon")
-        searchView.tabBarItem = UITabBarItem(title: "SEARCH", image: nil, tag: 0)
+        searchView.tabBarItem = UITabBarItem(title: "common.search".localize.uppercased(), image: nil, tag: 0)
         searchView.tabBarItem.image = UIImage(named: "searchIcon")
         
         let controllers = [homeView, seriesView, searchView]

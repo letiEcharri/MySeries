@@ -40,4 +40,8 @@ extension String {
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
+    
+    var localize: String {
+        return NSLocalizedString(self, comment: "")
+    }
 }

@@ -15,11 +15,21 @@ protocol HomeViewControllerProtocol: ParentViewControllerProtocol {
 
 class HomeViewController: ParentViewController {
     
+    @IBOutlet weak var lblTitle: UILabel! {
+        didSet {
+            lblTitle.text = "home.pendingEps".localize.uppercased()
+        }
+    }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.cellID)
             tableView.rowHeight = 120
             tableView.tableFooterView = UIView() //Clear extra lines
+        }
+    }
+    @IBOutlet weak var lblNoEpisodes: UILabel! {
+        didSet {
+            lblNoEpisodes.text = "home.noPendingEps".localize
         }
     }
     

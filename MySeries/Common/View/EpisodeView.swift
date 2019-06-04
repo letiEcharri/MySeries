@@ -60,7 +60,7 @@ class EpisodeView: UIView {
         
         // Label
         lblTitle.frame = CGRect(x: 0, y: 0, width: self.frame.width-height, height: height)
-        lblTitle.font = UIFont(name: "Noteworthy-Light", size: 15)
+        lblTitle.font = UIFont().appFont(type: .light, size: 15)
         lblTitle.textColor = .black
         lblTitle.text = "Título"
         self.addSubview(lblTitle)
