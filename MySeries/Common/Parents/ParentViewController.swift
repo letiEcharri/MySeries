@@ -13,19 +13,22 @@ protocol ParentViewControllerProtocol {
 
 class ParentViewController: UIViewController {
     
-    let presenterParent: ParentPresenterProtocol?
-    
     var spinnerView : UIView?
     private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var languagePicker: LanguagePickerView?
+    var languages: [Language] = Language.allCases
+    
+    let presenterParent: ParentPresenterProtocol?
     
     init(nibName: String, bundle: Bundle?, presenterParent: ParentPresenterProtocol?) {
         
         self.presenterParent = presenterParent != nil ? presenterParent : nil
         super.init(nibName: nibName, bundle: bundle)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +38,8 @@ class ParentViewController: UIViewController {
         self.extendedLayoutIncludesOpaqueBars = true
         self.edgesForExtendedLayout = .bottom
         self.definesPresentationContext = true
+        
+        navigationBar()
     }
     
     @objc private func backAction(_ sender: UIBarButtonItem) {
@@ -76,5 +81,92 @@ extension ParentViewController: ParentViewControllerProtocol {
     
     func hideBackButton() {
         self.navigationController?.tabBarController?.navigationItem.leftBarButtonItem = nil
+    }
+    
+    // MARK: Private functions
+    private func navigationBar() {
+        let langView = FlagButtonView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        langView.flag.image = Language.getCurrent().flag
+        langView.delegate = self
+        
+        self.navigationController?.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: langView)
+    }
+    
+    private func configureLanguagePicker() {
+        let height: CGFloat = CGFloat(languages.count * 50) + 20
+        languagePicker = LanguagePickerView(frame: CGRect(x: 20, y: (self.view.frame.size.height - height - 100),
+                                                          width: self.view.frame.width - 40,
+                                                          height: height))
+        
+        languagePicker?.delegate = self
+        languagePicker?.picker.delegate = self
+        languagePicker?.picker.dataSource = self
+        
+        self.view.addSubview(languagePicker!)
+
+        var cont = 0
+        for item in languages {
+            if item.code == Language.getCurrent().code {
+                languagePicker?.picker.selectRow(cont, inComponent: 0, animated: true)
+            }
+            cont += 1
+        }
+    }
+}
+
+
+// MARK: Delegates
+extension ParentViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return languages.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return languages[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label:UILabel
+        
+        if let v = view as? UILabel{
+            label = v
+        }
+        else{
+            label = UILabel()
+        }
+        
+        label.textColor = .black
+        label.font = UIFont().appFont(type: .light, size: 25)
+        label.textAlignment = .center
+        label.text = languages[row].name
+        
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40
+    }
+}
+
+extension ParentViewController: LanguagePickerViewDelegate {
+    func done() {
+        let row = languages[(languagePicker?.picker.selectedRow(inComponent: 0))!]
+        Bundle.set(language: row)
+        presenterParent?.restartApp()
+    }
+    
+    func cancel() {
+        languagePicker?.removeFromSuperview()
+    }
+}
+
+extension ParentViewController: FlagButtonViewDelegate {
+    func click() {
+        configureLanguagePicker()
     }
 }

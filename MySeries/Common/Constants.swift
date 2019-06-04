@@ -19,6 +19,7 @@ struct Constants {
             static let seasons = "/seasons"
             static let episodeByNumber = "/episodebynumber"
             static let search = "/search/shows"
+            static let cast = "/cast"
         }
         
         struct Parameters {
@@ -36,6 +37,11 @@ struct Constants {
         struct Favorite {
             static let favorite = UIImage(named: "favIconFull")
             static let noFavorite = UIImage(named: "favIcon")
+        }
+        
+        struct Flags {
+            static let spanish = UIImage(named: "spainFlag")
+            static let english = UIImage(named: "ukFlag")
         }
     }
 }

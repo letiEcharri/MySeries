@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SerieDetailViewController" customModule="MySeries" customModuleProvider="target">
             <connections>
+                <outlet property="btnCast" destination="B68-Qf-BWv" id="HJn-kj-WiB"/>
+                <outlet property="btnEpisodes" destination="ySh-bC-kjL" id="w1u-eM-emK"/>
                 <outlet property="imgPicture" destination="ffY-yj-tFc" id="9uc-Ef-jMb"/>
                 <outlet property="lblCountry" destination="TQS-Hg-4tv" id="TMA-dM-fDw"/>
                 <outlet property="lblGenres" destination="YTu-Qu-tP1" id="p3f-Rg-BpU"/>
@@ -22,6 +24,8 @@
                 <outlet property="lblRuntime" destination="1Pf-9g-EFF" id="z7i-qn-GD9"/>
                 <outlet property="lblStatus" destination="TcQ-1V-q0m" id="zou-P7-nJJ"/>
                 <outlet property="lblSumary" destination="ZVx-LW-VQC" id="2ip-0e-GtA"/>
+                <outlet property="lblTextGender" destination="6ah-51-ib2" id="1eh-YC-Yvi"/>
+                <outlet property="scoreView" destination="BUb-ng-slN" id="ESR-wt-tdw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,23 +51,23 @@
                     </constraints>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZVx-LW-VQC">
-                    <rect key="frame" x="16" y="307" width="343" height="219"/>
+                    <rect key="frame" x="16" y="330" width="343" height="196"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="12"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPi-yL-yvd">
-                    <rect key="frame" x="171" y="92" width="194" height="52"/>
+                    <rect key="frame" x="171" y="92" width="194" height="42"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="52" id="s1W-cb-d78"/>
+                        <constraint firstAttribute="height" constant="42" id="s1W-cb-d78"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="45"/>
+                    <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="36"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQS-Hg-4tv">
-                    <rect key="frame" x="171" y="149" width="194" height="28"/>
+                    <rect key="frame" x="171" y="139" width="194" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="J9O-i1-tHy"/>
                     </constraints>
@@ -72,19 +76,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOj-UM-xy3">
-                    <rect key="frame" x="171" y="177" width="194" height="28"/>
+                    <rect key="frame" x="171" y="167" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcQ-1V-q0m">
-                    <rect key="frame" x="171" y="205" width="194" height="28"/>
+                    <rect key="frame" x="171" y="195" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pf-9g-EFF">
-                    <rect key="frame" x="171" y="233" width="194" height="28"/>
+                    <rect key="frame" x="171" y="223" width="194" height="28"/>
                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -124,10 +128,31 @@
                         <action selector="episodesAction:" destination="-1" eventType="touchUpInside" id="lfC-vM-54J"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B68-Qf-BWv">
+                    <rect key="frame" x="171" y="256" width="194" height="26"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="15"/>
+                    <state key="normal" title="REPARTO">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="castAction:" destination="-1" eventType="touchUpInside" id="MDV-zE-vm6"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUb-ng-slN" customClass="ScoreView" customModule="MySeries" customModuleProvider="target">
+                    <rect key="frame" x="67" y="290" width="241" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="241" id="JT4-3z-hfx"/>
+                        <constraint firstAttribute="height" constant="30" id="Qlb-05-1Kw"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="8aa-jV-hFR" firstAttribute="top" secondItem="ZVx-LW-VQC" secondAttribute="bottom" constant="10" id="0Av-pf-Z3S"/>
+                <constraint firstItem="ZVx-LW-VQC" firstAttribute="top" secondItem="BUb-ng-slN" secondAttribute="bottom" constant="10" id="0Vg-Ma-b5V"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="trailing" secondItem="1Pf-9g-EFF" secondAttribute="trailing" id="1Hq-0U-wuy"/>
                 <constraint firstItem="1Pf-9g-EFF" firstAttribute="height" secondItem="TQS-Hg-4tv" secondAttribute="height" id="2Gb-Ic-QLg"/>
                 <constraint firstItem="ffY-yj-tFc" firstAttribute="top" secondItem="gYk-xO-Q81" secondAttribute="bottom" constant="27" id="38Q-G1-wat"/>
                 <constraint firstItem="1Pf-9g-EFF" firstAttribute="leading" secondItem="TQS-Hg-4tv" secondAttribute="leading" id="3ET-hr-NcG"/>
@@ -143,15 +168,18 @@
                 <constraint firstItem="TQS-Hg-4tv" firstAttribute="trailing" secondItem="VPi-yL-yvd" secondAttribute="trailing" id="HOQ-wK-Uej"/>
                 <constraint firstItem="TcQ-1V-q0m" firstAttribute="height" secondItem="TQS-Hg-4tv" secondAttribute="height" id="JX4-b3-sLp"/>
                 <constraint firstItem="TcQ-1V-q0m" firstAttribute="leading" secondItem="TQS-Hg-4tv" secondAttribute="leading" id="Jiv-4e-9zf"/>
-                <constraint firstItem="ZVx-LW-VQC" firstAttribute="top" secondItem="ffY-yj-tFc" secondAttribute="bottom" constant="25" id="Ktb-zA-bIT"/>
+                <constraint firstItem="BUb-ng-slN" firstAttribute="top" secondItem="ffY-yj-tFc" secondAttribute="bottom" constant="8" id="MST-GL-n2c"/>
                 <constraint firstItem="YTu-Qu-tP1" firstAttribute="trailing" secondItem="6ah-51-ib2" secondAttribute="trailing" id="Mh8-Vi-545"/>
                 <constraint firstItem="8aa-jV-hFR" firstAttribute="trailing" secondItem="ZVx-LW-VQC" secondAttribute="trailing" id="PFH-53-mle"/>
                 <constraint firstItem="6ah-51-ib2" firstAttribute="height" secondItem="8aa-jV-hFR" secondAttribute="height" id="QF0-P3-i8V"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ySh-bC-kjL" secondAttribute="bottom" id="QSo-jj-94a"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZVx-LW-VQC" secondAttribute="trailing" constant="16" id="TFI-o2-wlL"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="top" secondItem="1Pf-9g-EFF" secondAttribute="bottom" constant="5" id="TP2-0h-PF8"/>
                 <constraint firstItem="gYk-xO-Q81" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="V4x-JT-VZT"/>
                 <constraint firstItem="VPi-yL-yvd" firstAttribute="top" secondItem="ffY-yj-tFc" secondAttribute="top" id="Vuj-Zm-jsw"/>
                 <constraint firstItem="6ah-51-ib2" firstAttribute="top" secondItem="8aa-jV-hFR" secondAttribute="bottom" constant="5" id="YgW-oK-No9"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="leading" secondItem="1Pf-9g-EFF" secondAttribute="leading" id="b6w-Is-nhy"/>
+                <constraint firstItem="B68-Qf-BWv" firstAttribute="bottom" secondItem="ffY-yj-tFc" secondAttribute="bottom" id="fRL-xs-Ds6"/>
                 <constraint firstItem="oOj-UM-xy3" firstAttribute="height" secondItem="TQS-Hg-4tv" secondAttribute="height" id="hFK-yJ-16M"/>
                 <constraint firstItem="8aa-jV-hFR" firstAttribute="leading" secondItem="ZVx-LW-VQC" secondAttribute="leading" id="kXq-NH-eXj"/>
                 <constraint firstItem="6ah-51-ib2" firstAttribute="leading" secondItem="ZVx-LW-VQC" secondAttribute="leading" id="kpN-TV-Ir9"/>
@@ -161,6 +189,7 @@
                 <constraint firstItem="gYk-xO-Q81" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qEq-Sp-zKv"/>
                 <constraint firstItem="1Pf-9g-EFF" firstAttribute="top" secondItem="TcQ-1V-q0m" secondAttribute="bottom" id="rNJ-y4-Vs9"/>
                 <constraint firstItem="6ah-51-ib2" firstAttribute="trailing" secondItem="ZVx-LW-VQC" secondAttribute="trailing" id="rjM-sI-hFo"/>
+                <constraint firstItem="BUb-ng-slN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sc3-8r-cbR"/>
                 <constraint firstItem="TcQ-1V-q0m" firstAttribute="trailing" secondItem="TQS-Hg-4tv" secondAttribute="trailing" id="tpC-nc-jCm"/>
                 <constraint firstItem="oOj-UM-xy3" firstAttribute="top" secondItem="TQS-Hg-4tv" secondAttribute="bottom" id="v7s-4s-3Kb"/>
                 <constraint firstItem="TQS-Hg-4tv" firstAttribute="leading" secondItem="VPi-yL-yvd" secondAttribute="leading" id="wVr-uO-O0v"/>

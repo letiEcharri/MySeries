@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SeasonsCollectionViewCellDelegate {
-    func click(episode: Episode)
+    func click(episode: Episode, seasonNumberEpisodes: Int)
     func watch(season: Int)
     func unwatched(season: Int)
 }
@@ -51,7 +51,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     
     private func set(info: Season) {
         imgPicture.imageFromUrl(urlString: info.image?.medium ?? "")
-        lblSeason.text = "TEMPORADA \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) Caps"
+        lblSeason.text = "common.season".localize.uppercased() + " \(info.number ?? 0) - \(String(info.episodeOrder ?? 0)) " + "seasons.eps".localize
         lblDates.text = "\(info.premiereDate?.formatDate() ?? "") - \(info.endDate?.formatDate() ?? "")"
         seasonNumber = info.number ?? 0
     }
@@ -70,7 +70,7 @@ class SeasonsCollectionViewCell: UICollectionViewCell {
     
     @objc func goToEpisodeDetailAction(_ sender: UITapGestureRecognizer) {
         for item in episodes where (item.id == sender.view?.tag) {
-            delegate?.click(episode: item)
+            delegate?.click(episode: item, seasonNumberEpisodes: episodes.count)
         }
     }
 
@@ -140,7 +140,7 @@ extension SeasonsCollectionViewCell: EpisodeViewDelegate {
     
     func clickView(_ parameters: EpisodeView.Parameters) {
         for item in episodes where (item.id == parameters.episodeID) {
-            delegate?.click(episode: item)
+            delegate?.click(episode: item, seasonNumberEpisodes: season?.episodeOrder ?? 0)
         }
     }
 }

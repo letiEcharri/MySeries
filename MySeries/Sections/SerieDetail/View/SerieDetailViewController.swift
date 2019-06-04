@@ -24,6 +24,27 @@ class SerieDetailViewController: ParentViewController {
     @IBOutlet weak var lblSumary: UITextView!
     @IBOutlet weak var lblPremiere: UILabel!
     @IBOutlet weak var lblGenres: UILabel!
+    @IBOutlet weak var scoreView: ScoreView!
+    
+    @IBOutlet weak var lblTextGender: UILabel! {
+        didSet {
+            lblTextGender.text = "common.genre".localize + ":"
+        }
+    }
+    
+    @IBOutlet weak var btnCast: UIButton! {
+        didSet {
+            btnCast.layer.borderWidth = 1
+            btnCast.layer.borderColor = UIColor.black.cgColor
+            btnCast.layer.cornerRadius = 10
+            btnCast.setTitle("common.cast".localize.uppercased(), for: .normal)
+        }
+    }
+    @IBOutlet weak var btnEpisodes: UIButton!{
+        didSet {
+            btnEpisodes.setTitle("common.episodes".localize.uppercased(), for: .normal)
+        }
+    }
     
     var serie: Serie?
     
@@ -40,6 +61,10 @@ class SerieDetailViewController: ParentViewController {
     
     @IBAction func episodesAction(_ sender: UIButton) {
         presenter.navigateToSeasons(serie: serie?.id ?? 0)
+    }
+    
+    @IBAction func castAction(_ sender: UIButton) {
+        presenter.openCast(serieID: serie?.id ?? 0)
     }
 }
 
@@ -59,16 +84,25 @@ extension SerieDetailViewController: SerieDetailViewControllerProtocol {
         lblRuntime.text = "\(serie?.runtime ?? 0) min"
         lblSumary.text = (serie?.summary ?? "").htmlToString
         let date = serie?.premiered ?? ""
-        lblPremiere.text = "Premiere: \(date.formatDate())"
+        lblPremiere.text = "common.premiere".localize + ": \(date.formatDate())"
         
         var genres = ""
         for item in (serie?.genres)! {
             genres += "\(item) "
         }
         lblGenres.text = genres
+        
+        scoreView.delegate = self
+        scoreView.set(score: presenter.getScore(serieID: serie?.id ?? 0))
     }
     
     func getViewController() -> SerieDetailViewController {
         return self
+    }
+}
+
+extension SerieDetailViewController: ScoreViewDelegate {
+    func save(score: Int) {
+        presenter.save(score: score, serieID: serie?.id ?? 0)
     }
 }

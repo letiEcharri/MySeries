@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TableViewCellDelegate {
-    func click(episode: Episode, serieID: Int)
+    func click(episode: Episode, serieID: Int, seasonNumberEpisodes: Int)
 }
 
 class TableViewCell: UITableViewCell {
@@ -26,7 +26,7 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var containerView: UIView! {
         didSet {
-            containerView.layer.borderColor = UIColor.lightGray.cgColor
+            containerView.layer.borderColor = UIColor.appColor.cgColor
             containerView.layer.borderWidth = 1
             containerView.layer.cornerRadius = 10.0
             containerView.layer.masksToBounds = true
@@ -58,7 +58,7 @@ class TableViewCell: UITableViewCell {
     
     @objc func goToDetailAction(_ sender: UITapGestureRecognizer) {
         for item in episodes where (item.id == sender.view?.tag) {
-            delegate?.click(episode: item, serieID: serie?.id ?? 0)
+            delegate?.click(episode: item, serieID: serie?.id ?? 0, seasonNumberEpisodes: episodes.count)
         }
     }
     

@@ -56,9 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func customizeNavigationBar() {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.tintColor = .white // Items
-        navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 153/255, alpha: 1) // Background
+        navigationBarAppearace.barTintColor = UIColor.appColor // Background
         navigationBarAppearace.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 15)!,
+            NSAttributedString.Key.font: UIFont().appFont(type: .bold, size: 15),
             NSAttributedString.Key.foregroundColor: UIColor.white
         ] // Title
     }

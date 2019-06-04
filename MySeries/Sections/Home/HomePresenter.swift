@@ -11,7 +11,7 @@ import Foundation
 protocol HomePresenterProtocol: ParentPresenterProtocol {
     func checkNewEpisodes()
     func getPendingEpisodes() -> [SerieEpisodes]
-    func show(episode: Episode, serieID: Int)
+    func show(episode: Episode, serieID: Int, seasonNumberEpisodes: Int)
     func goDetail(serie: SerieEpisodes)
     func cleanEpisodes()
 }
@@ -68,6 +68,8 @@ extension HomePresenter: HomePresenterProtocol {
                         })
                     }
                 }
+            } else {
+                self.view?.updatePending()
             }
         }
     }
@@ -89,8 +91,8 @@ extension HomePresenter: HomePresenterProtocol {
         return Date()
     }
     
-    func show(episode: Episode, serieID: Int) {
-        router.pushDetail(episode: episode, serieID: serieID, view: (view?.getViewController())!)
+    func show(episode: Episode, serieID: Int, seasonNumberEpisodes: Int) {
+        router.pushDetail(episode: episode, serieID: serieID, seasonNumberEpisodes: seasonNumberEpisodes, view: (view?.getViewController())!)
     }
     
     func goDetail(serie: SerieEpisodes) {
