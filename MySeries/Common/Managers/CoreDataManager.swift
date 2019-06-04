@@ -33,6 +33,7 @@ class CoreDataManager {
             //set the entity values
             transc.setValue(id, forKey: "id")
             transc.setValue(serie, forKey: "name")
+            transc.setValue(0, forKey: "score")
             
             //save the object
             do {
@@ -265,6 +266,26 @@ class CoreDataManager {
             // something went wrong, print the error.
             print(error.description)
             return false
+        }
+    }
+    
+    func saveSerie(score: Int, id: Int) {
+        let context = getContext()
+        
+        let fetchRequest = NSFetchRequest<CDSerie>(entityName: Entity.serie.rawValue)
+        
+        do {
+            let fetchedResults = try context.fetch(fetchRequest)
+            if fetchedResults.count > 0 {
+                for item in fetchedResults where (item.id == id) {
+                    item.score = Int32(score)
+                    try context.save()
+                    print("Serie score saved: \(score)")
+                }
+            }
+        } catch let error as NSError {
+            // something went wrong, print the error.
+            print(error.description)
         }
     }
 }
