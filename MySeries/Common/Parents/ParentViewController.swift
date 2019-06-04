@@ -16,9 +16,8 @@ class ParentViewController: UIViewController {
     var spinnerView : UIView?
     private var spinner = UIActivityIndicatorView(style: .whiteLarge)
     
-//    var languagePicker: UIPickerView = UIPickerView()
     var languagePicker: LanguagePickerView?
-    var languages: [Language] = [.english, .spanish]
+    var languages: [Language] = Language.allCases
     
     let presenterParent: ParentPresenterProtocol?
     
@@ -46,10 +45,6 @@ class ParentViewController: UIViewController {
     @objc private func backAction(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-//    func reload() {
-//        
-//    }
     
 }
 
@@ -88,17 +83,13 @@ extension ParentViewController: ParentViewControllerProtocol {
         self.navigationController?.tabBarController?.navigationItem.leftBarButtonItem = nil
     }
     
+    // MARK: Private functions
     private func navigationBar() {
         let langView = FlagButtonView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         langView.flag.image = Language.getCurrent().flag
-        let tap = UITapGestureRecognizer(target: self, action: #selector(changeLanguageAction(_:)))
-        langView.addGestureRecognizer(tap)
+        langView.delegate = self
         
         self.navigationController?.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: langView)
-    }
-    
-    @objc private func changeLanguageAction(_ sender: UITapGestureRecognizer) {
-        configureLanguagePicker()
     }
     
     private func configureLanguagePicker() {
@@ -115,7 +106,7 @@ extension ParentViewController: ParentViewControllerProtocol {
 
         var cont = 0
         for item in languages {
-            if item.code == Language.getLanguage() {
+            if item.code == Language.getCurrent().code {
                 languagePicker?.picker.selectRow(cont, inComponent: 0, animated: true)
             }
             cont += 1
@@ -123,6 +114,8 @@ extension ParentViewController: ParentViewControllerProtocol {
     }
 }
 
+
+// MARK: Delegates
 extension ParentViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -169,5 +162,11 @@ extension ParentViewController: LanguagePickerViewDelegate {
     
     func cancel() {
         languagePicker?.removeFromSuperview()
+    }
+}
+
+extension ParentViewController: FlagButtonViewDelegate {
+    func click() {
+        configureLanguagePicker()
     }
 }

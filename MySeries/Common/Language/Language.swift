@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Language: Equatable {
+enum Language: Equatable, CaseIterable {
     case english
     case spanish
 }
@@ -59,12 +59,6 @@ extension Language {
         default:
             return nil
         }
-    }
-    
-    static func getLanguage() -> String {
-        let lang = UserDefaults.standard.string(forKey: "AppleLanguages") ?? ""
-        
-        return lang
     }
     
     static func getCurrent() -> Language {

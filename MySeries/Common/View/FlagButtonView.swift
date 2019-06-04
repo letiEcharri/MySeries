@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol FlagButtonViewDelegate {
+    func click()
+}
+
 class FlagButtonView: UIView {
     
     var flag = UIImageView()
     var arrow = UIImageView()
+    
+    var delegate: FlagButtonViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,5 +37,13 @@ class FlagButtonView: UIView {
         arrow.contentMode = .scaleAspectFit
         arrow.image = UIImage(named: "downArrowWhite")
         addSubview(arrow)
+        
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        button.addTarget(self, action: #selector(languageAction(_:)), for: .touchUpInside)
+        addSubview(button)
+    }
+    
+    @objc private func languageAction(_ sender: UIButton) {
+        delegate?.click()
     }
 }

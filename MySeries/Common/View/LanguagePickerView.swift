@@ -35,6 +35,10 @@ class LanguagePickerView: UIView {
         self.layer.borderColor = UIColor.appColor.cgColor
         self.layer.cornerRadius = 10
         
+        picker.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        picker.showsSelectionIndicator = true
+        self.addSubview(picker)
+        
         let btnDone = UIButton(frame: CGRect(x: frame.width - 105, y: 5, width: 100, height: 20))
         btnDone.setTitle("common.done".localize.uppercased(), for: .normal)
         btnDone.tag = 0
@@ -51,14 +55,10 @@ class LanguagePickerView: UIView {
             item.addTarget(self, action: #selector(languageAction(_:)), for: .touchUpInside)
             self.addSubview(item)
         }
-        
-        picker.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        picker.showsSelectionIndicator = true
-        self.addSubview(picker)
     }
     
     @objc private func languageAction(_ sender: UIButton) {
-        
+
         if sender.tag == 1 {
             delegate?.cancel()
         } else {
